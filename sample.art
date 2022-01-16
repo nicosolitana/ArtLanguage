@@ -1,5 +1,8 @@
-canvas(100,50)
-Rectangle rect
-rect.size(10, 20, 20, 40)
-rect.outline(1, rgb(0,0,0), 50)
-rect.fill(rgb(0,0,0), 50)
+def funcName(){
+    Rectangle rect
+    Circle circ
+    ab = 1 + ab
+    rect.size(10, 20, 20, 40)
+    circle.size(50, 50, 20)
+    dot.size(50, 50)   
+}
