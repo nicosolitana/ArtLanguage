@@ -44,12 +44,156 @@ class ArtGrammarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ArtGrammarParser#loop.
+    def enterLoop(self, ctx:ArtGrammarParser.LoopContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#loop.
+    def exitLoop(self, ctx:ArtGrammarParser.LoopContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#loop_body.
+    def enterLoop_body(self, ctx:ArtGrammarParser.Loop_bodyContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#loop_body.
+    def exitLoop_body(self, ctx:ArtGrammarParser.Loop_bodyContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#loop_init.
+    def enterLoop_init(self, ctx:ArtGrammarParser.Loop_initContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#loop_init.
+    def exitLoop_init(self, ctx:ArtGrammarParser.Loop_initContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#loop_cond.
+    def enterLoop_cond(self, ctx:ArtGrammarParser.Loop_condContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#loop_cond.
+    def exitLoop_cond(self, ctx:ArtGrammarParser.Loop_condContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#loop_incdec.
+    def enterLoop_incdec(self, ctx:ArtGrammarParser.Loop_incdecContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#loop_incdec.
+    def exitLoop_incdec(self, ctx:ArtGrammarParser.Loop_incdecContext):
+        pass
+
+
     # Enter a parse tree produced by ArtGrammarParser#init.
     def enterInit(self, ctx:ArtGrammarParser.InitContext):
         pass
 
     # Exit a parse tree produced by ArtGrammarParser#init.
     def exitInit(self, ctx:ArtGrammarParser.InitContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#init_int.
+    def enterInit_int(self, ctx:ArtGrammarParser.Init_intContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#init_int.
+    def exitInit_int(self, ctx:ArtGrammarParser.Init_intContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#func_call.
+    def enterFunc_call(self, ctx:ArtGrammarParser.Func_callContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#func_call.
+    def exitFunc_call(self, ctx:ArtGrammarParser.Func_callContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#call_params.
+    def enterCall_params(self, ctx:ArtGrammarParser.Call_paramsContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#call_params.
+    def exitCall_params(self, ctx:ArtGrammarParser.Call_paramsContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#if_else.
+    def enterIf_else(self, ctx:ArtGrammarParser.If_elseContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#if_else.
+    def exitIf_else(self, ctx:ArtGrammarParser.If_elseContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#if_cond.
+    def enterIf_cond(self, ctx:ArtGrammarParser.If_condContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#if_cond.
+    def exitIf_cond(self, ctx:ArtGrammarParser.If_condContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#elif_cond.
+    def enterElif_cond(self, ctx:ArtGrammarParser.Elif_condContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#elif_cond.
+    def exitElif_cond(self, ctx:ArtGrammarParser.Elif_condContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#else_cond.
+    def enterElse_cond(self, ctx:ArtGrammarParser.Else_condContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#else_cond.
+    def exitElse_cond(self, ctx:ArtGrammarParser.Else_condContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#condition_base.
+    def enterCondition_base(self, ctx:ArtGrammarParser.Condition_baseContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#condition_base.
+    def exitCondition_base(self, ctx:ArtGrammarParser.Condition_baseContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#condition_body.
+    def enterCondition_body(self, ctx:ArtGrammarParser.Condition_bodyContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#condition_body.
+    def exitCondition_body(self, ctx:ArtGrammarParser.Condition_bodyContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#condition.
+    def enterCondition(self, ctx:ArtGrammarParser.ConditionContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#condition.
+    def exitCondition(self, ctx:ArtGrammarParser.ConditionContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#ifel_body.
+    def enterIfel_body(self, ctx:ArtGrammarParser.Ifel_bodyContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#ifel_body.
+    def exitIfel_body(self, ctx:ArtGrammarParser.Ifel_bodyContext):
         pass
 
 
@@ -71,6 +215,78 @@ class ArtGrammarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ArtGrammarParser#canvas_def.
+    def enterCanvas_def(self, ctx:ArtGrammarParser.Canvas_defContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#canvas_def.
+    def exitCanvas_def(self, ctx:ArtGrammarParser.Canvas_defContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#outline_def.
+    def enterOutline_def(self, ctx:ArtGrammarParser.Outline_defContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#outline_def.
+    def exitOutline_def(self, ctx:ArtGrammarParser.Outline_defContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#outline_params.
+    def enterOutline_params(self, ctx:ArtGrammarParser.Outline_paramsContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#outline_params.
+    def exitOutline_params(self, ctx:ArtGrammarParser.Outline_paramsContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#rgb_def.
+    def enterRgb_def(self, ctx:ArtGrammarParser.Rgb_defContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#rgb_def.
+    def exitRgb_def(self, ctx:ArtGrammarParser.Rgb_defContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#fill_def.
+    def enterFill_def(self, ctx:ArtGrammarParser.Fill_defContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#fill_def.
+    def exitFill_def(self, ctx:ArtGrammarParser.Fill_defContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#fill_params.
+    def enterFill_params(self, ctx:ArtGrammarParser.Fill_paramsContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#fill_params.
+    def exitFill_params(self, ctx:ArtGrammarParser.Fill_paramsContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#draw_shape.
+    def enterDraw_shape(self, ctx:ArtGrammarParser.Draw_shapeContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#draw_shape.
+    def exitDraw_shape(self, ctx:ArtGrammarParser.Draw_shapeContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#draw_params.
+    def enterDraw_params(self, ctx:ArtGrammarParser.Draw_paramsContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#draw_params.
+    def exitDraw_params(self, ctx:ArtGrammarParser.Draw_paramsContext):
+        pass
+
+
     # Enter a parse tree produced by ArtGrammarParser#size_shape.
     def enterSize_shape(self, ctx:ArtGrammarParser.Size_shapeContext):
         pass
@@ -80,12 +296,12 @@ class ArtGrammarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ArtGrammarParser#params.
-    def enterParams(self, ctx:ArtGrammarParser.ParamsContext):
+    # Enter a parse tree produced by ArtGrammarParser#size_params.
+    def enterSize_params(self, ctx:ArtGrammarParser.Size_paramsContext):
         pass
 
-    # Exit a parse tree produced by ArtGrammarParser#params.
-    def exitParams(self, ctx:ArtGrammarParser.ParamsContext):
+    # Exit a parse tree produced by ArtGrammarParser#size_params.
+    def exitSize_params(self, ctx:ArtGrammarParser.Size_paramsContext):
         pass
 
 

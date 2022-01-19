@@ -1,8 +1,38 @@
-def funcName(){
+def funcName(){{
     Rectangle rect
     Circle circ
+    samp = 1
+    func(1,2,a)
+    canvas(100,50)
+    rect.outline(1, rgb(0,0,0), 50)
+    line.draw(50,50, 100,50)
+    rect.fill(rgb(0,0,0), 50)
+    rect.size(10, 20, 20, 40)
+    if(a > b){
+        Rectangle rectTwo
+    } else {
+        Arc arcOne
+    }
+    for(samp = 1; samp > 5; 1++){
+        Rectangle sampl
+        
+        if(a > b){
+            Rectangle rectTwo
+        } else {
+            Arc arcOne
+                for(samp = 1; samp > 5; 1++){
+                    Rectangle sampl
+                    
+                    if(a > b){
+                        Rectangle rectTwo
+                    } else {
+                        Arc arcOne
+                    }
+                }
+        }
+    }
     ab = 1 + ab
     rect.size(10, 20, 20, 40)
     circle.size(50, 50, 20)
-    dot.size(50, 50)   
+    dot.size(50, 50)  
 }
