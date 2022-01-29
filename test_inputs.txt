@@ -1,0 +1,66 @@
+---------------------------
+INVALID
+def funcName(){
+    Rectangle rect
+    Circle circ
+    Circle circ
+    samp = 1
+    func(1,2,a)
+    canvas(100,50)
+    funcSample(a,b)
+    rect.outline(1, rgb(0,0,0), 50)
+    line.draw(50,50, 100,50, 40)
+    rect.fill(rgb(0,0,0), 50)
+    rect.size(10, 20, 20, 40, 50)
+    circle.size(50, 50, 20)
+    dot.size(50, 50)  
+    Rectangle rect
+}}
+
+---------------------------
+VALID
+def funcName(){
+    canvas(50,30)
+    Rectangle rect
+    Circle circ
+    rect.size(10, 20, 20, 40)
+    circ.size(50, 50, 50)
+}
+
+def main(){
+    canvas(1000,1000)
+    funcName()
+}
+
+---------------------------
+VALID
+def funcName(){
+    canvas(50,30)
+    Rectangle rect
+    Circle circ
+    rect.size(10, 20, 20, 40)
+    circ.size(50, 50, 50)
+    Rectangle smp 
+    if(1 < 2) {
+        smp.size(10, 20, 20, 40)
+    }
+    elif(2 < 3){
+        smp.size(10, 20, 20, 40)
+    } 
+    else {
+        smp.size(10, 20, 20, 40)
+    }
+
+    Pixel ctr
+    Pixel px
+    px = 10
+    for(ctr = 0; ctr <= 5; 2++){
+        px = px + ctr
+        smp.size(10, 20, 20, px)
+    }
+}
+
+def main(){
+    canvas(1000,1000)
+    funcName()
+}

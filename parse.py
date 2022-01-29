@@ -7,17 +7,19 @@ from lexiparse.ArtGrammarLexer import ArtGrammarLexer
 from lexiparse.ArtGrammarParser import ArtGrammarParser
 from lexiparse.ArtGrammarVisitor import ArtGrammarVisitor
 from IPython.utils.capture import capture_output
+from semantics import SemanticAnalyzer
 
 class Parse:
     
-    def __init__(self, filepath):
+    def __init__(self, filepath, tokendf):
         self.data = FileStream(filepath)
+        self.tokendf = tokendf
 
     def Traverse(self, tree, rule_names, indent = 0):
         if tree.getText() == "<EOF>":
             return
         elif isinstance(tree, TerminalNodeImpl):
-            print("{0}TOKEN='{1}'".format("  " * indent, tree.getText()))
+            print("{0}{1}".format("  " * indent, tree.getText()))
         else:
             print("{0}{1}".format("  " * indent, rule_names[tree.getRuleIndex()]))
             for child in tree.children:
@@ -26,6 +28,12 @@ class Parse:
     def DisplayTree(self, tree, parser):
         print(Trees.toStringTree(tree, None, parser))
 
+    def SemanticAnalysis(self):
+        smA = SemanticAnalyzer(self.tokendf)
+        smA.SemanticAnalysis()
+        for errMsg in smA.errorLst:
+            print(errMsg)
+
     def Parser(self):
         with capture_output() as start_parse:
             lexer = ArtGrammarLexer(self.data )
@@ -33,5 +41,6 @@ class Parse:
             parser = ArtGrammarParser(stream)
             tree = parser.expr()
         start_parse()
-        #self.DisplayTree()
+        self.SemanticAnalysis()
+        print('\n\nParse Tree is displayed below:')
         self.Traverse(tree, parser.ruleNames)
