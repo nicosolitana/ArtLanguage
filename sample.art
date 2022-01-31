@@ -1,26 +1,24 @@
 def funcName(){
-    canvas(50,30)
-    Rectangle rect
-    Circle circ
-    rect.size(10, 20, 20, 40)
-    circ.size(50, 50, 50)
-    Rectangle smp 
     if(1 < 2) {
-        smp.size(10, 20, 20, 40)
+        if((1 < 2) && (5 >= 4)){
+            if((1 < 2) && (5 >= 4)){
+            }
+        }
     }
     elif(2 < 3){
-        smp.size(10, 20, 20, 40)
     } 
     else {
-        smp.size(10, 20, 20, 40)
+        if((1 < 2) && (5 >= 4)){
+            if((1 < 2) && (5 >= 4)){
+            }
+        }
     }
-
     Pixel ctr
-    Pixel px
-    px = 10
     for(ctr = 0; ctr <= 5; 2++){
-        px = px + ctr
-        smp.size(10, 20, 20, px)
+        if((1 < 2) && (5 >= 4)){
+            if((1 < 2) && (5 >= 4)){
+            }
+        }
     }
 }
 
