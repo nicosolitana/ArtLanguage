@@ -1,10 +1,14 @@
 grammar ArtGrammar;
 
-expr           : (func)* EOF ;
+expr           : (consts)* (glob)* (func)* EOF ;
 
 func           : DEF IDENTIFIER PAREN_START PAREN_END CURLY_START (code)* CURLY_END
                | DEF IDENTIFIER PAREN_START func_params PAREN_END CURLY_START (code)* CURLY_END;
-     
+
+consts         : CONSTANT init_int;   
+
+glob           : GLOBAL data_type init_int; 
+
 func_params    : IDENTIFIER 
                | IDENTIFIER SEPARATOR func_params ;
 
@@ -103,6 +107,10 @@ DEF	           :   ('def');
 FILL	       :   ('fill');
 CANVAS	       :   ('canvas');
 RGB 	       :   ('rgb');
+CONSTANT 	   :   ('const');
+GLOBAL   	   :   ('global');
+BREAK   	   :   ('break');
+CONTINUE   	   :   ('continue');
 INTEGER	       :   [0-9]+;
 IDENTIFIER     :	[a-zA-Z][a-zA-Z0-9]* ;
 MATH_OP        :   ('-'|'+'|'*'|'\\');

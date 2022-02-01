@@ -19,6 +19,16 @@ class ArtGrammarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ArtGrammarParser#consts.
+    def visitConsts(self, ctx:ArtGrammarParser.ConstsContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#glob.
+    def visitGlob(self, ctx:ArtGrammarParser.GlobContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ArtGrammarParser#func_params.
     def visitFunc_params(self, ctx:ArtGrammarParser.Func_paramsContext):
         return self.visitChildren(ctx)

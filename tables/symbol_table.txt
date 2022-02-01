@@ -9,6 +9,10 @@ ELIF	^(elif)$
 ELSE	^(else)$
 DRAW	^(draw)$
 PIXEL	^(Pixel)$
+CONSTANT  ^(const)$
+GLOBAL    ^(global)$
+BREAK    ^(break)$
+CONTINUE    ^(continue)$
 RECTANGLE	^(Rectangle)$
 SQUARE	^(Square)$
 CIRCLE	^(Circle)$

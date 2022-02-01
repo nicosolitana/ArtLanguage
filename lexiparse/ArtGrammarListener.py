@@ -26,6 +26,24 @@ class ArtGrammarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ArtGrammarParser#consts.
+    def enterConsts(self, ctx:ArtGrammarParser.ConstsContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#consts.
+    def exitConsts(self, ctx:ArtGrammarParser.ConstsContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#glob.
+    def enterGlob(self, ctx:ArtGrammarParser.GlobContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#glob.
+    def exitGlob(self, ctx:ArtGrammarParser.GlobContext):
+        pass
+
+
     # Enter a parse tree produced by ArtGrammarParser#func_params.
     def enterFunc_params(self, ctx:ArtGrammarParser.Func_paramsContext):
         pass
