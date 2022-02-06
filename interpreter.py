@@ -11,6 +11,7 @@
 #exec(str)
 
 import os
+from re import T
 import shutil
 from inspect import iscode
 
@@ -151,6 +152,21 @@ class Interpreter:
         self.code += ")\n"
         return i
 
+    def Fill(self, i):
+        var = self.tokens[i]['token']
+        red = self.tokens[i + 6]['token']
+        green = self.tokens[i + 8]['token']
+        blue = self.tokens[i + 10]['token']
+        opacity = self.tokens[i + 13]['token']
+        
+        self.code += self.tabs
+        self.code += var + ".color(" + red + "," + green + "," + blue + ")\n"
+        self.code += self.tabs
+        self.code += var + ".opacity(" + opacity + ")\n"
+
+        print(var, red, green, blue, opacity)
+
+        return i + 14
 
     def Interpret(self):
         i = 0
@@ -181,6 +197,10 @@ class Interpreter:
                     i = self.FunctionCall(i)
                 else:
                     i = i - 1
+            if (i < len(self.tokens) - 2):
+                if (self.tokens[i]['type'] == "IDENTIFIER" and self.tokens[i + 1]['type'] == "DOT_NOTATION" and self.tokens[i + 2]['type'] == "FILL"):
+                    i = self.Fill(i)
+
             i += 1
         self.code += "\nmain()"
     

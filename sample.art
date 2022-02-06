@@ -23,6 +23,7 @@ def funcName(){
         smp.size(10, 20, 20, px)
     }
 
+    rect1.fill(rgb(12,34,56), 78)
     x = 5
     y = 123 * 45
     y = 123 / 45
@@ -30,6 +31,7 @@ def funcName(){
     z--
     y = 123 - 45
     z++
+    rect2.fill(rgb(98,76,54), 32)
 }
 
 def main(){
