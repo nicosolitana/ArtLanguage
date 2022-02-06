@@ -12,6 +12,7 @@
 
 import os
 import shutil
+
 from inspect import iscode
 
 class Interpreter:
@@ -103,6 +104,27 @@ class Interpreter:
         self.code += self.tabs + "pass\n"
         return i
 
+    def Function(self, i):
+        if(self.tokens[i]['type'] == 'DEF'):
+            while(self.tokens[i]['type'] != 'CURLY_START'):
+                print(self.tokens[i]['token'])
+                self.code += self.tokens[i]['token'] + " "   
+                i = i + 1
+        self.code += self.tabs + ":\n"
+        self.tabs += "\t"
+        return i
+
+    def FunctionCall(self, i):
+        self.code += self.tabs
+        while(self.tokens[i]['type'] != 'PAREN_END'):
+            if(self.tokens[i]['type'] != 'PAREN_START'):
+                pass #ignore
+            self.code += self.tokens[i]['token']
+            i = i + 1
+        self.code += ")\n"
+        return i
+
+
     def Interpret(self):
         i = 0
         while i < len(self.tokens):
@@ -117,8 +139,15 @@ class Interpreter:
                 self.tabs = self.tabs[:-1]
 
             if(self.tokens[i]['type'] == 'DEF'):
-                pass
-
+                i = self.Function(i)
+            
+            if(self.tokens[i]['type'] == 'IDENTIFIER' and self.tokens[i-1]['type'] != 'DEF'):
+                i = i + 1 
+                if(self.tokens[i]['type'] == 'PAREN_START'):
+                    i = i - 1 
+                    i = self.FunctionCall(i)
+                else:
+                    i = i - 1
             i += 1
         self.code += "\nmain()"
     
