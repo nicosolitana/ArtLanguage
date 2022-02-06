@@ -11,6 +11,7 @@
 #exec(str)
 
 import os
+from re import T
 import shutil
 from inspect import iscode
 
@@ -110,7 +111,6 @@ class Interpreter:
         i += 1
 
         if (self.tokens[i]['type'] == "ASSIGN_OP"):
-            print(self.tokens[i]['token'])
             # ASSIGN_OP
             self.code += self.tokens[i]['token']
             i += 1
@@ -126,8 +126,6 @@ class Interpreter:
             else:
                 i -= 1
         elif (self.tokens[i]['type'] == "INCDEC_OP"):
-            print(self.tokens[i]['token'])
-            i += 1
             if (self.tokens[i]['token'] == "++"):
                 self.code += "+=1"
             elif (self.tokens[i]['token'] == "--"):
@@ -154,6 +152,21 @@ class Interpreter:
         self.code += ")\n"
         return i
 
+    def Fill(self, i):
+        var = self.tokens[i]['token']
+        red = self.tokens[i + 6]['token']
+        green = self.tokens[i + 8]['token']
+        blue = self.tokens[i + 10]['token']
+        opacity = self.tokens[i + 13]['token']
+        
+        self.code += self.tabs
+        self.code += var + ".color(" + red + "," + green + "," + blue + ")\n"
+        self.code += self.tabs
+        self.code += var + ".opacity(" + opacity + ")\n"
+
+        print(var, red, green, blue, opacity)
+
+        return i + 14
 
     def Interpret(self):
         i = 0
@@ -169,7 +182,7 @@ class Interpreter:
                 self.tabs = self.tabs[:-1]
 
             if (i < len(self.tokens) - 1):
-                if(self.tokens[i]['type'] == "IDENTIFIER" and self.tokens[i + 1]['type'] == "ASSIGN_OP"):
+                if(self.tokens[i]['type'] == "IDENTIFIER" and (self.tokens[i + 1]['type'] == "ASSIGN_OP" or self.tokens[i + 1]['type'] == "INCDEC_OP")):
                     self.code += self.tabs
                     i = self.Assign(i)
                     self.code += "\n"
@@ -184,6 +197,10 @@ class Interpreter:
                     i = self.FunctionCall(i)
                 else:
                     i = i - 1
+            if (i < len(self.tokens) - 2):
+                if (self.tokens[i]['type'] == "IDENTIFIER" and self.tokens[i + 1]['type'] == "DOT_NOTATION" and self.tokens[i + 2]['type'] == "FILL"):
+                    i = self.Fill(i)
+
             i += 1
         self.code += "\nmain()"
     
