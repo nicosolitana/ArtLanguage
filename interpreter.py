@@ -110,7 +110,6 @@ class Interpreter:
         i += 1
 
         if (self.tokens[i]['type'] == "ASSIGN_OP"):
-            print(self.tokens[i]['token'])
             # ASSIGN_OP
             self.code += self.tokens[i]['token']
             i += 1
@@ -126,8 +125,6 @@ class Interpreter:
             else:
                 i -= 1
         elif (self.tokens[i]['type'] == "INCDEC_OP"):
-            print(self.tokens[i]['token'])
-            i += 1
             if (self.tokens[i]['token'] == "++"):
                 self.code += "+=1"
             elif (self.tokens[i]['token'] == "--"):
@@ -169,7 +166,7 @@ class Interpreter:
                 self.tabs = self.tabs[:-1]
 
             if (i < len(self.tokens) - 1):
-                if(self.tokens[i]['type'] == "IDENTIFIER" and self.tokens[i + 1]['type'] == "ASSIGN_OP"):
+                if(self.tokens[i]['type'] == "IDENTIFIER" and (self.tokens[i + 1]['type'] == "ASSIGN_OP" or self.tokens[i + 1]['type'] == "INCDEC_OP")):
                     self.code += self.tabs
                     i = self.Assign(i)
                     self.code += "\n"
