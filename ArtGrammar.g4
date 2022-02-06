@@ -113,7 +113,7 @@ BREAK   	   :   ('break');
 CONTINUE   	   :   ('continue');
 INTEGER	       :   [0-9]+;
 IDENTIFIER     :	[a-zA-Z][a-zA-Z0-9]* ;
-MATH_OP        :   ('-'|'+'|'*'|'\\');
+MATH_OP        :   ('-'|'+'|'*'|'/');
 INCDEC_OP      :   ('++'|'--');
 COND_OP    	   :   ('<='|'<'|'>'|'>=');
 LOGICAL_OP     :   ('&&'|'||');
