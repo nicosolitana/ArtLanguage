@@ -53,7 +53,9 @@ condition      : condition_base
                | PAREN_START (condition_base LOGICAL_OP)* condition_base PAREN_END; 
 ifel_body      : CURLY_START (code)* CURLY_END;
 
-math_expr      : IDENTIFIER ASSIGN_OP computation;
+math_expr      : (IDENTIFIER ASSIGN_OP computation) 
+               | IDENTIFIER INCDEC_OP;
+               
 computation    : value_type MATH_OP value_type;
 
 canvas_def     : CANVAS PAREN_START two_params PAREN_END;
