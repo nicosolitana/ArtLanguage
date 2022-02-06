@@ -110,10 +110,18 @@ class Interpreter:
                 i = i + 1
         self.code += self.tabs + ":\n"
         self.tabs += "\t"
-        
-        # TO BE REMOVED ONCE CODELINES ARE INTERPRETED
-        self.code += self.tabs + "pass\n"
         return i
+
+    def FunctionCall(self, i):
+        self.code += self.tabs
+        while(self.tokens[i]['type'] != 'PAREN_END'):
+            if(self.tokens[i]['type'] != 'PAREN_START'):
+                pass #ignore
+            self.code += self.tokens[i]['token']
+            i = i + 1
+        self.code += ")\n"
+        return i
+
 
     def Interpret(self):
         i = 0
@@ -130,7 +138,14 @@ class Interpreter:
 
             if(self.tokens[i]['type'] == 'DEF'):
                 i = self.Function(i)
-
+            
+            if(self.tokens[i]['type'] == 'IDENTIFIER' and self.tokens[i-1]['type'] != 'DEF'):
+                i = i + 1 
+                if(self.tokens[i]['type'] == 'PAREN_START'):
+                    i = i - 1 
+                    i = self.FunctionCall(i)
+                else:
+                    i = i - 1
             i += 1
         self.code += "\nmain()"
     
