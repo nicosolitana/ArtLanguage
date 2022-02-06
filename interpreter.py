@@ -103,6 +103,18 @@ class Interpreter:
         self.code += self.tabs + "pass\n"
         return i
 
+    def Function(self, i):
+        if(self.tokens[i]['type'] == 'DEF'):
+            while(self.tokens[i]['type'] != 'CURLY_START'):
+                self.code += self.tokens[i]['token'] + " "   
+                i = i + 1
+        self.code += self.tabs + ":\n"
+        self.tabs += "\t"
+        
+        # TO BE REMOVED ONCE CODELINES ARE INTERPRETED
+        self.code += self.tabs + "pass\n"
+        return i
+
     def Interpret(self):
         i = 0
         while i < len(self.tokens):
@@ -117,7 +129,7 @@ class Interpreter:
                 self.tabs = self.tabs[:-1]
 
             if(self.tokens[i]['type'] == 'DEF'):
-                pass
+                i = self.Function(i)
 
             i += 1
         self.code += "\nmain()"

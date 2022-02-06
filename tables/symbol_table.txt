@@ -24,7 +24,7 @@ NEWLINE	^(\n)$
 INTEGER	^([0-9]+)$
 IDENTIFIER	^([a-zA-Z][a-zA-Z0-9]*)$
 ASSIGN_OP	^(=)$
-MATH_OP	^(\-\+|\*|\\)$
+MATH_OP	^(\-|\+|\*|\\)$
 COND_OP 	^(<=|<|>|>=)$
 LOGICAL_OP 	^(&&|\|\|)$
 INCDEC_OP 	^(\++|\--)$
