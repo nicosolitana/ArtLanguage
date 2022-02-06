@@ -12,7 +12,6 @@
 
 import os
 import shutil
-
 from inspect import iscode
 
 class Interpreter:
