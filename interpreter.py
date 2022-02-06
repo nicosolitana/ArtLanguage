@@ -107,7 +107,6 @@ class Interpreter:
     def Function(self, i):
         if(self.tokens[i]['type'] == 'DEF'):
             while(self.tokens[i]['type'] != 'CURLY_START'):
-                print(self.tokens[i]['token'])
                 self.code += self.tokens[i]['token'] + " "   
                 i = i + 1
         self.code += self.tabs + ":\n"
