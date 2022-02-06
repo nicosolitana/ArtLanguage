@@ -103,6 +103,38 @@ class Interpreter:
         self.code += self.tabs + "pass\n"
         return i
 
+    # function for grammars: init_int, math_expr, "x++"
+    def Assign(self, i):
+        # IDENTIFIER
+        self.code += self.tokens[i]['token']
+        i += 1
+
+        if (self.tokens[i]['type'] == "ASSIGN_OP"):
+            print(self.tokens[i]['token'])
+            # ASSIGN_OP
+            self.code += self.tokens[i]['token']
+            i += 1
+
+            # INTEGER / value_type 1
+            self.code += self.tokens[i]['token']
+
+            i += 1
+            if (self.tokens[i]['type'] == "MATH_OP"):
+                self.code += self.tokens[i]['token'] # MATH_OP
+                i += 1
+                self.code += self.tokens[i]['token'] # value_type 2
+            else:
+                i -= 1
+        elif (self.tokens[i]['type'] == "INCDEC_OP"):
+            print(self.tokens[i]['token'])
+            i += 1
+            if (self.tokens[i]['token'] == "++"):
+                self.code += "+=1"
+            elif (self.tokens[i]['token'] == "--"):
+                self.code += "-=1"
+
+        return i
+
     def Function(self, i):
         if(self.tokens[i]['type'] == 'DEF'):
             while(self.tokens[i]['type'] != 'CURLY_START'):
@@ -135,6 +167,12 @@ class Interpreter:
 
             if(self.tokens[i]['type'] == 'CURLY_END'):
                 self.tabs = self.tabs[:-1]
+
+            if (i < len(self.tokens) - 1):
+                if(self.tokens[i]['type'] == "IDENTIFIER" and self.tokens[i + 1]['type'] == "ASSIGN_OP"):
+                    self.code += self.tabs
+                    i = self.Assign(i)
+                    self.code += "\n"
 
             if(self.tokens[i]['type'] == 'DEF'):
                 i = self.Function(i)
