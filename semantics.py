@@ -90,7 +90,7 @@ class SemanticAnalyzer:
                 str = 'line {}:{} Identifier ''{}'' is not declared'.format(self.tokens[i]['lineNumber'], self.tokens[i]['lineNumber'], self.tokens[i]['token'])
                 self.errorLst.append(str)
         
-        if(self.tokens[i+1]['type'] == 'ASSIGN_OP'):
+        if(self.tokens[i+1]['type'] == 'ASSIGN_OP') or (self.tokens[i+1]['type'] == 'INCDEC_OP'):
             if(len(varInfo) == 0):
                 str = 'line {}:{} Identifier ''{}'' is not declared'.format(self.tokens[i]['lineNumber'], self.tokens[i]['lineNumber'], self.tokens[i]['token'])
                 self.errorLst.append(str)
