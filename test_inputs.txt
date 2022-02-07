@@ -18,6 +18,14 @@ def funcName(){
 }}
 
 ---------------------------
+INVALID
+$egdfSEsv% SDFVC ^%34T DSVFB&
+^%>DV ?L,M 'SGDRFV;SD ;DFD| 
+S*& `FESD~ $REV& *efsfv.
+Sff&8* &^fgbf sd^&554 sdfvdf&5refvV3
+fRgd ^ygevfv& rrf23 drg^5 rgredfv^sefb
+
+---------------------------
 VALID
 def funcName(){
     canvas(50,30)

@@ -136,6 +136,11 @@ def Tokenize(filepath):
             if not line.isspace() and len(line) > 0:
                 GetTokens(line.strip(), i)
             i += 1
+
+        for t in tokenList:
+            if(t.type == "Error"):
+                print("line {}:{} Invalid token '{}'".format(t.lineNumber, t.start, t.token))
+                
         return DisplayTokens()
     else:
         print('Source File is empty!') 
