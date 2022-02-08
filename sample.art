@@ -1,6 +1,7 @@
 def funcName(){
     canvas(50,30)
     Rectangle rect
+    Square rect
     Circle circ
     rect.size(10, 20, 20, 40)
     circ.size(50, 50, 50)
@@ -24,7 +25,21 @@ def funcName(){
     }
 }
 
+def helloLine(x, y, x2, y2){
+    Straight line
+    Dot dot
+    dot.size(x+10, y+10)
+    dot.fill(rgb(241, 91, 41), 100)
+    line.draw(x,y,x2,y2)
+    line.outline(20, rgb(247, 146, 28), 60)
+}
+
 def main(){
     canvas(1000,1000)
     funcName()
+    a = 100
+    b = 100
+    c = 300
+    d = 300
+    helloLine(a,b,c,d)
 }
