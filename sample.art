@@ -37,6 +37,5 @@ def main(){
     b = 100
     c = 300
     d = 300
-    sample(a,b)
     helloLine(a,b,c,d)
 }

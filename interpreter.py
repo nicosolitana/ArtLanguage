@@ -177,7 +177,7 @@ class Interpreter:
         i = i + 1
         shapeName = self.tokens[i]['token']
 
-        if 'shapeName' in self.variableList.keys(): # if the variable has been previously declared
+        if shapeName in self.variableList.keys(): # if the variable has been previously declared
             self.variableList.update({shapeName: shapeType})
         else:
             self.variableList[shapeName] = shapeType
