@@ -27,7 +27,11 @@ def funcName(){
 
 def helloLine(x, y, x2, y2){
     Straight line
+    Dot dot
+    dot.size(x+10, y+10)
+    dot.fill(rgb(241, 91, 41), 100)
     line.draw(x,y,x2,y2)
+    line.outline(20, rgb(247, 146, 28), 60)
 }
 
 def main(){

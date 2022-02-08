@@ -201,7 +201,11 @@ class Interpreter:
             while self.tokens[i]['type'] != "PAREN_END":
                 self.code += self.tokens[i]['token']
                 i = i + 1
-            self.code += ", width = 19, batch=batch)\n"
+            self.code += ", batch=batch)\n"
+        elif self.variableList[shapeName] == "Arc":
+            self.code += self.tabs
+            print("How to draw an arc?")
+
         return i
 
     #Function for printing the displaying pyglet after main()
@@ -218,6 +222,20 @@ class Interpreter:
         self.code += "pyglet.app.run()\n"
         self.tabs = self.tabs[:-1]
         return self.code 
+    
+    def Size(self, i):
+        shapeName = self.tokens[i]['token']
+        i = i + 3
+        if self.variableList[shapeName] == "Dot":
+            self.code += self.tabs
+            self.code += shapeName + "= shapes.BorderedRectangle"
+            while self.tokens[i]['type'] != "PAREN_END":
+                self.code += self.tokens[i]['token']
+                i = i + 1
+            self.code += ",width=0.1, height=0.1, border=1, batch=batch)\n"
+        return i
+            
+
 
     def Interpret(self):
         self.InitializeCode() # importing/initializing pyglet
@@ -261,6 +279,10 @@ class Interpreter:
             if (i < len(self.tokens) - 2):
                 if (self.tokens[i]['type'] == "IDENTIFIER" and self.tokens[i + 1]['type'] == "DOT_NOTATION" and self.tokens[i + 2]['type'] == "DRAW"):
                     i = self.Draw(i)
+
+            if (i < len(self.tokens) - 2):
+                if (self.tokens[i]['type'] == "IDENTIFIER" and self.tokens[i + 1]['type'] == "DOT_NOTATION" and self.tokens[i + 2]['type'] == "SIZE"):
+                    i = self.Size(i)
 
 
             i += 1
