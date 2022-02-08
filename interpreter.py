@@ -201,7 +201,7 @@ class Interpreter:
             while self.tokens[i]['type'] != "PAREN_END":
                 self.code += self.tokens[i]['token']
                 i = i + 1
-            self.code += ", batch=batch)\n"
+            self.code += ", width = 19, batch=batch)\n"
         return i
 
     #Function for printing the displaying pyglet after main()
