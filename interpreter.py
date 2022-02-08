@@ -121,6 +121,8 @@ class Interpreter:
 
             i += 1
             if (self.tokens[i]['type'] == "MATH_OP"):
+                if (self.tokens[i]['token'] == "/"):
+                    self.code += "/"
                 self.code += self.tokens[i]['token'] # MATH_OP
                 i += 1
                 self.code += self.tokens[i]['token'] # value_type 2
