@@ -3,4 +3,4 @@ SQUARE      SIZE,3
 CIRCLE      SIZE,3
 DOT         SIZE,2
 ARC         DRAW,6
-LINE        DRAW,4
+STRAIGHT    DRAW,4

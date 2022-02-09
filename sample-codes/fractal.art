@@ -1,0 +1,68 @@
+global Pixel width = 500
+global Pixel height = 500
+global Pixel margin = 0
+global Pixel level = 6
+
+def recursion(level, x1, y1, x2, y2, x3, y3){
+    if (level <= 1){
+		Straight line1
+		Straight line2
+		Straight line3
+		line1.draw(x1, y1, x2, y2)
+        line2.draw(x2, y2, x3, y3)
+        line3.draw(x3, y3, x1, y1)
+	}
+    else{
+        Pixel mx1
+        Pixel mx2
+        Pixel mx3
+        Pixel my1
+        Pixel my2
+        Pixel my3
+        Pixel middlex1
+        Pixel middlex2
+        Pixel middlex3
+        Pixel middley1
+        Pixel middley2
+        Pixel middley3
+        level = level - 1
+		mx1 = x1 + x2
+        middlex1 = mx1/2
+		my1 = y1 + y2
+        middley1 = my1/2
+		mx2 = x2 + x3
+        middlex2 = mx2/2
+		my2 = y2 + y3
+        middley2 = my2/2
+		mx3 = x3 + x1
+        middlex3 = mx3/2
+		my3 = y3 + y1
+        middley3 = my3/2
+        recursion(level, x1, y1, middlex1, middley1, middlex3, middley3)
+        recursion(level, middlex1, middley1, x2, y2, middlex2, middley2)
+        recursion(level, middlex3, middley3, middlex2, middley2, x3, y3)
+	}
+}
+
+def drawing(){
+    Pixel x1
+    Pixel x2
+    Pixel x3
+    Pixel y1
+    Pixel y2
+    Pixel y3
+    Pixel w2
+    x1 = margin + 0 
+    y1 = margin + height
+	w2 = width/2
+    x2 = margin + w2
+    y2 = margin + 0
+    x3 = margin + width
+    y3 = margin + height
+    recursion(level, x1, y1, x2, y2, x3, y3)
+}
+
+def main(){
+	canvas(width, height)
+	drawing()
+}

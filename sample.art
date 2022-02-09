@@ -1,45 +1,15 @@
-def funcName(){
-    canvas(50,30)
-    Rectangle rect
-    Square rect
-    Circle circ
-    rect.size(10, 20, 20, 40)
-    circ.size(50, 50, 50)
-    Rectangle smp 
-    if(1 < 2) {
-        smp.size(10, 20, 20, 40)
-    }
-    elif(2 < 3){
-        smp.size(10, 20, 20, 40)
-    } 
-    else {
-        smp.size(10, 20, 20, 40)
-    }
-
-    Pixel ctr
-    Pixel px
-    px = 10
-    for(ctr = 0; ctr <= 5; 2++){
-        px = px + ctr
-        smp.size(10, 20, 20, px)
-    }
-}
-
-def helloLine(x, y, x2, y2){
-    Straight line
-    Dot dot
-    dot.size(x+10, y+10)
-    dot.fill(rgb(241, 91, 41), 100)
-    line.draw(x,y,x2,y2)
-    line.outline(20, rgb(247, 146, 28), 60)
-}
-
 def main(){
-    canvas(1000,1000)
-    funcName()
-    a = 100
-    b = 100
-    c = 300
-    d = 300
-    helloLine(a,b,c,d)
+    canvas(500,500)
+    Rectangle rect
+    rect.size(10, 10, 100, 300)
+    rect.fill(rgb(101, 45, 144), 50)
+    rect.outline(1, rgb(101, 45, 144), 50)
+    Square sqr
+    sqr.size(200, 200, 100)
+    sqr.fill(rgb(101, 45, 144), 100)
+    sqr.outline(1, rgb(101, 45, 144), 50)
+    Circle circ
+    circ.size(50, 50, 20)
+    circ.fill(rgb(101, 45, 144), 100)
+    circ.outline(1, rgb(101, 45, 144), 50)
 }

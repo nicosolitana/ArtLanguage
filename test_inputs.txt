@@ -28,7 +28,6 @@ fRgd ^ygevfv& rrf23 drg^5 rgredfv^sefb
 ---------------------------
 VALID
 def funcName(){
-    canvas(50,30)
     Rectangle rect
     Circle circ
     rect.size(10, 20, 20, 40)
@@ -51,6 +50,15 @@ def funcName(){
     Rectangle smp 
     if(1 < 2) {
         smp.size(10, 20, 20, 40)
+        if((1 > 2) && (2 <= 3)){
+            smp.size(10, 20, 20, 40)
+        }
+        elif((2 != 3) || (2 >= 3)){
+            smp.size(10, 20, 20, 40)
+        } 
+        else {
+            smp.size(10, 20, 20, 40)
+        }
     }
     elif(2 < 3){
         smp.size(10, 20, 20, 40)
@@ -71,4 +79,18 @@ def funcName(){
 def main(){
     canvas(1000,1000)
     funcName()
+}
+
+
+//--------------------------------------------------------
+Sample Square and Rectangle Drawing
+def main(){
+    canvas(500,500)
+    Rectangle rect
+    rect.size(10, 10, 100, 300)
+    rect.fill(rgb(101, 45, 144), 50)
+    rect.outline(1, rgb(101, 45, 144), 50)
+    Square sqr
+    sqr.size(200, 200, 100)
+    sqr.fill(rgb(101, 45, 144), 100)
 }

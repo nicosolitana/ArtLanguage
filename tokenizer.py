@@ -144,3 +144,10 @@ def Tokenize(filepath):
         return DisplayTokens()
     else:
         print('Source File is empty!') 
+
+def GetErrorCount():
+    err = []
+    for t in tokenList:
+        if(t.type == "Error"):
+            err.append("line {}:{} Invalid token '{}'".format(t.lineNumber, t.start, t.token))
+    return len(err)

@@ -91,7 +91,9 @@ class SemanticAnalyzer:
                 self.errorLst.append(str)
         
         if(self.tokens[i+1]['type'] == 'ASSIGN_OP') or (self.tokens[i+1]['type'] == 'INCDEC_OP'):
-            if(len(varInfo) == 0):
+            constInfo = self.CheckVarExistence(i, 'CONSTANT')
+            globInfo = self.CheckVarExistence(i, 'GLOBAL')
+            if((len(varInfo) == 0) and (len(constInfo) == 0) and (len(globInfo) == 0)):
                 str = 'line {}:{} Identifier ''{}'' is not declared'.format(self.tokens[i]['lineNumber'], self.tokens[i]['lineNumber'], self.tokens[i]['token'])
                 self.errorLst.append(str)
         

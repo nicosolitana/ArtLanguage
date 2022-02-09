@@ -14,6 +14,8 @@ class Parse:
     def __init__(self, filepath, tokendf):
         self.data = FileStream(filepath)
         self.tokendf = tokendf
+        self.Error = []
+        self.ParserErr = 0
 
     def Traverse(self, tree, rule_names, indent = 0):
         if tree.getText() == "<EOF>":
@@ -33,6 +35,7 @@ class Parse:
         smA.SemanticAnalysis()
         for errMsg in smA.errorLst:
             print(errMsg)
+        self.Error = smA.errorLst
 
     def Parser(self):
         with capture_output() as start_parse:
@@ -42,5 +45,11 @@ class Parse:
             tree = parser.expr()
         start_parse()
         self.SemanticAnalysis()
-        print('\n\nParse Tree is displayed below:')
-        self.Traverse(tree, parser.ruleNames)
+        self.ParserErr = parser.getNumberOfSyntaxErrors()
+        # UNCOMMENT CODE BELOW TO DISPLAY PARSE TREE
+        #print('\n\nParse Tree is displayed below:')
+        #self.Traverse(tree, parser.ruleNames)
+    
+    def GetErrorCount(self):
+        count = len(self.Error) + self.ParserErr 
+        return count
