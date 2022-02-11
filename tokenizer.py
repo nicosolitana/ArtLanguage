@@ -150,6 +150,5 @@ def GetErrorCount():
     for t in tokenList:
         if(t.type == "Error"):
             print("line {}:{} Invalid token '{}'".format(t.lineNumber, t.start, t.token))
-            #err.append("line {}:{} Invalid token '{}'".format(t.lineNumber, t.start, t.token))
             errCount += 1
-    return errCount   #len(err)
+    return errCount   

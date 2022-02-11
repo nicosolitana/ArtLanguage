@@ -20,7 +20,9 @@ class ArtLangCompiler:
     
     def Main(self):
         try:
+            print('[INFO] Tokenizing source code...')
             tkErr = self.Tokenize()
+            print('[INFO] Parsing source code...')
             prErr = self.Parse()
             self.ErrorCount  = tkErr + prErr
             return self.ErrorCount 

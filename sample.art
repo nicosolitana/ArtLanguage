@@ -1,71 +1,135 @@
-global Pixel width = 500
-global Pixel height = 500
-global Pixel margin = 0
-global Pixel level = 6
-
-def recursion(rlevel, x1, y1, x2, y2, x3, y3){
-    if (rlevel <= 1){
-		Straight line1
-		Straight line2
-		Straight line3
-		line1.draw(x1, y1, x2, y2)
-		line1.outline(4, rgb(233, 116, 36), 100)
-        line2.draw(x2, y2, x3, y3)
-		line2.outline(4, rgb(233, 116, 36), 100)
-        line3.draw(x3, y3, x1, y1)
-		line3.outline(4, rgb(233, 116, 36), 100)
-	}
-    else{
-        Pixel mx1
-        Pixel mx2
-        Pixel mx3
-        Pixel my1
-        Pixel my2
-        Pixel my3
-        Pixel middlex1
-        Pixel middlex2
-        Pixel middlex3
-        Pixel middley1
-        Pixel middley2
-        Pixel middley3
-        rlevel = rlevel - 1
-		mx1 = x1 + x2
-        middlex1 = mx1/2
-		my1 = y1 + y2
-        middley1 = my1/2
-		mx2 = x2 + x3
-        middlex2 = mx2/2
-		my2 = y2 + y3
-        middley2 = my2/2
-		mx3 = x3 + x1
-        middlex3 = mx3/2
-		my3 = y3 + y1
-        middley3 = my3/2
-        recursion(rlevel, x1, y1, middlex1, middley1, middlex3, middley3)
-        recursion(rlevel, middlex1, middley1, x2, y2, middlex2, middley2)
-        recursion(rlevel, middlex3, middley3, middlex2, middley2, x3, y3)
+def DrawHairFeet(x1, y1, x2, y2,IsHair, r, g, b) {
+	Pixel i
+    for(i=0; i < 2; 1++){
+		Straight lb
+		lb.draw(x1, y1, x2, y2)
+		lb.outline(15, rgb(r,g,b), 100)
+        x1 = x1 + 60
+        if(IsHair == 1){
+            x2 = x2 - 10
+		}
+        else{
+            x2 = x2 + 60	
+		}
 	}
 }
 
-def drawing(){
-    Pixel x1
-    Pixel x2
-    Pixel x3
-    Pixel y1
-    Pixel y2
-    Pixel y3
-    Pixel w2
-    x1 = margin + 0 
-    y1 = margin + height
-	w2 = width/2
-    x2 = margin + w2
-    y2 = margin + 0
-    x3 = margin + width
-    y3 = margin + height
-    recursion(level, x1, y1, x2, y2, x3, y3)
+def Hair(){
+    DrawHairFeet(130, 310, 160, 270, 1, 135, 206, 234)
+}
+
+def Feet(){
+    DrawHairFeet(120, 70, 120, 10, 0, 250, 215, 124)
+}
+
+def Beak(){
+	Straight la
+	la.draw(160, 170, 120, 220)
+	la.outline(30, rgb(233, 116, 36), 100)
+}
+
+def CreateCircle(x, y, rad, r, g, b){
+	Circle cg
+	cg.size(x, y, rad)
+	cg.fill(rgb(r, g, b), 100)
+}
+
+def Eyes(){
+	Pixel i 
+	Pixel r
+	Pixel g
+	Pixel b
+	Pixel rad
+	for(i=0; i<2; 1++){
+		if(i == 0){
+            r = 247
+            g = 247
+            b = 235
+            rad = 40
+		} else {
+            r = 0
+            g = 0
+            b = 0
+            rad = 10
+		}
+		Pixel j
+		Pixel x
+		x = 110
+		for(j=0; j<2; 1++){
+			if(j == 1){
+                x = x + 80
+			}
+			CreateCircle(x, 208, rad, r, g, b)
+		}
+	}
+}
+
+def BodyAndWings(){
+	CreateCircle(150, 110, 70, 1, 102, 132)
+    CreateCircle(150, 90, 60, 40, 149, 190)
+}
+
+def Head(){
+	Circle ca
+	ca.size(150, 200, 80)
+	ca.fill(rgb(135, 206, 234), 100)
+	Circle cb
+	cb.size(100, 210, 50)
+	cb.fill(rgb(135, 206, 234), 100)
+	Circle cc
+	cc.size(200, 210, 50)
+	cc.fill(rgb(135, 206, 234), 100)
+	Circle cd
+	cd.size(150, 180, 80)
+	cd.fill(rgb(135, 206, 234), 100)
+}
+
+def DrawBranch(){
+	Pixel x
+	Pixel i
+	x = 0
+	for(i=0; i<=24; 1++){
+		Rectangle ra
+		ra.size(x, 10, 10, 23)
+		ra.fill(rgb(142, 193, 64), 100)
+		ra.outline(0,rgb(142, 193, 64), 100)
+		x = x + 10
+	}
+}
+
+def Cloud(){
+	Pixel r
+	r = 255
+	Circle cla
+	cla.size(20, 280, 80)
+	cla.fill(rgb(r, r, r), 100)
+	Circle clb
+	clb.size(120, 290, 30)
+	clb.fill(rgb(r, r, r), 100)
+	Circle clc
+	clc.size(260, 150, 80)
+	clc.fill(rgb(r, r, r), 100)
+	Circle cld
+	cld.size(300, 240, 30)
+	cld.fill(rgb(r, r, r), 100)
+}
+
+def BG(){
+	Rectangle rb
+	rb.size(0, 0, 300, 380)
+	rb.fill(rgb(216, 239, 248), 100)
+	rb.outline(0,rgb(216, 239, 248), 100)
+    Cloud()
 }
 
 def main(){
-	canvas(width, height)
-	drawing()
+	canvas(300, 380)
+    BG()
+    BodyAndWings()
+    Feet()
+    DrawBranch()
+    Head()
+    Hair()
+    Beak()
+    Eyes()
 }

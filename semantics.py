@@ -58,8 +58,6 @@ class SemanticAnalyzer:
                 str = 'line {}:{} Type of passed parameter is invalid. Should be Pixel type.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
                 self.errorLst.append(str)
             
-            if(varType == "GLOBAL"):
-                print(info)
 
     def CheckVarParam(self, i):
         self.CheckVarTypeParam(i, 'VARIABLE')
@@ -161,17 +159,56 @@ class SemanticAnalyzer:
                 i += 2
                 i = self.ValidateFuncCall(i, varInfo)
             else:
-                str = 'line {}:{} Identifier ''{}'' is not declared'.format(self.tokens[i]['lineNumber'], self.tokens[i]['lineNumber'], self.tokens[i]['token'])
+                str = 'line {}:{} Identifier ''{}'' is not declared'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'], self.tokens[i]['token'])
                 self.errorLst.append(str)
         
+        if (self.tokens[i+1]['type'] == 'ASSIGN_OP') and ((self.tokens[i+2]['type'] == 'FALSE') or (self.tokens[i+2]['type'] == 'TRUE')):
+            if(len(varInfo) > 0):
+                if(varInfo[0]['DataType'] != "BOOL"):
+                    str = 'line {}:{} Cannot assign bool to a Pixel type.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
+                    self.errorLst.append(str)
+        
+        if (self.tokens[i+1]['type'] == 'ASSIGN_OP') and (self.tokens[i+2]['type'] == 'IDENTIFIER'):
+            v2Info = self.CheckVarExistence(i+2, 'VARIABLE')
+            if(len(varInfo) > 0):
+                v2Info = self.CheckVarExistence(i+2, 'VARIABLE')
+            if (len(varInfo) > 0):
+                vType = varInfo[0]['DataType']
+            else:
+                vType = "PIXEL"
+            if(len(v2Info) > 0):
+                v2Type = v2Info[0]['DataType']
+            else:
+                v2Type = "PIXEL"
+            
+            if(vType != v2Type):
+                str = 'line {}:{} Variable assignment with different data types is prohibited.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
+                self.errorLst.append(str)
+
         if(self.tokens[i+1]['type'] == 'ASSIGN_OP') or (self.tokens[i+1]['type'] == 'INCDEC_OP') or (self.tokens[i+1]['type'] == 'MATH_OP'):
             constInfo = self.CheckVarExistence(i, 'CONSTANT')
             globInfo = self.CheckVarExistence(i, 'GLOBAL')
             if((len(varInfo) == 0) and (len(constInfo) == 0) and (len(globInfo) == 0) and (self.IsFuncParam(self.tokens[i]['token']) == False)):
-                str = 'line {}:{} Identifier ''{}'' is not declared'.format(self.tokens[i]['lineNumber'], self.tokens[i]['lineNumber'], self.tokens[i]['token'])
+                str = 'line {}:{} Identifier ''{}'' is not declared'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'], self.tokens[i]['token'])
+                self.errorLst.append(str)
+            if(len(constInfo)):
+                str = 'line {}:{} Modifying constant value is prohibited.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
                 self.errorLst.append(str)
             
-        
+            if(self.tokens[i+1]['type'] == 'MATH_OP'):
+                v2Info = self.CheckVarExistence(i+2, 'VARIABLE')
+                if (len(varInfo) > 0):
+                    vType = varInfo[0]['DataType']
+                else:
+                    vType = "PIXEL"
+                if(len(v2Info) > 0):
+                    v2Type = v2Info[0]['DataType']
+                else:
+                    v2Type = "PIXEL"
+                
+                if(vType != v2Type):
+                    str = 'line {}:{} Invalid variable type for arithmetic operation.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
+                    self.errorLst.append(str)
         if(self.tokens[i+1]['type'] == 'PAREN_START'):
             funcInfo = list(filter(lambda item: item['Identifier'] == self.tokens[i]['token'], self.funcDecStack))
             count = 0
@@ -209,13 +246,6 @@ class SemanticAnalyzer:
         return list(filter(lambda item: item['Identifier'] == self.tokens[i]['token'], stackVal))
                 
     def Constants(self, i):
-
-        '''
-            i =  const
-            i+1 = varName
-            i+2 = ASSIGN_OP
-            i+3 = value
-        '''
         constDec = {}
         i += 2
         if(self.tokens[i]['type'] == 'IDENTIFIER'):
@@ -230,29 +260,7 @@ class SemanticAnalyzer:
         if(self.tokens[i]['token'].upper() == "TRUE") or (self.tokens[i]['token'].upper() == "FALSE"):
             str = 'line {}:{} Constant value should be pixel only.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
             self.errorLst.append(str)   
-        print(self.tokens[i]['token'])
         i += 1
-        '''
-        IsAssignOp = False
-        while self.tokens[i]['type'] != 'INTEGER':
-            if(self.tokens[i]['type'] == 'IDENTIFIER'):
-                constInfo = self.CheckVarExistence(i, 'CONSTANT')
-                if(len(constInfo) > 0):
-                    str = 'line {}:{} Constant ''{}'' is already defined.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'], self.tokens[i]['token'])
-                    self.errorLst.append(str)   
-                constDec['Identifier'] = self.tokens[i]['token']
-
-            if(self.tokens[i]['type'] == 'ASSIGN_OP'):
-                IsAssignOp = True 
-            i += 1
-        if(self.tokens[i]['type'] == 'INTEGER') and IsAssignOp:
-            constDec['value'] = self.tokens[i]['token']
-            self.constStack.append(constDec)
-            if(self.tokens[i]['token'].upper() == "TRUE") or (self.tokens[i]['token'].upper() == "FALSE"):
-                str = 'line {}:{} Constant value should be pixel only.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
-                self.errorLst.append(str)   
-            print(self.tokens[i]['token'])
-        '''
         return i
         
     def Globals(self, i):
@@ -295,10 +303,29 @@ class SemanticAnalyzer:
             self.errorLst.append(str)
         return i
 
+    def CheckBools(self, i):
+        if(self.tokens[i+1]['type'] == 'MATH_OP') or (self.tokens[i-1]['type'] == 'MATH_OP'):
+            str = 'line {}:{} Bools cannot be used in arithmetic operation..'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
+            self.errorLst.append(str)
+
+    def CheckInt(self, i):
+        if(self.tokens[i-2]['type'] == 'IDENTIFIER'):
+            varInfo = self.CheckVarExistence(i-2, 'VARIABLE')
+            if(len(varInfo) > 0):
+                if(varInfo[0]['DataType'] != "PIXEL"):
+                    str = 'line {}:{} Cannot assign pixel values on booleans.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
+                    self.errorLst.append(str)
+
     def SemanticAnalysis(self):
         isVarDec = False
         i = 0
         while i < len(self.tokens):
+            if((self.tokens[i]['type'] == 'TRUE') or (self.tokens[i]['type'] == 'FALSE')):
+                self.CheckBools(i)
+            
+            if(self.tokens[i]['type'] == 'INTEGER') and (self.tokens[i-1]['type'] == 'ASSIGN_OP'):
+                self.CheckInt(i)
+
             if(self.tokens[i]['type'] == 'CANVAS'):
                 i = self.Canvas(i)
 

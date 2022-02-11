@@ -1,0 +1,37 @@
+const Pixel px = 0
+global Pixel gb = 0
+global Rectangle r = 0
+
+def funcName(){
+    Pixel x
+    x = 3
+    if(x==3){
+        Pixel y
+        y = 5
+    }
+    Pixel gb
+    gb = 5
+}
+
+def main(){
+    canvas(400,400)
+    funcName(a,b)
+    funcSet()
+    Pixel x
+    Pixel y
+    Pixel sum
+    Bool t
+    t = 5
+    funcName(t,t)
+    y = true
+    sum = t + 5
+    sum = x + y
+    sum = x + true
+    sum = true + true
+    px = 0
+
+    Rectangle rb
+    rb.size(xx, yy, ss, ss, 5)
+    rb.fill(rgb(142, 290, 64), 100)
+    rb.outline(rgb(4, 4, 4), 100, 5, 7)
+}
