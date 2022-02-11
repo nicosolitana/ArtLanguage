@@ -125,6 +125,15 @@ class ArtGrammarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ArtGrammarParser#init_bool.
+    def enterInit_bool(self, ctx:ArtGrammarParser.Init_boolContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#init_bool.
+    def exitInit_bool(self, ctx:ArtGrammarParser.Init_boolContext):
+        pass
+
+
     # Enter a parse tree produced by ArtGrammarParser#func_call.
     def enterFunc_call(self, ctx:ArtGrammarParser.Func_callContext):
         pass

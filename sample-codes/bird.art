@@ -1,0 +1,135 @@
+def DrawHairFeet(x1, y1, x2, y2,IsHair, r, g, b) {
+	Pixel i
+    for(i=0; i < 2; 1++){
+		Straight lb
+		lb.draw(x1, y1, x2, y2)
+		lb.outline(15, rgb(r,g,b), 100)
+        x1 = x1 + 60
+        if(IsHair == 1){
+            x2 = x2 - 10
+		}
+        else{
+            x2 = x2 + 60	
+		}
+	}
+}
+
+def Hair(){
+    DrawHairFeet(130, 310, 160, 270, 1, 135, 206, 234)
+}
+
+def Feet(){
+    DrawHairFeet(120, 70, 120, 10, 0, 250, 215, 124)
+}
+
+def Beak(){
+	Straight la
+	la.draw(160, 170, 120, 220)
+	la.outline(30, rgb(233, 116, 36), 100)
+}
+
+def CreateCircle(x, y, rad, r, g, b){
+	Circle cg
+	cg.size(x, y, rad)
+	cg.fill(rgb(r, g, b), 100)
+}
+
+def Eyes(){
+	Pixel i 
+	Pixel r
+	Pixel g
+	Pixel b
+	Pixel rad
+	for(i=0; i<2; 1++){
+		if(i == 0){
+            r = 247
+            g = 247
+            b = 235
+            rad = 40
+		} else {
+            r = 0
+            g = 0
+            b = 0
+            rad = 10
+		}
+		Pixel j
+		Pixel x
+		x = 110
+		for(j=0; j<2; 1++){
+			if(j == 1){
+                x = x + 80
+			}
+			CreateCircle(x, 208, rad, r, g, b)
+		}
+	}
+}
+
+def BodyAndWings(){
+	CreateCircle(150, 110, 70, 1, 102, 132)
+    CreateCircle(150, 90, 60, 40, 149, 190)
+}
+
+def Head(){
+	Circle ca
+	ca.size(150, 200, 80)
+	ca.fill(rgb(135, 206, 234), 100)
+	Circle cb
+	cb.size(100, 210, 50)
+	cb.fill(rgb(135, 206, 234), 100)
+	Circle cc
+	cc.size(200, 210, 50)
+	cc.fill(rgb(135, 206, 234), 100)
+	Circle cd
+	cd.size(150, 180, 80)
+	cd.fill(rgb(135, 206, 234), 100)
+}
+
+def DrawBranch(){
+	Pixel x
+	Pixel i
+	x = 0
+	for(i=0; i<=24; 1++){
+		Rectangle ra
+		ra.size(x, 10, 10, 23)
+		ra.fill(rgb(142, 193, 64), 100)
+		ra.outline(0,rgb(142, 193, 64), 100)
+		x = x + 10
+	}
+}
+
+def Cloud(){
+	Pixel r
+	r = 255
+	Circle cla
+	cla.size(20, 280, 80)
+	cla.fill(rgb(r, r, r), 100)
+	Circle clb
+	clb.size(120, 290, 30)
+	clb.fill(rgb(r, r, r), 100)
+	Circle clc
+	clc.size(260, 150, 80)
+	clc.fill(rgb(r, r, r), 100)
+	Circle cld
+	cld.size(300, 240, 30)
+	cld.fill(rgb(r, r, r), 100)
+}
+
+def BG(){
+	Rectangle rb
+	rb.size(0, 0, 300, 380)
+	rb.fill(rgb(216, 239, 248), 100)
+	rb.outline(0,rgb(216, 239, 248), 100)
+    Cloud()
+}
+
+def main(){
+	canvas(300, 380)
+    BG()
+    BodyAndWings()
+    Feet()
+    DrawBranch()
+    Head()
+    Hair()
+    Beak()
+    Eyes()
+}

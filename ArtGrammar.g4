@@ -5,15 +5,16 @@ expr           : (consts)* (glob)* (func)* EOF ;
 func           : DEF IDENTIFIER PAREN_START PAREN_END CURLY_START (code)* CURLY_END
                | DEF IDENTIFIER PAREN_START func_params PAREN_END CURLY_START (code)* CURLY_END;
 
-consts         : CONSTANT init_int;   
+consts         : CONSTANT PIXEL init_int;   
 
-glob           : GLOBAL data_type init_int; 
+glob           : GLOBAL PIXEL init_int; 
 
 func_params    : IDENTIFIER 
                | IDENTIFIER SEPARATOR func_params ;
 
 code           : init 
                | init_int
+               | init_bool
                | math_expr 
                | size_shape 
                | draw_shape
@@ -33,7 +34,9 @@ loop_incdec    : INTEGER INCDEC_OP;
 
 init           : data_type IDENTIFIER ;
 
-init_int       : IDENTIFIER ASSIGN_OP INTEGER;
+init_int       : IDENTIFIER ASSIGN_OP (INTEGER|IDENTIFIER);
+
+init_bool      : IDENTIFIER ASSIGN_OP ((TRUE|FALSE)|IDENTIFIER); 
 
 func_call      : IDENTIFIER PAREN_START PAREN_END 
                | IDENTIFIER PAREN_START call_params PAREN_END;
@@ -78,7 +81,7 @@ size_params    : two_params
 
 two_params     : value_type SEPARATOR value_type;
 
-value_type     : IDENTIFIER | INTEGER ;
+value_type     : IDENTIFIER | INTEGER | TRUE | FALSE;
 
 
 data_type      : CIRCLE
@@ -89,8 +92,13 @@ data_type      : CIRCLE
                | STRAIGHT
                | ARC
                | PIXEL
+               | BOOL
                ;
 
+
+TRUE	       :   ('true');
+FALSE	       :   ('false');
+BOOL	       :   ('Bool');
 RECTANGLE      :   ('Rectangle');
 SQUARE	       :   ('Square');
 CIRCLE	       :   ('Circle');
@@ -114,7 +122,7 @@ GLOBAL   	   :   ('global');
 BREAK   	   :   ('break');
 CONTINUE   	   :   ('continue');
 INTEGER	       :   [0-9]+;
-IDENTIFIER     :	[a-zA-Z][a-zA-Z0-9]* ;
+IDENTIFIER     :   [a-zA-Z][a-zA-Z0-9]* ;
 MATH_OP        :   ('-'|'+'|'*'|'/');
 INCDEC_OP      :   ('++'|'--');
 COND_OP    	   :   ('<='|'<'|'>'|'>='|'!='|'==');

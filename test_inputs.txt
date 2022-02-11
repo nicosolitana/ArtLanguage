@@ -93,4 +93,9 @@ def main(){
     Square sqr
     sqr.size(200, 200, 100)
     sqr.fill(rgb(101, 45, 144), 100)
+    sqr.outline(1, rgb(101, 45, 144), 50)
+    Circle circ
+    circ.size(50, 50, 20)
+    circ.fill(rgb(101, 45, 144), 100)
+    circ.outline(1, rgb(101, 45, 144), 50)
 }

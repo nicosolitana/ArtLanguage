@@ -1,0 +1,118 @@
+def head(){
+	Circle ca
+	ca.size(190, 300, 160)
+	ca.fill(rgb(252, 95, 19), 100)
+	Circle cb
+	cb.size(190, 300, 127)
+	cb.fill(rgb(252, 95, 19), 100)
+	cb.outline(5, rgb(4, 4, 4), 100)
+	Circle cc
+	cc.size(210, 320, 100)
+	cc.fill(rgb(116, 67, 47), 100)
+	Circle cd
+	cd.size(170, 320, 100)
+	cd.fill(rgb(116, 67, 47), 100)
+	Circle cc1
+	cc1.size(210, 320, 100)
+	cc1.fill(rgb(116, 67, 47), 100)
+	Circle cd2
+	cd2.size(170, 320, 100)
+	cd2.fill(rgb(116, 67, 47), 100)
+	Straight la
+	la.draw(165, 412, 220, 412)
+	la.outline(15, rgb(116, 67, 47), 100)
+	Straight lb
+	lb.draw(165, 227, 220, 227)
+	lb.outline(15, rgb(116, 67, 47), 100)
+}
+
+def hood(){
+	Circle ce
+	ce.size(190, 320, 80)
+	ce.fill(rgb(251, 219, 181), 100)
+}
+
+def eyes(){
+	Circle cf
+	cf.size(150, 320, 40)
+	cf.fill(rgb(254, 254, 255), 100)
+	Circle cg
+	cg.size(230, 320, 40)
+	cg.fill(rgb(254, 254, 255), 100)
+}
+
+def pupil(){
+	Circle ch
+	ch.size(170, 320, 10)
+	ch.fill(rgb(4, 4, 4), 100)
+	Circle chh
+	chh.size(170, 320, 10)
+	chh.fill(rgb(4, 4, 4), 100)
+	Circle ci
+	ci.size(210, 320, 10)
+	ci.fill(rgb(4, 4, 4), 100)
+}
+
+def body(){
+	Straight li
+	li.draw(80, 20, 300, 20)
+	li.outline(15, rgb(57, 51, 59), 100)
+	Rectangle ra
+	ra.size(100, 27, 180, 140)
+	ra.fill(rgb(252, 95, 19), 100)
+	ra.outline(0,rgb(252, 95, 19), 100)
+}
+
+def hemline(){
+	Straight lj
+	lj.draw(290, 60, 280, 170)
+	lj.outline(30, rgb(252,95,19), 100)
+	Straight lk
+	lk.draw(90, 60, 100, 170)
+	lk.outline(30, rgb(252,95,19), 100)
+	Straight ll
+	ll.draw(320, 100, 280, 190)
+	ll.outline(30, rgb(252,95,19), 100)
+	Straight lm
+	lm.draw(60, 100, 100, 190)
+	lm.outline(30, rgb(252,95,19), 100)
+	Straight blb
+	blb.draw(297, 95, 260, 185)
+	blb.outline(2, rgb(4, 4, 4), 100)   
+	Straight bla
+	bla.draw(83, 95, 125, 185)
+	bla.outline(2, rgb(4, 4, 4), 100)
+}
+
+def necktie(){
+	Straight ln
+	ln.draw(190, 220, 200, 190)
+	ln.outline(3, rgb(4, 4, 4), 100)
+	Straight lnn
+	lnn.draw(190, 220, 200, 190)
+	lnn.outline(3, rgb(4, 4, 4), 100)
+	Straight lo
+	lo.draw(190, 220, 180, 175)
+	lo.outline(3, rgb(4, 4, 4), 100)
+}
+
+def hands(){
+	Circle cj
+	cj.size(310, 100, 25)
+	cj.fill(rgb(116, 67, 47), 100)
+	Circle ck
+	ck.size(70, 100, 25)
+	ck.fill(rgb(116, 67, 47), 100)
+}
+
+def main(){
+	canvas(400, 500)
+	hemline()
+	body()
+    head()
+	hood()
+	eyes()
+	pupil()
+	necktie()
+	hands()
+}

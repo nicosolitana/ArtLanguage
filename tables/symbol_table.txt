@@ -1,3 +1,6 @@
+BOOL	^(Bool)$
+TRUE	^(true)$
+FALSE	^(false)$
 FOR	^(for)$
 DEF	^(def)$
 SIZE	^(size)$

@@ -11,154 +11,159 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\'")
-        buf.write("\u0166\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3*")
+        buf.write("\u0170\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
         buf.write("\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31")
         buf.write("\t\31\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36")
         buf.write("\4\37\t\37\4 \t \4!\t!\4\"\t\"\4#\t#\4$\t$\4%\t%\4&\t")
-        buf.write("&\4\'\t\'\3\2\7\2P\n\2\f\2\16\2S\13\2\3\2\7\2V\n\2\f\2")
-        buf.write("\16\2Y\13\2\3\2\7\2\\\n\2\f\2\16\2_\13\2\3\2\3\2\3\3\3")
-        buf.write("\3\3\3\3\3\3\3\3\3\7\3i\n\3\f\3\16\3l\13\3\3\3\3\3\3\3")
-        buf.write("\3\3\3\3\3\3\3\3\3\3\7\3v\n\3\f\3\16\3y\13\3\3\3\3\3\5")
-        buf.write("\3}\n\3\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\5")
-        buf.write("\6\u008a\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3")
-        buf.write("\7\5\7\u0097\n\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\t\3")
-        buf.write("\t\7\t\u00a3\n\t\f\t\16\t\u00a6\13\t\3\t\3\t\3\n\3\n\3")
-        buf.write("\n\3\n\3\n\3\n\5\n\u00b0\n\n\3\13\3\13\3\13\3\f\3\f\3")
-        buf.write("\f\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\17\3\17\3\17\3\17")
-        buf.write("\3\17\3\17\3\17\3\17\5\17\u00c7\n\17\3\20\3\20\3\20\7")
-        buf.write("\20\u00cc\n\20\f\20\16\20\u00cf\13\20\3\21\3\21\3\21\3")
-        buf.write("\21\3\21\3\21\3\21\3\21\5\21\u00d9\n\21\3\22\3\22\3\22")
-        buf.write("\3\22\3\23\3\23\3\23\3\23\6\23\u00e3\n\23\r\23\16\23\u00e4")
-        buf.write("\3\24\3\24\3\24\3\25\3\25\3\25\3\25\3\26\3\26\3\26\3\26")
-        buf.write("\3\27\3\27\3\27\3\27\3\27\7\27\u00f7\n\27\f\27\16\27\u00fa")
-        buf.write("\13\27\3\27\3\27\3\27\5\27\u00ff\n\27\3\30\3\30\7\30\u0103")
-        buf.write("\n\30\f\30\16\30\u0106\13\30\3\30\3\30\3\31\3\31\3\31")
-        buf.write("\3\31\3\31\5\31\u010f\n\31\3\32\3\32\3\32\3\32\3\33\3")
-        buf.write("\33\3\33\3\33\3\33\3\34\3\34\3\34\3\34\3\34\3\34\3\34")
-        buf.write("\3\35\3\35\3\35\3\35\3\35\3\35\3\36\3\36\3\36\3\36\3\36")
-        buf.write("\3\36\3\36\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3 \3 \3")
-        buf.write(" \3 \3!\3!\3!\3!\3!\3!\3!\3\"\3\"\3\"\3\"\3\"\3\"\3\"")
-        buf.write("\3\"\3\"\3\"\5\"\u014a\n\"\3#\3#\3#\3#\3#\3#\3#\3$\3$")
-        buf.write("\3$\3$\3$\3$\3$\3$\3$\5$\u015c\n$\3%\3%\3%\3%\3&\3&\3")
-        buf.write("\'\3\'\3\'\2\2(\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36")
-        buf.write(" \"$&(*,.\60\62\64\668:<>@BDFHJL\2\4\3\2\31\32\3\2\3\t")
-        buf.write("\2\u015e\2Q\3\2\2\2\4|\3\2\2\2\6~\3\2\2\2\b\u0081\3\2")
-        buf.write("\2\2\n\u0089\3\2\2\2\f\u0096\3\2\2\2\16\u0098\3\2\2\2")
-        buf.write("\20\u00a0\3\2\2\2\22\u00af\3\2\2\2\24\u00b1\3\2\2\2\26")
-        buf.write("\u00b4\3\2\2\2\30\u00b7\3\2\2\2\32\u00ba\3\2\2\2\34\u00c6")
-        buf.write("\3\2\2\2\36\u00c8\3\2\2\2 \u00d8\3\2\2\2\"\u00da\3\2\2")
-        buf.write("\2$\u00e2\3\2\2\2&\u00e6\3\2\2\2(\u00e9\3\2\2\2*\u00ed")
-        buf.write("\3\2\2\2,\u00fe\3\2\2\2.\u0100\3\2\2\2\60\u010e\3\2\2")
-        buf.write("\2\62\u0110\3\2\2\2\64\u0114\3\2\2\2\66\u0119\3\2\2\2")
-        buf.write("8\u0120\3\2\2\2:\u0126\3\2\2\2<\u012d\3\2\2\2>\u0134\3")
-        buf.write("\2\2\2@\u0138\3\2\2\2B\u0149\3\2\2\2D\u014b\3\2\2\2F\u015b")
-        buf.write("\3\2\2\2H\u015d\3\2\2\2J\u0161\3\2\2\2L\u0163\3\2\2\2")
-        buf.write("NP\5\6\4\2ON\3\2\2\2PS\3\2\2\2QO\3\2\2\2QR\3\2\2\2RW\3")
-        buf.write("\2\2\2SQ\3\2\2\2TV\5\b\5\2UT\3\2\2\2VY\3\2\2\2WU\3\2\2")
-        buf.write("\2WX\3\2\2\2X]\3\2\2\2YW\3\2\2\2Z\\\5\4\3\2[Z\3\2\2\2")
-        buf.write("\\_\3\2\2\2][\3\2\2\2]^\3\2\2\2^`\3\2\2\2_]\3\2\2\2`a")
-        buf.write("\7\2\2\3a\3\3\2\2\2bc\7\21\2\2cd\7\32\2\2de\7\37\2\2e")
-        buf.write("f\7 \2\2fj\7!\2\2gi\5\f\7\2hg\3\2\2\2il\3\2\2\2jh\3\2")
-        buf.write("\2\2jk\3\2\2\2km\3\2\2\2lj\3\2\2\2m}\7\"\2\2no\7\21\2")
-        buf.write("\2op\7\32\2\2pq\7\37\2\2qr\5\n\6\2rs\7 \2\2sw\7!\2\2t")
-        buf.write("v\5\f\7\2ut\3\2\2\2vy\3\2\2\2wu\3\2\2\2wx\3\2\2\2xz\3")
-        buf.write("\2\2\2yw\3\2\2\2z{\7\"\2\2{}\3\2\2\2|b\3\2\2\2|n\3\2\2")
-        buf.write("\2}\5\3\2\2\2~\177\7\25\2\2\177\u0080\5\32\16\2\u0080")
-        buf.write("\7\3\2\2\2\u0081\u0082\7\26\2\2\u0082\u0083\5L\'\2\u0083")
-        buf.write("\u0084\5\32\16\2\u0084\t\3\2\2\2\u0085\u008a\7\32\2\2")
-        buf.write("\u0086\u0087\7\32\2\2\u0087\u0088\7%\2\2\u0088\u008a\5")
-        buf.write("\n\6\2\u0089\u0085\3\2\2\2\u0089\u0086\3\2\2\2\u008a\13")
-        buf.write("\3\2\2\2\u008b\u0097\5\30\r\2\u008c\u0097\5\32\16\2\u008d")
-        buf.write("\u0097\5\60\31\2\u008e\u0097\5D#\2\u008f\u0097\5@!\2\u0090")
-        buf.write("\u0097\5\64\33\2\u0091\u0097\5<\37\2\u0092\u0097\5\66")
-        buf.write("\34\2\u0093\u0097\5\34\17\2\u0094\u0097\5 \21\2\u0095")
-        buf.write("\u0097\5\16\b\2\u0096\u008b\3\2\2\2\u0096\u008c\3\2\2")
-        buf.write("\2\u0096\u008d\3\2\2\2\u0096\u008e\3\2\2\2\u0096\u008f")
-        buf.write("\3\2\2\2\u0096\u0090\3\2\2\2\u0096\u0091\3\2\2\2\u0096")
-        buf.write("\u0092\3\2\2\2\u0096\u0093\3\2\2\2\u0096\u0094\3\2\2\2")
-        buf.write("\u0096\u0095\3\2\2\2\u0097\r\3\2\2\2\u0098\u0099\7\20")
-        buf.write("\2\2\u0099\u009a\7\37\2\2\u009a\u009b\5\22\n\2\u009b\u009c")
-        buf.write("\5\24\13\2\u009c\u009d\5\26\f\2\u009d\u009e\7 \2\2\u009e")
-        buf.write("\u009f\5\20\t\2\u009f\17\3\2\2\2\u00a0\u00a4\7!\2\2\u00a1")
-        buf.write("\u00a3\5\f\7\2\u00a2\u00a1\3\2\2\2\u00a3\u00a6\3\2\2\2")
-        buf.write("\u00a4\u00a2\3\2\2\2\u00a4\u00a5\3\2\2\2\u00a5\u00a7\3")
-        buf.write("\2\2\2\u00a6\u00a4\3\2\2\2\u00a7\u00a8\7\"\2\2\u00a8\21")
-        buf.write("\3\2\2\2\u00a9\u00aa\5\32\16\2\u00aa\u00ab\7&\2\2\u00ab")
-        buf.write("\u00b0\3\2\2\2\u00ac\u00ad\5\60\31\2\u00ad\u00ae\7&\2")
-        buf.write("\2\u00ae\u00b0\3\2\2\2\u00af\u00a9\3\2\2\2\u00af\u00ac")
-        buf.write("\3\2\2\2\u00b0\23\3\2\2\2\u00b1\u00b2\5*\26\2\u00b2\u00b3")
-        buf.write("\7&\2\2\u00b3\25\3\2\2\2\u00b4\u00b5\7\31\2\2\u00b5\u00b6")
-        buf.write("\7\34\2\2\u00b6\27\3\2\2\2\u00b7\u00b8\5L\'\2\u00b8\u00b9")
-        buf.write("\7\32\2\2\u00b9\31\3\2\2\2\u00ba\u00bb\7\32\2\2\u00bb")
-        buf.write("\u00bc\7$\2\2\u00bc\u00bd\7\31\2\2\u00bd\33\3\2\2\2\u00be")
-        buf.write("\u00bf\7\32\2\2\u00bf\u00c0\7\37\2\2\u00c0\u00c7\7 \2")
-        buf.write("\2\u00c1\u00c2\7\32\2\2\u00c2\u00c3\7\37\2\2\u00c3\u00c4")
-        buf.write("\5\36\20\2\u00c4\u00c5\7 \2\2\u00c5\u00c7\3\2\2\2\u00c6")
-        buf.write("\u00be\3\2\2\2\u00c6\u00c1\3\2\2\2\u00c7\35\3\2\2\2\u00c8")
-        buf.write("\u00cd\5J&\2\u00c9\u00ca\7%\2\2\u00ca\u00cc\5J&\2\u00cb")
-        buf.write("\u00c9\3\2\2\2\u00cc\u00cf\3\2\2\2\u00cd\u00cb\3\2\2\2")
-        buf.write("\u00cd\u00ce\3\2\2\2\u00ce\37\3\2\2\2\u00cf\u00cd\3\2")
-        buf.write("\2\2\u00d0\u00d9\5\"\22\2\u00d1\u00d2\5\"\22\2\u00d2\u00d3")
-        buf.write("\5$\23\2\u00d3\u00d4\5&\24\2\u00d4\u00d9\3\2\2\2\u00d5")
-        buf.write("\u00d6\5\"\22\2\u00d6\u00d7\5&\24\2\u00d7\u00d9\3\2\2")
-        buf.write("\2\u00d8\u00d0\3\2\2\2\u00d8\u00d1\3\2\2\2\u00d8\u00d5")
-        buf.write("\3\2\2\2\u00d9!\3\2\2\2\u00da\u00db\7\n\2\2\u00db\u00dc")
-        buf.write("\5,\27\2\u00dc\u00dd\5.\30\2\u00dd#\3\2\2\2\u00de\u00df")
-        buf.write("\7\f\2\2\u00df\u00e0\5,\27\2\u00e0\u00e1\5.\30\2\u00e1")
-        buf.write("\u00e3\3\2\2\2\u00e2\u00de\3\2\2\2\u00e3\u00e4\3\2\2\2")
-        buf.write("\u00e4\u00e2\3\2\2\2\u00e4\u00e5\3\2\2\2\u00e5%\3\2\2")
-        buf.write("\2\u00e6\u00e7\7\13\2\2\u00e7\u00e8\5.\30\2\u00e8\'\3")
-        buf.write("\2\2\2\u00e9\u00ea\7\37\2\2\u00ea\u00eb\5*\26\2\u00eb")
-        buf.write("\u00ec\7 \2\2\u00ec)\3\2\2\2\u00ed\u00ee\5J&\2\u00ee\u00ef")
-        buf.write("\7\35\2\2\u00ef\u00f0\5J&\2\u00f0+\3\2\2\2\u00f1\u00ff")
-        buf.write("\5(\25\2\u00f2\u00f8\7\37\2\2\u00f3\u00f4\5(\25\2\u00f4")
-        buf.write("\u00f5\7\36\2\2\u00f5\u00f7\3\2\2\2\u00f6\u00f3\3\2\2")
-        buf.write("\2\u00f7\u00fa\3\2\2\2\u00f8\u00f6\3\2\2\2\u00f8\u00f9")
-        buf.write("\3\2\2\2\u00f9\u00fb\3\2\2\2\u00fa\u00f8\3\2\2\2\u00fb")
-        buf.write("\u00fc\5(\25\2\u00fc\u00fd\7 \2\2\u00fd\u00ff\3\2\2\2")
-        buf.write("\u00fe\u00f1\3\2\2\2\u00fe\u00f2\3\2\2\2\u00ff-\3\2\2")
-        buf.write("\2\u0100\u0104\7!\2\2\u0101\u0103\5\f\7\2\u0102\u0101")
-        buf.write("\3\2\2\2\u0103\u0106\3\2\2\2\u0104\u0102\3\2\2\2\u0104")
-        buf.write("\u0105\3\2\2\2\u0105\u0107\3\2\2\2\u0106\u0104\3\2\2\2")
-        buf.write("\u0107\u0108\7\"\2\2\u0108/\3\2\2\2\u0109\u010a\7\32\2")
-        buf.write("\2\u010a\u010b\7$\2\2\u010b\u010f\5\62\32\2\u010c\u010d")
-        buf.write("\7\32\2\2\u010d\u010f\7\34\2\2\u010e\u0109\3\2\2\2\u010e")
-        buf.write("\u010c\3\2\2\2\u010f\61\3\2\2\2\u0110\u0111\5J&\2\u0111")
-        buf.write("\u0112\7\33\2\2\u0112\u0113\5J&\2\u0113\63\3\2\2\2\u0114")
-        buf.write("\u0115\7\23\2\2\u0115\u0116\7\37\2\2\u0116\u0117\5H%\2")
-        buf.write("\u0117\u0118\7 \2\2\u0118\65\3\2\2\2\u0119\u011a\7\32")
-        buf.write("\2\2\u011a\u011b\7#\2\2\u011b\u011c\7\r\2\2\u011c\u011d")
-        buf.write("\7\37\2\2\u011d\u011e\58\35\2\u011e\u011f\7 \2\2\u011f")
-        buf.write("\67\3\2\2\2\u0120\u0121\5J&\2\u0121\u0122\7%\2\2\u0122")
-        buf.write("\u0123\5:\36\2\u0123\u0124\7%\2\2\u0124\u0125\5J&\2\u0125")
-        buf.write("9\3\2\2\2\u0126\u0127\7\24\2\2\u0127\u0128\7\37\2\2\u0128")
-        buf.write("\u0129\5H%\2\u0129\u012a\7%\2\2\u012a\u012b\5J&\2\u012b")
-        buf.write("\u012c\7 \2\2\u012c;\3\2\2\2\u012d\u012e\7\32\2\2\u012e")
-        buf.write("\u012f\7#\2\2\u012f\u0130\7\22\2\2\u0130\u0131\7\37\2")
-        buf.write("\2\u0131\u0132\5> \2\u0132\u0133\7 \2\2\u0133=\3\2\2\2")
-        buf.write("\u0134\u0135\5:\36\2\u0135\u0136\7%\2\2\u0136\u0137\5")
-        buf.write("J&\2\u0137?\3\2\2\2\u0138\u0139\7\32\2\2\u0139\u013a\7")
-        buf.write("#\2\2\u013a\u013b\7\16\2\2\u013b\u013c\7\37\2\2\u013c")
-        buf.write("\u013d\5B\"\2\u013d\u013e\7 \2\2\u013eA\3\2\2\2\u013f")
-        buf.write("\u0140\5H%\2\u0140\u0141\7%\2\2\u0141\u0142\5H%\2\u0142")
-        buf.write("\u014a\3\2\2\2\u0143\u0144\5H%\2\u0144\u0145\7%\2\2\u0145")
-        buf.write("\u0146\5H%\2\u0146\u0147\7%\2\2\u0147\u0148\5H%\2\u0148")
-        buf.write("\u014a\3\2\2\2\u0149\u013f\3\2\2\2\u0149\u0143\3\2\2\2")
-        buf.write("\u014aC\3\2\2\2\u014b\u014c\7\32\2\2\u014c\u014d\7#\2")
-        buf.write("\2\u014d\u014e\7\17\2\2\u014e\u014f\7\37\2\2\u014f\u0150")
-        buf.write("\5F$\2\u0150\u0151\7 \2\2\u0151E\3\2\2\2\u0152\u015c\5")
-        buf.write("H%\2\u0153\u0154\5H%\2\u0154\u0155\7%\2\2\u0155\u0156")
-        buf.write("\5J&\2\u0156\u015c\3\2\2\2\u0157\u0158\5H%\2\u0158\u0159")
-        buf.write("\7%\2\2\u0159\u015a\5H%\2\u015a\u015c\3\2\2\2\u015b\u0152")
-        buf.write("\3\2\2\2\u015b\u0153\3\2\2\2\u015b\u0157\3\2\2\2\u015c")
-        buf.write("G\3\2\2\2\u015d\u015e\5J&\2\u015e\u015f\7%\2\2\u015f\u0160")
-        buf.write("\5J&\2\u0160I\3\2\2\2\u0161\u0162\t\2\2\2\u0162K\3\2\2")
-        buf.write("\2\u0163\u0164\t\3\2\2\u0164M\3\2\2\2\26QW]jw|\u0089\u0096")
-        buf.write("\u00a4\u00af\u00c6\u00cd\u00d8\u00e4\u00f8\u00fe\u0104")
-        buf.write("\u010e\u0149\u015b")
+        buf.write("&\4\'\t\'\4(\t(\3\2\7\2R\n\2\f\2\16\2U\13\2\3\2\7\2X\n")
+        buf.write("\2\f\2\16\2[\13\2\3\2\7\2^\n\2\f\2\16\2a\13\2\3\2\3\2")
+        buf.write("\3\3\3\3\3\3\3\3\3\3\3\3\7\3k\n\3\f\3\16\3n\13\3\3\3\3")
+        buf.write("\3\3\3\3\3\3\3\3\3\3\3\3\3\7\3x\n\3\f\3\16\3{\13\3\3\3")
+        buf.write("\3\3\5\3\177\n\3\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\6\3")
+        buf.write("\6\3\6\3\6\5\6\u008d\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3")
+        buf.write("\7\3\7\3\7\3\7\3\7\5\7\u009b\n\7\3\b\3\b\3\b\3\b\3\b\3")
+        buf.write("\b\3\b\3\b\3\t\3\t\7\t\u00a7\n\t\f\t\16\t\u00aa\13\t\3")
+        buf.write("\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\5\n\u00b4\n\n\3\13\3\13")
+        buf.write("\3\13\3\f\3\f\3\f\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\17")
+        buf.write("\3\17\3\17\3\17\5\17\u00c7\n\17\3\20\3\20\3\20\3\20\3")
+        buf.write("\20\3\20\3\20\3\20\5\20\u00d1\n\20\3\21\3\21\3\21\7\21")
+        buf.write("\u00d6\n\21\f\21\16\21\u00d9\13\21\3\22\3\22\3\22\3\22")
+        buf.write("\3\22\3\22\3\22\3\22\5\22\u00e3\n\22\3\23\3\23\3\23\3")
+        buf.write("\23\3\24\3\24\3\24\3\24\6\24\u00ed\n\24\r\24\16\24\u00ee")
+        buf.write("\3\25\3\25\3\25\3\26\3\26\3\26\3\26\3\27\3\27\3\27\3\27")
+        buf.write("\3\30\3\30\3\30\3\30\3\30\7\30\u0101\n\30\f\30\16\30\u0104")
+        buf.write("\13\30\3\30\3\30\3\30\5\30\u0109\n\30\3\31\3\31\7\31\u010d")
+        buf.write("\n\31\f\31\16\31\u0110\13\31\3\31\3\31\3\32\3\32\3\32")
+        buf.write("\3\32\3\32\5\32\u0119\n\32\3\33\3\33\3\33\3\33\3\34\3")
+        buf.write("\34\3\34\3\34\3\34\3\35\3\35\3\35\3\35\3\35\3\35\3\35")
+        buf.write("\3\36\3\36\3\36\3\36\3\36\3\36\3\37\3\37\3\37\3\37\3\37")
+        buf.write("\3\37\3\37\3 \3 \3 \3 \3 \3 \3 \3!\3!\3!\3!\3\"\3\"\3")
+        buf.write("\"\3\"\3\"\3\"\3\"\3#\3#\3#\3#\3#\3#\3#\3#\3#\3#\5#\u0154")
+        buf.write("\n#\3$\3$\3$\3$\3$\3$\3$\3%\3%\3%\3%\3%\3%\3%\3%\3%\5")
+        buf.write("%\u0166\n%\3&\3&\3&\3&\3\'\3\'\3(\3(\3(\2\2)\2\4\6\b\n")
+        buf.write("\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<")
+        buf.write(">@BDFHJLN\2\6\3\2\34\35\3\2\3\4\4\2\3\4\34\35\3\2\5\f")
+        buf.write("\2\u0169\2S\3\2\2\2\4~\3\2\2\2\6\u0080\3\2\2\2\b\u0084")
+        buf.write("\3\2\2\2\n\u008c\3\2\2\2\f\u009a\3\2\2\2\16\u009c\3\2")
+        buf.write("\2\2\20\u00a4\3\2\2\2\22\u00b3\3\2\2\2\24\u00b5\3\2\2")
+        buf.write("\2\26\u00b8\3\2\2\2\30\u00bb\3\2\2\2\32\u00be\3\2\2\2")
+        buf.write("\34\u00c2\3\2\2\2\36\u00d0\3\2\2\2 \u00d2\3\2\2\2\"\u00e2")
+        buf.write("\3\2\2\2$\u00e4\3\2\2\2&\u00ec\3\2\2\2(\u00f0\3\2\2\2")
+        buf.write("*\u00f3\3\2\2\2,\u00f7\3\2\2\2.\u0108\3\2\2\2\60\u010a")
+        buf.write("\3\2\2\2\62\u0118\3\2\2\2\64\u011a\3\2\2\2\66\u011e\3")
+        buf.write("\2\2\28\u0123\3\2\2\2:\u012a\3\2\2\2<\u0130\3\2\2\2>\u0137")
+        buf.write("\3\2\2\2@\u013e\3\2\2\2B\u0142\3\2\2\2D\u0153\3\2\2\2")
+        buf.write("F\u0155\3\2\2\2H\u0165\3\2\2\2J\u0167\3\2\2\2L\u016b\3")
+        buf.write("\2\2\2N\u016d\3\2\2\2PR\5\6\4\2QP\3\2\2\2RU\3\2\2\2SQ")
+        buf.write("\3\2\2\2ST\3\2\2\2TY\3\2\2\2US\3\2\2\2VX\5\b\5\2WV\3\2")
+        buf.write("\2\2X[\3\2\2\2YW\3\2\2\2YZ\3\2\2\2Z_\3\2\2\2[Y\3\2\2\2")
+        buf.write("\\^\5\4\3\2]\\\3\2\2\2^a\3\2\2\2_]\3\2\2\2_`\3\2\2\2`")
+        buf.write("b\3\2\2\2a_\3\2\2\2bc\7\2\2\3c\3\3\2\2\2de\7\24\2\2ef")
+        buf.write("\7\35\2\2fg\7\"\2\2gh\7#\2\2hl\7$\2\2ik\5\f\7\2ji\3\2")
+        buf.write("\2\2kn\3\2\2\2lj\3\2\2\2lm\3\2\2\2mo\3\2\2\2nl\3\2\2\2")
+        buf.write("o\177\7%\2\2pq\7\24\2\2qr\7\35\2\2rs\7\"\2\2st\5\n\6\2")
+        buf.write("tu\7#\2\2uy\7$\2\2vx\5\f\7\2wv\3\2\2\2x{\3\2\2\2yw\3\2")
+        buf.write("\2\2yz\3\2\2\2z|\3\2\2\2{y\3\2\2\2|}\7%\2\2}\177\3\2\2")
+        buf.write("\2~d\3\2\2\2~p\3\2\2\2\177\5\3\2\2\2\u0080\u0081\7\30")
+        buf.write("\2\2\u0081\u0082\7\f\2\2\u0082\u0083\5\32\16\2\u0083\7")
+        buf.write("\3\2\2\2\u0084\u0085\7\31\2\2\u0085\u0086\7\f\2\2\u0086")
+        buf.write("\u0087\5\32\16\2\u0087\t\3\2\2\2\u0088\u008d\7\35\2\2")
+        buf.write("\u0089\u008a\7\35\2\2\u008a\u008b\7(\2\2\u008b\u008d\5")
+        buf.write("\n\6\2\u008c\u0088\3\2\2\2\u008c\u0089\3\2\2\2\u008d\13")
+        buf.write("\3\2\2\2\u008e\u009b\5\30\r\2\u008f\u009b\5\32\16\2\u0090")
+        buf.write("\u009b\5\34\17\2\u0091\u009b\5\62\32\2\u0092\u009b\5F")
+        buf.write("$\2\u0093\u009b\5B\"\2\u0094\u009b\5\66\34\2\u0095\u009b")
+        buf.write("\5> \2\u0096\u009b\58\35\2\u0097\u009b\5\36\20\2\u0098")
+        buf.write("\u009b\5\"\22\2\u0099\u009b\5\16\b\2\u009a\u008e\3\2\2")
+        buf.write("\2\u009a\u008f\3\2\2\2\u009a\u0090\3\2\2\2\u009a\u0091")
+        buf.write("\3\2\2\2\u009a\u0092\3\2\2\2\u009a\u0093\3\2\2\2\u009a")
+        buf.write("\u0094\3\2\2\2\u009a\u0095\3\2\2\2\u009a\u0096\3\2\2\2")
+        buf.write("\u009a\u0097\3\2\2\2\u009a\u0098\3\2\2\2\u009a\u0099\3")
+        buf.write("\2\2\2\u009b\r\3\2\2\2\u009c\u009d\7\23\2\2\u009d\u009e")
+        buf.write("\7\"\2\2\u009e\u009f\5\22\n\2\u009f\u00a0\5\24\13\2\u00a0")
+        buf.write("\u00a1\5\26\f\2\u00a1\u00a2\7#\2\2\u00a2\u00a3\5\20\t")
+        buf.write("\2\u00a3\17\3\2\2\2\u00a4\u00a8\7$\2\2\u00a5\u00a7\5\f")
+        buf.write("\7\2\u00a6\u00a5\3\2\2\2\u00a7\u00aa\3\2\2\2\u00a8\u00a6")
+        buf.write("\3\2\2\2\u00a8\u00a9\3\2\2\2\u00a9\u00ab\3\2\2\2\u00aa")
+        buf.write("\u00a8\3\2\2\2\u00ab\u00ac\7%\2\2\u00ac\21\3\2\2\2\u00ad")
+        buf.write("\u00ae\5\32\16\2\u00ae\u00af\7)\2\2\u00af\u00b4\3\2\2")
+        buf.write("\2\u00b0\u00b1\5\62\32\2\u00b1\u00b2\7)\2\2\u00b2\u00b4")
+        buf.write("\3\2\2\2\u00b3\u00ad\3\2\2\2\u00b3\u00b0\3\2\2\2\u00b4")
+        buf.write("\23\3\2\2\2\u00b5\u00b6\5,\27\2\u00b6\u00b7\7)\2\2\u00b7")
+        buf.write("\25\3\2\2\2\u00b8\u00b9\7\34\2\2\u00b9\u00ba\7\37\2\2")
+        buf.write("\u00ba\27\3\2\2\2\u00bb\u00bc\5N(\2\u00bc\u00bd\7\35\2")
+        buf.write("\2\u00bd\31\3\2\2\2\u00be\u00bf\7\35\2\2\u00bf\u00c0\7")
+        buf.write("\'\2\2\u00c0\u00c1\t\2\2\2\u00c1\33\3\2\2\2\u00c2\u00c3")
+        buf.write("\7\35\2\2\u00c3\u00c6\7\'\2\2\u00c4\u00c7\t\3\2\2\u00c5")
+        buf.write("\u00c7\7\35\2\2\u00c6\u00c4\3\2\2\2\u00c6\u00c5\3\2\2")
+        buf.write("\2\u00c7\35\3\2\2\2\u00c8\u00c9\7\35\2\2\u00c9\u00ca\7")
+        buf.write("\"\2\2\u00ca\u00d1\7#\2\2\u00cb\u00cc\7\35\2\2\u00cc\u00cd")
+        buf.write("\7\"\2\2\u00cd\u00ce\5 \21\2\u00ce\u00cf\7#\2\2\u00cf")
+        buf.write("\u00d1\3\2\2\2\u00d0\u00c8\3\2\2\2\u00d0\u00cb\3\2\2\2")
+        buf.write("\u00d1\37\3\2\2\2\u00d2\u00d7\5L\'\2\u00d3\u00d4\7(\2")
+        buf.write("\2\u00d4\u00d6\5L\'\2\u00d5\u00d3\3\2\2\2\u00d6\u00d9")
+        buf.write("\3\2\2\2\u00d7\u00d5\3\2\2\2\u00d7\u00d8\3\2\2\2\u00d8")
+        buf.write("!\3\2\2\2\u00d9\u00d7\3\2\2\2\u00da\u00e3\5$\23\2\u00db")
+        buf.write("\u00dc\5$\23\2\u00dc\u00dd\5&\24\2\u00dd\u00de\5(\25\2")
+        buf.write("\u00de\u00e3\3\2\2\2\u00df\u00e0\5$\23\2\u00e0\u00e1\5")
+        buf.write("(\25\2\u00e1\u00e3\3\2\2\2\u00e2\u00da\3\2\2\2\u00e2\u00db")
+        buf.write("\3\2\2\2\u00e2\u00df\3\2\2\2\u00e3#\3\2\2\2\u00e4\u00e5")
+        buf.write("\7\r\2\2\u00e5\u00e6\5.\30\2\u00e6\u00e7\5\60\31\2\u00e7")
+        buf.write("%\3\2\2\2\u00e8\u00e9\7\17\2\2\u00e9\u00ea\5.\30\2\u00ea")
+        buf.write("\u00eb\5\60\31\2\u00eb\u00ed\3\2\2\2\u00ec\u00e8\3\2\2")
+        buf.write("\2\u00ed\u00ee\3\2\2\2\u00ee\u00ec\3\2\2\2\u00ee\u00ef")
+        buf.write("\3\2\2\2\u00ef\'\3\2\2\2\u00f0\u00f1\7\16\2\2\u00f1\u00f2")
+        buf.write("\5\60\31\2\u00f2)\3\2\2\2\u00f3\u00f4\7\"\2\2\u00f4\u00f5")
+        buf.write("\5,\27\2\u00f5\u00f6\7#\2\2\u00f6+\3\2\2\2\u00f7\u00f8")
+        buf.write("\5L\'\2\u00f8\u00f9\7 \2\2\u00f9\u00fa\5L\'\2\u00fa-\3")
+        buf.write("\2\2\2\u00fb\u0109\5*\26\2\u00fc\u0102\7\"\2\2\u00fd\u00fe")
+        buf.write("\5*\26\2\u00fe\u00ff\7!\2\2\u00ff\u0101\3\2\2\2\u0100")
+        buf.write("\u00fd\3\2\2\2\u0101\u0104\3\2\2\2\u0102\u0100\3\2\2\2")
+        buf.write("\u0102\u0103\3\2\2\2\u0103\u0105\3\2\2\2\u0104\u0102\3")
+        buf.write("\2\2\2\u0105\u0106\5*\26\2\u0106\u0107\7#\2\2\u0107\u0109")
+        buf.write("\3\2\2\2\u0108\u00fb\3\2\2\2\u0108\u00fc\3\2\2\2\u0109")
+        buf.write("/\3\2\2\2\u010a\u010e\7$\2\2\u010b\u010d\5\f\7\2\u010c")
+        buf.write("\u010b\3\2\2\2\u010d\u0110\3\2\2\2\u010e\u010c\3\2\2\2")
+        buf.write("\u010e\u010f\3\2\2\2\u010f\u0111\3\2\2\2\u0110\u010e\3")
+        buf.write("\2\2\2\u0111\u0112\7%\2\2\u0112\61\3\2\2\2\u0113\u0114")
+        buf.write("\7\35\2\2\u0114\u0115\7\'\2\2\u0115\u0119\5\64\33\2\u0116")
+        buf.write("\u0117\7\35\2\2\u0117\u0119\7\37\2\2\u0118\u0113\3\2\2")
+        buf.write("\2\u0118\u0116\3\2\2\2\u0119\63\3\2\2\2\u011a\u011b\5")
+        buf.write("L\'\2\u011b\u011c\7\36\2\2\u011c\u011d\5L\'\2\u011d\65")
+        buf.write("\3\2\2\2\u011e\u011f\7\26\2\2\u011f\u0120\7\"\2\2\u0120")
+        buf.write("\u0121\5J&\2\u0121\u0122\7#\2\2\u0122\67\3\2\2\2\u0123")
+        buf.write("\u0124\7\35\2\2\u0124\u0125\7&\2\2\u0125\u0126\7\20\2")
+        buf.write("\2\u0126\u0127\7\"\2\2\u0127\u0128\5:\36\2\u0128\u0129")
+        buf.write("\7#\2\2\u01299\3\2\2\2\u012a\u012b\5L\'\2\u012b\u012c")
+        buf.write("\7(\2\2\u012c\u012d\5<\37\2\u012d\u012e\7(\2\2\u012e\u012f")
+        buf.write("\5L\'\2\u012f;\3\2\2\2\u0130\u0131\7\27\2\2\u0131\u0132")
+        buf.write("\7\"\2\2\u0132\u0133\5J&\2\u0133\u0134\7(\2\2\u0134\u0135")
+        buf.write("\5L\'\2\u0135\u0136\7#\2\2\u0136=\3\2\2\2\u0137\u0138")
+        buf.write("\7\35\2\2\u0138\u0139\7&\2\2\u0139\u013a\7\25\2\2\u013a")
+        buf.write("\u013b\7\"\2\2\u013b\u013c\5@!\2\u013c\u013d\7#\2\2\u013d")
+        buf.write("?\3\2\2\2\u013e\u013f\5<\37\2\u013f\u0140\7(\2\2\u0140")
+        buf.write("\u0141\5L\'\2\u0141A\3\2\2\2\u0142\u0143\7\35\2\2\u0143")
+        buf.write("\u0144\7&\2\2\u0144\u0145\7\21\2\2\u0145\u0146\7\"\2\2")
+        buf.write("\u0146\u0147\5D#\2\u0147\u0148\7#\2\2\u0148C\3\2\2\2\u0149")
+        buf.write("\u014a\5J&\2\u014a\u014b\7(\2\2\u014b\u014c\5J&\2\u014c")
+        buf.write("\u0154\3\2\2\2\u014d\u014e\5J&\2\u014e\u014f\7(\2\2\u014f")
+        buf.write("\u0150\5J&\2\u0150\u0151\7(\2\2\u0151\u0152\5J&\2\u0152")
+        buf.write("\u0154\3\2\2\2\u0153\u0149\3\2\2\2\u0153\u014d\3\2\2\2")
+        buf.write("\u0154E\3\2\2\2\u0155\u0156\7\35\2\2\u0156\u0157\7&\2")
+        buf.write("\2\u0157\u0158\7\22\2\2\u0158\u0159\7\"\2\2\u0159\u015a")
+        buf.write("\5H%\2\u015a\u015b\7#\2\2\u015bG\3\2\2\2\u015c\u0166\5")
+        buf.write("J&\2\u015d\u015e\5J&\2\u015e\u015f\7(\2\2\u015f\u0160")
+        buf.write("\5L\'\2\u0160\u0166\3\2\2\2\u0161\u0162\5J&\2\u0162\u0163")
+        buf.write("\7(\2\2\u0163\u0164\5J&\2\u0164\u0166\3\2\2\2\u0165\u015c")
+        buf.write("\3\2\2\2\u0165\u015d\3\2\2\2\u0165\u0161\3\2\2\2\u0166")
+        buf.write("I\3\2\2\2\u0167\u0168\5L\'\2\u0168\u0169\7(\2\2\u0169")
+        buf.write("\u016a\5L\'\2\u016aK\3\2\2\2\u016b\u016c\t\4\2\2\u016c")
+        buf.write("M\3\2\2\2\u016d\u016e\t\5\2\2\u016eO\3\2\2\2\27SY_ly~")
+        buf.write("\u008c\u009a\u00a8\u00b3\u00c6\u00d0\u00d7\u00e2\u00ee")
+        buf.write("\u0102\u0108\u010e\u0118\u0153\u0165")
         return buf.getvalue()
 
 
@@ -179,16 +184,17 @@ class ArtGrammarParser ( Parser ):
                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "'('", "')'", "'{'", "'}'", "'.'", "'='" ]
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "'('", "')'", "'{'", "'}'", "'.'", "'='" ]
 
-    symbolicNames = [ "<INVALID>", "RECTANGLE", "SQUARE", "CIRCLE", "DOT", 
-                      "STRAIGHT", "ARC", "PIXEL", "IF", "ELSE", "ELIF", 
-                      "OUTLINE", "DRAW", "SIZE", "FOR", "DEF", "FILL", "CANVAS", 
-                      "RGB", "CONSTANT", "GLOBAL", "BREAK", "CONTINUE", 
-                      "INTEGER", "IDENTIFIER", "MATH_OP", "INCDEC_OP", "COND_OP", 
-                      "LOGICAL_OP", "PAREN_START", "PAREN_END", "CURLY_START", 
-                      "CURLY_END", "DOT_NOTATION", "ASSIGN_OP", "SEPARATOR", 
-                      "SEMICOL_SEP", "WS" ]
+    symbolicNames = [ "<INVALID>", "TRUE", "FALSE", "BOOL", "RECTANGLE", 
+                      "SQUARE", "CIRCLE", "DOT", "STRAIGHT", "ARC", "PIXEL", 
+                      "IF", "ELSE", "ELIF", "OUTLINE", "DRAW", "SIZE", "FOR", 
+                      "DEF", "FILL", "CANVAS", "RGB", "CONSTANT", "GLOBAL", 
+                      "BREAK", "CONTINUE", "INTEGER", "IDENTIFIER", "MATH_OP", 
+                      "INCDEC_OP", "COND_OP", "LOGICAL_OP", "PAREN_START", 
+                      "PAREN_END", "CURLY_START", "CURLY_END", "DOT_NOTATION", 
+                      "ASSIGN_OP", "SEPARATOR", "SEMICOL_SEP", "WS" ]
 
     RULE_expr = 0
     RULE_func = 1
@@ -203,36 +209,37 @@ class ArtGrammarParser ( Parser ):
     RULE_loop_incdec = 10
     RULE_init = 11
     RULE_init_int = 12
-    RULE_func_call = 13
-    RULE_call_params = 14
-    RULE_if_else = 15
-    RULE_if_cond = 16
-    RULE_elif_cond = 17
-    RULE_else_cond = 18
-    RULE_condition_base = 19
-    RULE_condition_body = 20
-    RULE_condition = 21
-    RULE_ifel_body = 22
-    RULE_math_expr = 23
-    RULE_computation = 24
-    RULE_canvas_def = 25
-    RULE_outline_def = 26
-    RULE_outline_params = 27
-    RULE_rgb_def = 28
-    RULE_fill_def = 29
-    RULE_fill_params = 30
-    RULE_draw_shape = 31
-    RULE_draw_params = 32
-    RULE_size_shape = 33
-    RULE_size_params = 34
-    RULE_two_params = 35
-    RULE_value_type = 36
-    RULE_data_type = 37
+    RULE_init_bool = 13
+    RULE_func_call = 14
+    RULE_call_params = 15
+    RULE_if_else = 16
+    RULE_if_cond = 17
+    RULE_elif_cond = 18
+    RULE_else_cond = 19
+    RULE_condition_base = 20
+    RULE_condition_body = 21
+    RULE_condition = 22
+    RULE_ifel_body = 23
+    RULE_math_expr = 24
+    RULE_computation = 25
+    RULE_canvas_def = 26
+    RULE_outline_def = 27
+    RULE_outline_params = 28
+    RULE_rgb_def = 29
+    RULE_fill_def = 30
+    RULE_fill_params = 31
+    RULE_draw_shape = 32
+    RULE_draw_params = 33
+    RULE_size_shape = 34
+    RULE_size_params = 35
+    RULE_two_params = 36
+    RULE_value_type = 37
+    RULE_data_type = 38
 
     ruleNames =  [ "expr", "func", "consts", "glob", "func_params", "code", 
                    "loop", "loop_body", "loop_init", "loop_cond", "loop_incdec", 
-                   "init", "init_int", "func_call", "call_params", "if_else", 
-                   "if_cond", "elif_cond", "else_cond", "condition_base", 
+                   "init", "init_int", "init_bool", "func_call", "call_params", 
+                   "if_else", "if_cond", "elif_cond", "else_cond", "condition_base", 
                    "condition_body", "condition", "ifel_body", "math_expr", 
                    "computation", "canvas_def", "outline_def", "outline_params", 
                    "rgb_def", "fill_def", "fill_params", "draw_shape", "draw_params", 
@@ -240,43 +247,46 @@ class ArtGrammarParser ( Parser ):
                    "data_type" ]
 
     EOF = Token.EOF
-    RECTANGLE=1
-    SQUARE=2
-    CIRCLE=3
-    DOT=4
-    STRAIGHT=5
-    ARC=6
-    PIXEL=7
-    IF=8
-    ELSE=9
-    ELIF=10
-    OUTLINE=11
-    DRAW=12
-    SIZE=13
-    FOR=14
-    DEF=15
-    FILL=16
-    CANVAS=17
-    RGB=18
-    CONSTANT=19
-    GLOBAL=20
-    BREAK=21
-    CONTINUE=22
-    INTEGER=23
-    IDENTIFIER=24
-    MATH_OP=25
-    INCDEC_OP=26
-    COND_OP=27
-    LOGICAL_OP=28
-    PAREN_START=29
-    PAREN_END=30
-    CURLY_START=31
-    CURLY_END=32
-    DOT_NOTATION=33
-    ASSIGN_OP=34
-    SEPARATOR=35
-    SEMICOL_SEP=36
-    WS=37
+    TRUE=1
+    FALSE=2
+    BOOL=3
+    RECTANGLE=4
+    SQUARE=5
+    CIRCLE=6
+    DOT=7
+    STRAIGHT=8
+    ARC=9
+    PIXEL=10
+    IF=11
+    ELSE=12
+    ELIF=13
+    OUTLINE=14
+    DRAW=15
+    SIZE=16
+    FOR=17
+    DEF=18
+    FILL=19
+    CANVAS=20
+    RGB=21
+    CONSTANT=22
+    GLOBAL=23
+    BREAK=24
+    CONTINUE=25
+    INTEGER=26
+    IDENTIFIER=27
+    MATH_OP=28
+    INCDEC_OP=29
+    COND_OP=30
+    LOGICAL_OP=31
+    PAREN_START=32
+    PAREN_END=33
+    CURLY_START=34
+    CURLY_END=35
+    DOT_NOTATION=36
+    ASSIGN_OP=37
+    SEPARATOR=38
+    SEMICOL_SEP=39
+    WS=40
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -345,37 +355,37 @@ class ArtGrammarParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 79
+            self.state = 81
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==ArtGrammarParser.CONSTANT:
-                self.state = 76
+                self.state = 78
                 self.consts()
-                self.state = 81
+                self.state = 83
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 85
+            self.state = 87
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==ArtGrammarParser.GLOBAL:
-                self.state = 82
+                self.state = 84
                 self.glob()
-                self.state = 87
+                self.state = 89
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 91
+            self.state = 93
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==ArtGrammarParser.DEF:
-                self.state = 88
+                self.state = 90
                 self.func()
-                self.state = 93
+                self.state = 95
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 94
+            self.state = 96
             self.match(ArtGrammarParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
@@ -448,60 +458,60 @@ class ArtGrammarParser ( Parser ):
         self.enterRule(localctx, 2, self.RULE_func)
         self._la = 0 # Token type
         try:
-            self.state = 122
+            self.state = 124
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 96
-                self.match(ArtGrammarParser.DEF)
-                self.state = 97
-                self.match(ArtGrammarParser.IDENTIFIER)
                 self.state = 98
-                self.match(ArtGrammarParser.PAREN_START)
+                self.match(ArtGrammarParser.DEF)
                 self.state = 99
-                self.match(ArtGrammarParser.PAREN_END)
+                self.match(ArtGrammarParser.IDENTIFIER)
                 self.state = 100
+                self.match(ArtGrammarParser.PAREN_START)
+                self.state = 101
+                self.match(ArtGrammarParser.PAREN_END)
+                self.state = 102
                 self.match(ArtGrammarParser.CURLY_START)
-                self.state = 104
+                self.state = 106
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ArtGrammarParser.RECTANGLE) | (1 << ArtGrammarParser.SQUARE) | (1 << ArtGrammarParser.CIRCLE) | (1 << ArtGrammarParser.DOT) | (1 << ArtGrammarParser.STRAIGHT) | (1 << ArtGrammarParser.ARC) | (1 << ArtGrammarParser.PIXEL) | (1 << ArtGrammarParser.IF) | (1 << ArtGrammarParser.FOR) | (1 << ArtGrammarParser.CANVAS) | (1 << ArtGrammarParser.IDENTIFIER))) != 0):
-                    self.state = 101
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ArtGrammarParser.BOOL) | (1 << ArtGrammarParser.RECTANGLE) | (1 << ArtGrammarParser.SQUARE) | (1 << ArtGrammarParser.CIRCLE) | (1 << ArtGrammarParser.DOT) | (1 << ArtGrammarParser.STRAIGHT) | (1 << ArtGrammarParser.ARC) | (1 << ArtGrammarParser.PIXEL) | (1 << ArtGrammarParser.IF) | (1 << ArtGrammarParser.FOR) | (1 << ArtGrammarParser.CANVAS) | (1 << ArtGrammarParser.IDENTIFIER))) != 0):
+                    self.state = 103
                     self.code()
-                    self.state = 106
+                    self.state = 108
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 107
+                self.state = 109
                 self.match(ArtGrammarParser.CURLY_END)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 108
-                self.match(ArtGrammarParser.DEF)
-                self.state = 109
-                self.match(ArtGrammarParser.IDENTIFIER)
                 self.state = 110
-                self.match(ArtGrammarParser.PAREN_START)
+                self.match(ArtGrammarParser.DEF)
                 self.state = 111
-                self.func_params()
+                self.match(ArtGrammarParser.IDENTIFIER)
                 self.state = 112
-                self.match(ArtGrammarParser.PAREN_END)
+                self.match(ArtGrammarParser.PAREN_START)
                 self.state = 113
+                self.func_params()
+                self.state = 114
+                self.match(ArtGrammarParser.PAREN_END)
+                self.state = 115
                 self.match(ArtGrammarParser.CURLY_START)
-                self.state = 117
+                self.state = 119
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ArtGrammarParser.RECTANGLE) | (1 << ArtGrammarParser.SQUARE) | (1 << ArtGrammarParser.CIRCLE) | (1 << ArtGrammarParser.DOT) | (1 << ArtGrammarParser.STRAIGHT) | (1 << ArtGrammarParser.ARC) | (1 << ArtGrammarParser.PIXEL) | (1 << ArtGrammarParser.IF) | (1 << ArtGrammarParser.FOR) | (1 << ArtGrammarParser.CANVAS) | (1 << ArtGrammarParser.IDENTIFIER))) != 0):
-                    self.state = 114
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ArtGrammarParser.BOOL) | (1 << ArtGrammarParser.RECTANGLE) | (1 << ArtGrammarParser.SQUARE) | (1 << ArtGrammarParser.CIRCLE) | (1 << ArtGrammarParser.DOT) | (1 << ArtGrammarParser.STRAIGHT) | (1 << ArtGrammarParser.ARC) | (1 << ArtGrammarParser.PIXEL) | (1 << ArtGrammarParser.IF) | (1 << ArtGrammarParser.FOR) | (1 << ArtGrammarParser.CANVAS) | (1 << ArtGrammarParser.IDENTIFIER))) != 0):
+                    self.state = 116
                     self.code()
-                    self.state = 119
+                    self.state = 121
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 120
+                self.state = 122
                 self.match(ArtGrammarParser.CURLY_END)
                 pass
 
@@ -524,6 +534,9 @@ class ArtGrammarParser ( Parser ):
 
         def CONSTANT(self):
             return self.getToken(ArtGrammarParser.CONSTANT, 0)
+
+        def PIXEL(self):
+            return self.getToken(ArtGrammarParser.PIXEL, 0)
 
         def init_int(self):
             return self.getTypedRuleContext(ArtGrammarParser.Init_intContext,0)
@@ -555,9 +568,11 @@ class ArtGrammarParser ( Parser ):
         self.enterRule(localctx, 4, self.RULE_consts)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 124
+            self.state = 126
             self.match(ArtGrammarParser.CONSTANT)
-            self.state = 125
+            self.state = 127
+            self.match(ArtGrammarParser.PIXEL)
+            self.state = 128
             self.init_int()
         except RecognitionException as re:
             localctx.exception = re
@@ -578,9 +593,8 @@ class ArtGrammarParser ( Parser ):
         def GLOBAL(self):
             return self.getToken(ArtGrammarParser.GLOBAL, 0)
 
-        def data_type(self):
-            return self.getTypedRuleContext(ArtGrammarParser.Data_typeContext,0)
-
+        def PIXEL(self):
+            return self.getToken(ArtGrammarParser.PIXEL, 0)
 
         def init_int(self):
             return self.getTypedRuleContext(ArtGrammarParser.Init_intContext,0)
@@ -612,11 +626,11 @@ class ArtGrammarParser ( Parser ):
         self.enterRule(localctx, 6, self.RULE_glob)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 127
+            self.state = 130
             self.match(ArtGrammarParser.GLOBAL)
-            self.state = 128
-            self.data_type()
-            self.state = 129
+            self.state = 131
+            self.match(ArtGrammarParser.PIXEL)
+            self.state = 132
             self.init_int()
         except RecognitionException as re:
             localctx.exception = re
@@ -669,22 +683,22 @@ class ArtGrammarParser ( Parser ):
         localctx = ArtGrammarParser.Func_paramsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_func_params)
         try:
-            self.state = 135
+            self.state = 138
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 131
+                self.state = 134
                 self.match(ArtGrammarParser.IDENTIFIER)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 132
+                self.state = 135
                 self.match(ArtGrammarParser.IDENTIFIER)
-                self.state = 133
+                self.state = 136
                 self.match(ArtGrammarParser.SEPARATOR)
-                self.state = 134
+                self.state = 137
                 self.func_params()
                 pass
 
@@ -711,6 +725,10 @@ class ArtGrammarParser ( Parser ):
 
         def init_int(self):
             return self.getTypedRuleContext(ArtGrammarParser.Init_intContext,0)
+
+
+        def init_bool(self):
+            return self.getTypedRuleContext(ArtGrammarParser.Init_boolContext,0)
 
 
         def math_expr(self):
@@ -774,72 +792,78 @@ class ArtGrammarParser ( Parser ):
         localctx = ArtGrammarParser.CodeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_code)
         try:
-            self.state = 148
+            self.state = 152
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 137
+                self.state = 140
                 self.init()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 138
+                self.state = 141
                 self.init_int()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 139
-                self.math_expr()
+                self.state = 142
+                self.init_bool()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 140
-                self.size_shape()
+                self.state = 143
+                self.math_expr()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 141
-                self.draw_shape()
+                self.state = 144
+                self.size_shape()
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 142
-                self.canvas_def()
+                self.state = 145
+                self.draw_shape()
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 143
-                self.fill_def()
+                self.state = 146
+                self.canvas_def()
                 pass
 
             elif la_ == 8:
                 self.enterOuterAlt(localctx, 8)
-                self.state = 144
-                self.outline_def()
+                self.state = 147
+                self.fill_def()
                 pass
 
             elif la_ == 9:
                 self.enterOuterAlt(localctx, 9)
-                self.state = 145
-                self.func_call()
+                self.state = 148
+                self.outline_def()
                 pass
 
             elif la_ == 10:
                 self.enterOuterAlt(localctx, 10)
-                self.state = 146
-                self.if_else()
+                self.state = 149
+                self.func_call()
                 pass
 
             elif la_ == 11:
                 self.enterOuterAlt(localctx, 11)
-                self.state = 147
+                self.state = 150
+                self.if_else()
+                pass
+
+            elif la_ == 12:
+                self.enterOuterAlt(localctx, 12)
+                self.state = 151
                 self.loop()
                 pass
 
@@ -911,19 +935,19 @@ class ArtGrammarParser ( Parser ):
         self.enterRule(localctx, 12, self.RULE_loop)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 150
-            self.match(ArtGrammarParser.FOR)
-            self.state = 151
-            self.match(ArtGrammarParser.PAREN_START)
-            self.state = 152
-            self.loop_init()
-            self.state = 153
-            self.loop_cond()
             self.state = 154
-            self.loop_incdec()
+            self.match(ArtGrammarParser.FOR)
             self.state = 155
-            self.match(ArtGrammarParser.PAREN_END)
+            self.match(ArtGrammarParser.PAREN_START)
             self.state = 156
+            self.loop_init()
+            self.state = 157
+            self.loop_cond()
+            self.state = 158
+            self.loop_incdec()
+            self.state = 159
+            self.match(ArtGrammarParser.PAREN_END)
+            self.state = 160
             self.loop_body()
         except RecognitionException as re:
             localctx.exception = re
@@ -981,19 +1005,19 @@ class ArtGrammarParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 158
-            self.match(ArtGrammarParser.CURLY_START)
             self.state = 162
+            self.match(ArtGrammarParser.CURLY_START)
+            self.state = 166
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ArtGrammarParser.RECTANGLE) | (1 << ArtGrammarParser.SQUARE) | (1 << ArtGrammarParser.CIRCLE) | (1 << ArtGrammarParser.DOT) | (1 << ArtGrammarParser.STRAIGHT) | (1 << ArtGrammarParser.ARC) | (1 << ArtGrammarParser.PIXEL) | (1 << ArtGrammarParser.IF) | (1 << ArtGrammarParser.FOR) | (1 << ArtGrammarParser.CANVAS) | (1 << ArtGrammarParser.IDENTIFIER))) != 0):
-                self.state = 159
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ArtGrammarParser.BOOL) | (1 << ArtGrammarParser.RECTANGLE) | (1 << ArtGrammarParser.SQUARE) | (1 << ArtGrammarParser.CIRCLE) | (1 << ArtGrammarParser.DOT) | (1 << ArtGrammarParser.STRAIGHT) | (1 << ArtGrammarParser.ARC) | (1 << ArtGrammarParser.PIXEL) | (1 << ArtGrammarParser.IF) | (1 << ArtGrammarParser.FOR) | (1 << ArtGrammarParser.CANVAS) | (1 << ArtGrammarParser.IDENTIFIER))) != 0):
+                self.state = 163
                 self.code()
-                self.state = 164
+                self.state = 168
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 165
+            self.state = 169
             self.match(ArtGrammarParser.CURLY_END)
         except RecognitionException as re:
             localctx.exception = re
@@ -1047,22 +1071,22 @@ class ArtGrammarParser ( Parser ):
         localctx = ArtGrammarParser.Loop_initContext(self, self._ctx, self.state)
         self.enterRule(localctx, 16, self.RULE_loop_init)
         try:
-            self.state = 173
+            self.state = 177
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,9,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 167
+                self.state = 171
                 self.init_int()
-                self.state = 168
+                self.state = 172
                 self.match(ArtGrammarParser.SEMICOL_SEP)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 170
+                self.state = 174
                 self.math_expr()
-                self.state = 171
+                self.state = 175
                 self.match(ArtGrammarParser.SEMICOL_SEP)
                 pass
 
@@ -1116,9 +1140,9 @@ class ArtGrammarParser ( Parser ):
         self.enterRule(localctx, 18, self.RULE_loop_cond)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 175
+            self.state = 179
             self.condition_body()
-            self.state = 176
+            self.state = 180
             self.match(ArtGrammarParser.SEMICOL_SEP)
         except RecognitionException as re:
             localctx.exception = re
@@ -1168,9 +1192,9 @@ class ArtGrammarParser ( Parser ):
         self.enterRule(localctx, 20, self.RULE_loop_incdec)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 178
+            self.state = 182
             self.match(ArtGrammarParser.INTEGER)
-            self.state = 179
+            self.state = 183
             self.match(ArtGrammarParser.INCDEC_OP)
         except RecognitionException as re:
             localctx.exception = re
@@ -1221,9 +1245,9 @@ class ArtGrammarParser ( Parser ):
         self.enterRule(localctx, 22, self.RULE_init)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 181
+            self.state = 185
             self.data_type()
-            self.state = 182
+            self.state = 186
             self.match(ArtGrammarParser.IDENTIFIER)
         except RecognitionException as re:
             localctx.exception = re
@@ -1241,8 +1265,11 @@ class ArtGrammarParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def IDENTIFIER(self):
-            return self.getToken(ArtGrammarParser.IDENTIFIER, 0)
+        def IDENTIFIER(self, i:int=None):
+            if i is None:
+                return self.getTokens(ArtGrammarParser.IDENTIFIER)
+            else:
+                return self.getToken(ArtGrammarParser.IDENTIFIER, i)
 
         def ASSIGN_OP(self):
             return self.getToken(ArtGrammarParser.ASSIGN_OP, 0)
@@ -1274,14 +1301,101 @@ class ArtGrammarParser ( Parser ):
 
         localctx = ArtGrammarParser.Init_intContext(self, self._ctx, self.state)
         self.enterRule(localctx, 24, self.RULE_init_int)
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 184
+            self.state = 188
             self.match(ArtGrammarParser.IDENTIFIER)
-            self.state = 185
+            self.state = 189
             self.match(ArtGrammarParser.ASSIGN_OP)
-            self.state = 186
-            self.match(ArtGrammarParser.INTEGER)
+            self.state = 190
+            _la = self._input.LA(1)
+            if not(_la==ArtGrammarParser.INTEGER or _la==ArtGrammarParser.IDENTIFIER):
+                self._errHandler.recoverInline(self)
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Init_boolContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def IDENTIFIER(self, i:int=None):
+            if i is None:
+                return self.getTokens(ArtGrammarParser.IDENTIFIER)
+            else:
+                return self.getToken(ArtGrammarParser.IDENTIFIER, i)
+
+        def ASSIGN_OP(self):
+            return self.getToken(ArtGrammarParser.ASSIGN_OP, 0)
+
+        def TRUE(self):
+            return self.getToken(ArtGrammarParser.TRUE, 0)
+
+        def FALSE(self):
+            return self.getToken(ArtGrammarParser.FALSE, 0)
+
+        def getRuleIndex(self):
+            return ArtGrammarParser.RULE_init_bool
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInit_bool" ):
+                listener.enterInit_bool(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInit_bool" ):
+                listener.exitInit_bool(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInit_bool" ):
+                return visitor.visitInit_bool(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def init_bool(self):
+
+        localctx = ArtGrammarParser.Init_boolContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 26, self.RULE_init_bool)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 192
+            self.match(ArtGrammarParser.IDENTIFIER)
+            self.state = 193
+            self.match(ArtGrammarParser.ASSIGN_OP)
+            self.state = 196
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [ArtGrammarParser.TRUE, ArtGrammarParser.FALSE]:
+                self.state = 194
+                _la = self._input.LA(1)
+                if not(_la==ArtGrammarParser.TRUE or _la==ArtGrammarParser.FALSE):
+                    self._errHandler.recoverInline(self)
+                else:
+                    self._errHandler.reportMatch(self)
+                    self.consume()
+                pass
+            elif token in [ArtGrammarParser.IDENTIFIER]:
+                self.state = 195
+                self.match(ArtGrammarParser.IDENTIFIER)
+                pass
+            else:
+                raise NoViableAltException(self)
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1334,30 +1448,30 @@ class ArtGrammarParser ( Parser ):
     def func_call(self):
 
         localctx = ArtGrammarParser.Func_callContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_func_call)
+        self.enterRule(localctx, 28, self.RULE_func_call)
         try:
-            self.state = 196
+            self.state = 206
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,10,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,11,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 188
+                self.state = 198
                 self.match(ArtGrammarParser.IDENTIFIER)
-                self.state = 189
+                self.state = 199
                 self.match(ArtGrammarParser.PAREN_START)
-                self.state = 190
+                self.state = 200
                 self.match(ArtGrammarParser.PAREN_END)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 191
+                self.state = 201
                 self.match(ArtGrammarParser.IDENTIFIER)
-                self.state = 192
+                self.state = 202
                 self.match(ArtGrammarParser.PAREN_START)
-                self.state = 193
+                self.state = 203
                 self.call_params()
-                self.state = 194
+                self.state = 204
                 self.match(ArtGrammarParser.PAREN_END)
                 pass
 
@@ -1414,21 +1528,21 @@ class ArtGrammarParser ( Parser ):
     def call_params(self):
 
         localctx = ArtGrammarParser.Call_paramsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_call_params)
+        self.enterRule(localctx, 30, self.RULE_call_params)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 198
+            self.state = 208
             self.value_type()
-            self.state = 203
+            self.state = 213
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==ArtGrammarParser.SEPARATOR:
-                self.state = 199
+                self.state = 209
                 self.match(ArtGrammarParser.SEPARATOR)
-                self.state = 200
+                self.state = 210
                 self.value_type()
-                self.state = 205
+                self.state = 215
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1483,32 +1597,32 @@ class ArtGrammarParser ( Parser ):
     def if_else(self):
 
         localctx = ArtGrammarParser.If_elseContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 30, self.RULE_if_else)
+        self.enterRule(localctx, 32, self.RULE_if_else)
         try:
-            self.state = 214
+            self.state = 224
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,12,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,13,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 206
+                self.state = 216
                 self.if_cond()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 207
+                self.state = 217
                 self.if_cond()
-                self.state = 208
+                self.state = 218
                 self.elif_cond()
-                self.state = 209
+                self.state = 219
                 self.else_cond()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 211
+                self.state = 221
                 self.if_cond()
-                self.state = 212
+                self.state = 222
                 self.else_cond()
                 pass
 
@@ -1563,14 +1677,14 @@ class ArtGrammarParser ( Parser ):
     def if_cond(self):
 
         localctx = ArtGrammarParser.If_condContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 32, self.RULE_if_cond)
+        self.enterRule(localctx, 34, self.RULE_if_cond)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 216
+            self.state = 226
             self.match(ArtGrammarParser.IF)
-            self.state = 217
+            self.state = 227
             self.condition()
-            self.state = 218
+            self.state = 228
             self.ifel_body()
         except RecognitionException as re:
             localctx.exception = re
@@ -1631,21 +1745,21 @@ class ArtGrammarParser ( Parser ):
     def elif_cond(self):
 
         localctx = ArtGrammarParser.Elif_condContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 34, self.RULE_elif_cond)
+        self.enterRule(localctx, 36, self.RULE_elif_cond)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 224 
+            self.state = 234 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 220
+                self.state = 230
                 self.match(ArtGrammarParser.ELIF)
-                self.state = 221
+                self.state = 231
                 self.condition()
-                self.state = 222
+                self.state = 232
                 self.ifel_body()
-                self.state = 226 
+                self.state = 236 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==ArtGrammarParser.ELIF):
@@ -1697,12 +1811,12 @@ class ArtGrammarParser ( Parser ):
     def else_cond(self):
 
         localctx = ArtGrammarParser.Else_condContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 36, self.RULE_else_cond)
+        self.enterRule(localctx, 38, self.RULE_else_cond)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 228
+            self.state = 238
             self.match(ArtGrammarParser.ELSE)
-            self.state = 229
+            self.state = 239
             self.ifel_body()
         except RecognitionException as re:
             localctx.exception = re
@@ -1753,14 +1867,14 @@ class ArtGrammarParser ( Parser ):
     def condition_base(self):
 
         localctx = ArtGrammarParser.Condition_baseContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 38, self.RULE_condition_base)
+        self.enterRule(localctx, 40, self.RULE_condition_base)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 231
+            self.state = 241
             self.match(ArtGrammarParser.PAREN_START)
-            self.state = 232
+            self.state = 242
             self.condition_body()
-            self.state = 233
+            self.state = 243
             self.match(ArtGrammarParser.PAREN_END)
         except RecognitionException as re:
             localctx.exception = re
@@ -1811,14 +1925,14 @@ class ArtGrammarParser ( Parser ):
     def condition_body(self):
 
         localctx = ArtGrammarParser.Condition_bodyContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 40, self.RULE_condition_body)
+        self.enterRule(localctx, 42, self.RULE_condition_body)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 235
+            self.state = 245
             self.value_type()
-            self.state = 236
+            self.state = 246
             self.match(ArtGrammarParser.COND_OP)
-            self.state = 237
+            self.state = 247
             self.value_type()
         except RecognitionException as re:
             localctx.exception = re
@@ -1878,37 +1992,37 @@ class ArtGrammarParser ( Parser ):
     def condition(self):
 
         localctx = ArtGrammarParser.ConditionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 42, self.RULE_condition)
+        self.enterRule(localctx, 44, self.RULE_condition)
         try:
-            self.state = 252
+            self.state = 262
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,15,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 239
+                self.state = 249
                 self.condition_base()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 240
+                self.state = 250
                 self.match(ArtGrammarParser.PAREN_START)
-                self.state = 246
+                self.state = 256
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,14,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,15,self._ctx)
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
-                        self.state = 241
+                        self.state = 251
                         self.condition_base()
-                        self.state = 242
+                        self.state = 252
                         self.match(ArtGrammarParser.LOGICAL_OP) 
-                    self.state = 248
+                    self.state = 258
                     self._errHandler.sync(self)
-                    _alt = self._interp.adaptivePredict(self._input,14,self._ctx)
+                    _alt = self._interp.adaptivePredict(self._input,15,self._ctx)
 
-                self.state = 249
+                self.state = 259
                 self.condition_base()
-                self.state = 250
+                self.state = 260
                 self.match(ArtGrammarParser.PAREN_END)
                 pass
 
@@ -1965,23 +2079,23 @@ class ArtGrammarParser ( Parser ):
     def ifel_body(self):
 
         localctx = ArtGrammarParser.Ifel_bodyContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 44, self.RULE_ifel_body)
+        self.enterRule(localctx, 46, self.RULE_ifel_body)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 254
+            self.state = 264
             self.match(ArtGrammarParser.CURLY_START)
-            self.state = 258
+            self.state = 268
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ArtGrammarParser.RECTANGLE) | (1 << ArtGrammarParser.SQUARE) | (1 << ArtGrammarParser.CIRCLE) | (1 << ArtGrammarParser.DOT) | (1 << ArtGrammarParser.STRAIGHT) | (1 << ArtGrammarParser.ARC) | (1 << ArtGrammarParser.PIXEL) | (1 << ArtGrammarParser.IF) | (1 << ArtGrammarParser.FOR) | (1 << ArtGrammarParser.CANVAS) | (1 << ArtGrammarParser.IDENTIFIER))) != 0):
-                self.state = 255
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ArtGrammarParser.BOOL) | (1 << ArtGrammarParser.RECTANGLE) | (1 << ArtGrammarParser.SQUARE) | (1 << ArtGrammarParser.CIRCLE) | (1 << ArtGrammarParser.DOT) | (1 << ArtGrammarParser.STRAIGHT) | (1 << ArtGrammarParser.ARC) | (1 << ArtGrammarParser.PIXEL) | (1 << ArtGrammarParser.IF) | (1 << ArtGrammarParser.FOR) | (1 << ArtGrammarParser.CANVAS) | (1 << ArtGrammarParser.IDENTIFIER))) != 0):
+                self.state = 265
                 self.code()
-                self.state = 260
+                self.state = 270
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 261
+            self.state = 271
             self.match(ArtGrammarParser.CURLY_END)
         except RecognitionException as re:
             localctx.exception = re
@@ -2035,26 +2149,26 @@ class ArtGrammarParser ( Parser ):
     def math_expr(self):
 
         localctx = ArtGrammarParser.Math_exprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 46, self.RULE_math_expr)
+        self.enterRule(localctx, 48, self.RULE_math_expr)
         try:
-            self.state = 268
+            self.state = 278
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 263
+                self.state = 273
                 self.match(ArtGrammarParser.IDENTIFIER)
-                self.state = 264
+                self.state = 274
                 self.match(ArtGrammarParser.ASSIGN_OP)
-                self.state = 265
+                self.state = 275
                 self.computation()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 266
+                self.state = 276
                 self.match(ArtGrammarParser.IDENTIFIER)
-                self.state = 267
+                self.state = 277
                 self.match(ArtGrammarParser.INCDEC_OP)
                 pass
 
@@ -2108,14 +2222,14 @@ class ArtGrammarParser ( Parser ):
     def computation(self):
 
         localctx = ArtGrammarParser.ComputationContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 48, self.RULE_computation)
+        self.enterRule(localctx, 50, self.RULE_computation)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 270
+            self.state = 280
             self.value_type()
-            self.state = 271
+            self.state = 281
             self.match(ArtGrammarParser.MATH_OP)
-            self.state = 272
+            self.state = 282
             self.value_type()
         except RecognitionException as re:
             localctx.exception = re
@@ -2169,16 +2283,16 @@ class ArtGrammarParser ( Parser ):
     def canvas_def(self):
 
         localctx = ArtGrammarParser.Canvas_defContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 50, self.RULE_canvas_def)
+        self.enterRule(localctx, 52, self.RULE_canvas_def)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 274
+            self.state = 284
             self.match(ArtGrammarParser.CANVAS)
-            self.state = 275
+            self.state = 285
             self.match(ArtGrammarParser.PAREN_START)
-            self.state = 276
+            self.state = 286
             self.two_params()
-            self.state = 277
+            self.state = 287
             self.match(ArtGrammarParser.PAREN_END)
         except RecognitionException as re:
             localctx.exception = re
@@ -2238,20 +2352,20 @@ class ArtGrammarParser ( Parser ):
     def outline_def(self):
 
         localctx = ArtGrammarParser.Outline_defContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 52, self.RULE_outline_def)
+        self.enterRule(localctx, 54, self.RULE_outline_def)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 279
+            self.state = 289
             self.match(ArtGrammarParser.IDENTIFIER)
-            self.state = 280
+            self.state = 290
             self.match(ArtGrammarParser.DOT_NOTATION)
-            self.state = 281
+            self.state = 291
             self.match(ArtGrammarParser.OUTLINE)
-            self.state = 282
+            self.state = 292
             self.match(ArtGrammarParser.PAREN_START)
-            self.state = 283
+            self.state = 293
             self.outline_params()
-            self.state = 284
+            self.state = 294
             self.match(ArtGrammarParser.PAREN_END)
         except RecognitionException as re:
             localctx.exception = re
@@ -2309,18 +2423,18 @@ class ArtGrammarParser ( Parser ):
     def outline_params(self):
 
         localctx = ArtGrammarParser.Outline_paramsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 54, self.RULE_outline_params)
+        self.enterRule(localctx, 56, self.RULE_outline_params)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 286
+            self.state = 296
             self.value_type()
-            self.state = 287
+            self.state = 297
             self.match(ArtGrammarParser.SEPARATOR)
-            self.state = 288
+            self.state = 298
             self.rgb_def()
-            self.state = 289
+            self.state = 299
             self.match(ArtGrammarParser.SEPARATOR)
-            self.state = 290
+            self.state = 300
             self.value_type()
         except RecognitionException as re:
             localctx.exception = re
@@ -2381,20 +2495,20 @@ class ArtGrammarParser ( Parser ):
     def rgb_def(self):
 
         localctx = ArtGrammarParser.Rgb_defContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 56, self.RULE_rgb_def)
+        self.enterRule(localctx, 58, self.RULE_rgb_def)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 292
+            self.state = 302
             self.match(ArtGrammarParser.RGB)
-            self.state = 293
+            self.state = 303
             self.match(ArtGrammarParser.PAREN_START)
-            self.state = 294
+            self.state = 304
             self.two_params()
-            self.state = 295
+            self.state = 305
             self.match(ArtGrammarParser.SEPARATOR)
-            self.state = 296
+            self.state = 306
             self.value_type()
-            self.state = 297
+            self.state = 307
             self.match(ArtGrammarParser.PAREN_END)
         except RecognitionException as re:
             localctx.exception = re
@@ -2454,20 +2568,20 @@ class ArtGrammarParser ( Parser ):
     def fill_def(self):
 
         localctx = ArtGrammarParser.Fill_defContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 58, self.RULE_fill_def)
+        self.enterRule(localctx, 60, self.RULE_fill_def)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 299
+            self.state = 309
             self.match(ArtGrammarParser.IDENTIFIER)
-            self.state = 300
+            self.state = 310
             self.match(ArtGrammarParser.DOT_NOTATION)
-            self.state = 301
+            self.state = 311
             self.match(ArtGrammarParser.FILL)
-            self.state = 302
+            self.state = 312
             self.match(ArtGrammarParser.PAREN_START)
-            self.state = 303
+            self.state = 313
             self.fill_params()
-            self.state = 304
+            self.state = 314
             self.match(ArtGrammarParser.PAREN_END)
         except RecognitionException as re:
             localctx.exception = re
@@ -2519,14 +2633,14 @@ class ArtGrammarParser ( Parser ):
     def fill_params(self):
 
         localctx = ArtGrammarParser.Fill_paramsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 60, self.RULE_fill_params)
+        self.enterRule(localctx, 62, self.RULE_fill_params)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 306
+            self.state = 316
             self.rgb_def()
-            self.state = 307
+            self.state = 317
             self.match(ArtGrammarParser.SEPARATOR)
-            self.state = 308
+            self.state = 318
             self.value_type()
         except RecognitionException as re:
             localctx.exception = re
@@ -2586,20 +2700,20 @@ class ArtGrammarParser ( Parser ):
     def draw_shape(self):
 
         localctx = ArtGrammarParser.Draw_shapeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 62, self.RULE_draw_shape)
+        self.enterRule(localctx, 64, self.RULE_draw_shape)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 310
+            self.state = 320
             self.match(ArtGrammarParser.IDENTIFIER)
-            self.state = 311
+            self.state = 321
             self.match(ArtGrammarParser.DOT_NOTATION)
-            self.state = 312
+            self.state = 322
             self.match(ArtGrammarParser.DRAW)
-            self.state = 313
+            self.state = 323
             self.match(ArtGrammarParser.PAREN_START)
-            self.state = 314
+            self.state = 324
             self.draw_params()
-            self.state = 315
+            self.state = 325
             self.match(ArtGrammarParser.PAREN_END)
         except RecognitionException as re:
             localctx.exception = re
@@ -2653,32 +2767,32 @@ class ArtGrammarParser ( Parser ):
     def draw_params(self):
 
         localctx = ArtGrammarParser.Draw_paramsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 64, self.RULE_draw_params)
+        self.enterRule(localctx, 66, self.RULE_draw_params)
         try:
-            self.state = 327
+            self.state = 337
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 317
+                self.state = 327
                 self.two_params()
-                self.state = 318
+                self.state = 328
                 self.match(ArtGrammarParser.SEPARATOR)
-                self.state = 319
+                self.state = 329
                 self.two_params()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 321
+                self.state = 331
                 self.two_params()
-                self.state = 322
+                self.state = 332
                 self.match(ArtGrammarParser.SEPARATOR)
-                self.state = 323
+                self.state = 333
                 self.two_params()
-                self.state = 324
+                self.state = 334
                 self.match(ArtGrammarParser.SEPARATOR)
-                self.state = 325
+                self.state = 335
                 self.two_params()
                 pass
 
@@ -2741,20 +2855,20 @@ class ArtGrammarParser ( Parser ):
     def size_shape(self):
 
         localctx = ArtGrammarParser.Size_shapeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 66, self.RULE_size_shape)
+        self.enterRule(localctx, 68, self.RULE_size_shape)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 329
+            self.state = 339
             self.match(ArtGrammarParser.IDENTIFIER)
-            self.state = 330
+            self.state = 340
             self.match(ArtGrammarParser.DOT_NOTATION)
-            self.state = 331
+            self.state = 341
             self.match(ArtGrammarParser.SIZE)
-            self.state = 332
+            self.state = 342
             self.match(ArtGrammarParser.PAREN_START)
-            self.state = 333
+            self.state = 343
             self.size_params()
-            self.state = 334
+            self.state = 344
             self.match(ArtGrammarParser.PAREN_END)
         except RecognitionException as re:
             localctx.exception = re
@@ -2809,34 +2923,34 @@ class ArtGrammarParser ( Parser ):
     def size_params(self):
 
         localctx = ArtGrammarParser.Size_paramsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 68, self.RULE_size_params)
+        self.enterRule(localctx, 70, self.RULE_size_params)
         try:
-            self.state = 345
+            self.state = 355
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 336
+                self.state = 346
                 self.two_params()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 337
+                self.state = 347
                 self.two_params()
-                self.state = 338
+                self.state = 348
                 self.match(ArtGrammarParser.SEPARATOR)
-                self.state = 339
+                self.state = 349
                 self.value_type()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 341
+                self.state = 351
                 self.two_params()
-                self.state = 342
+                self.state = 352
                 self.match(ArtGrammarParser.SEPARATOR)
-                self.state = 343
+                self.state = 353
                 self.two_params()
                 pass
 
@@ -2890,14 +3004,14 @@ class ArtGrammarParser ( Parser ):
     def two_params(self):
 
         localctx = ArtGrammarParser.Two_paramsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 70, self.RULE_two_params)
+        self.enterRule(localctx, 72, self.RULE_two_params)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 347
+            self.state = 357
             self.value_type()
-            self.state = 348
+            self.state = 358
             self.match(ArtGrammarParser.SEPARATOR)
-            self.state = 349
+            self.state = 359
             self.value_type()
         except RecognitionException as re:
             localctx.exception = re
@@ -2920,6 +3034,12 @@ class ArtGrammarParser ( Parser ):
 
         def INTEGER(self):
             return self.getToken(ArtGrammarParser.INTEGER, 0)
+
+        def TRUE(self):
+            return self.getToken(ArtGrammarParser.TRUE, 0)
+
+        def FALSE(self):
+            return self.getToken(ArtGrammarParser.FALSE, 0)
 
         def getRuleIndex(self):
             return ArtGrammarParser.RULE_value_type
@@ -2944,13 +3064,13 @@ class ArtGrammarParser ( Parser ):
     def value_type(self):
 
         localctx = ArtGrammarParser.Value_typeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 72, self.RULE_value_type)
+        self.enterRule(localctx, 74, self.RULE_value_type)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 351
+            self.state = 361
             _la = self._input.LA(1)
-            if not(_la==ArtGrammarParser.INTEGER or _la==ArtGrammarParser.IDENTIFIER):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ArtGrammarParser.TRUE) | (1 << ArtGrammarParser.FALSE) | (1 << ArtGrammarParser.INTEGER) | (1 << ArtGrammarParser.IDENTIFIER))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -2992,6 +3112,9 @@ class ArtGrammarParser ( Parser ):
         def PIXEL(self):
             return self.getToken(ArtGrammarParser.PIXEL, 0)
 
+        def BOOL(self):
+            return self.getToken(ArtGrammarParser.BOOL, 0)
+
         def getRuleIndex(self):
             return ArtGrammarParser.RULE_data_type
 
@@ -3015,13 +3138,13 @@ class ArtGrammarParser ( Parser ):
     def data_type(self):
 
         localctx = ArtGrammarParser.Data_typeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 74, self.RULE_data_type)
+        self.enterRule(localctx, 76, self.RULE_data_type)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 353
+            self.state = 363
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ArtGrammarParser.RECTANGLE) | (1 << ArtGrammarParser.SQUARE) | (1 << ArtGrammarParser.CIRCLE) | (1 << ArtGrammarParser.DOT) | (1 << ArtGrammarParser.STRAIGHT) | (1 << ArtGrammarParser.ARC) | (1 << ArtGrammarParser.PIXEL))) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ArtGrammarParser.BOOL) | (1 << ArtGrammarParser.RECTANGLE) | (1 << ArtGrammarParser.SQUARE) | (1 << ArtGrammarParser.CIRCLE) | (1 << ArtGrammarParser.DOT) | (1 << ArtGrammarParser.STRAIGHT) | (1 << ArtGrammarParser.ARC) | (1 << ArtGrammarParser.PIXEL))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)

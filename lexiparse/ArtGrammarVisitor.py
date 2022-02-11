@@ -74,6 +74,11 @@ class ArtGrammarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ArtGrammarParser#init_bool.
+    def visitInit_bool(self, ctx:ArtGrammarParser.Init_boolContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ArtGrammarParser#func_call.
     def visitFunc_call(self, ctx:ArtGrammarParser.Func_callContext):
         return self.visitChildren(ctx)

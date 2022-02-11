@@ -25,7 +25,6 @@ class ArtLangCompiler:
             self.ErrorCount  = tkErr + prErr
             return self.ErrorCount 
         except:
-            return self.ErrorCount 
-            print('Errors has been encounted.')
+            return 1
 
     

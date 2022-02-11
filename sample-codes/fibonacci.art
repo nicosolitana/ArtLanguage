@@ -1,0 +1,114 @@
+
+global Pixel prev = 0
+global Pixel curr = 0
+
+def fibonacci(n){
+    prev = 0
+    curr = 1
+	Pixel i
+	for(i=0; i <n; 1++){
+		Pixel temp
+		temp = curr
+		curr = prev + curr
+		prev = temp
+	}
+}
+
+def TraverseBack(n){
+	Pixel x
+	Pixel y
+	Pixel state
+	Pixel oldold
+	Pixel old
+	Bool isStart
+	Bool IsBackToZero
+	Pixel ss
+	Pixel xx
+	Pixel yy
+	Pixel temp
+    x = 0
+    y = 0
+	xx = 0
+	yy = 0
+    isStart = false
+    state = 0
+    oldold = 0
+    ss = curr * 20
+	Rectangle ra
+	ra.size(xx, yy, ss, ss)
+	ra.fill(rgb(142, 193, 64), 100)
+	ra.outline(5, rgb(4, 4, 4), 100)
+	oldold = curr
+	IsBackToZero = false
+	state = state + 1
+	Pixel j
+	n = n-1
+	for(j=n; i>=0; 1--){
+        old = curr
+        temp = prev
+        prev = curr - prev
+        curr = temp
+		
+		if(state == 0){
+			if(isStart == true){
+                y = y + old
+                oldold = old
+			}
+			IsBackToZero = false
+		}
+		elif(state == 1){
+			if(isStart == true){
+				Pixel val
+				val = old - curr
+				val = val + curr
+                x = x + val
+                y = old * curr
+			} 
+			else {
+				y = old - curr
+                x = oldold
+			}
+			IsBackToZero = false
+		}
+		elif(state == 2){
+			Pixel v
+			if(isStart == true){
+				v = old + x
+				y = oldold 
+                x = v - curr
+			} 
+			else {
+				v = old + curr
+                y = oldold - v
+				v = old - curr
+                x = x + v
+			}
+			IsBackToZero = false
+		} 
+		else {
+			y = y
+            x = x - curr
+            state = 0 
+            isStart = true
+            IsBackToZero = true
+		}
+		
+		if(IsBackToZero == false){
+            state = state + 1
+		}
+		ss = curr * 20
+		xx = x * 20
+		yy = y *20
+		Rectangle rb
+		rb.size(xx, yy, ss, ss)
+		rb.fill(rgb(142, 193, 64), 100)
+		rb.outline(5, rgb(4, 4, 4), 100)
+	}
+	
+}
+
+def main(){
+	canvas(680,420)
+    fibonacci(7)
+    TraverseBack(7)
+}

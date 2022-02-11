@@ -1,15 +1,3 @@
-# Trial Execution of Python Code after ART code conversion to python
-# Art Code is
-# def main(){
-#    print('This is a demo')
-# }
-# Converted Python Code is:
-# def main():
-#   print('This is a demo')
-# main()
-#str = 'def main(): ' + '\n\tprint(\'This is a demo\')' + '\n\nmain()'
-#exec(str)
-
 import pyglet 
 from pyglet import shapes 
 from pyglet.gl import glClearColor
@@ -24,9 +12,12 @@ class Interpreter:
         self.tokens = tokendf.to_dict(orient='records')
         self.tabs = ""
         self.code = ""
+        self.globalStack = []
+        self.constStact = []
         self.funcStack = []
         self.variableList = {} # stores the variable name and its current type
-    
+        self.dataTypes = ['RECTANGLE', 'CIRCLE', 'SQUARE', 'DOT', 'STRAIGHT','ARC','PIXEL', 'BOOL']
+        
     def GetLogicalSym(self, symbol):
         if(symbol == "||"):
             return "or"
@@ -40,7 +31,12 @@ class Interpreter:
             if(self.tokens[i]['token'] in logicalSymbols):
                 self.code += (" " + self.GetLogicalSym(self.tokens[i]['token']) + " " )
             else:
-                self.code += (self.tokens[i]['token'])
+                tok = self.tokens[i]['token'].upper()
+                if(tok == "TRUE") or (tok == "FALSE"):
+                    tok = self.tokens[i]['token'].capitalize()
+                else:
+                    tok = self.tokens[i]['token']
+                self.code += tok
             i += 1
         self.tabs += "\t"
         self.code += (":\n")
@@ -56,7 +52,7 @@ class Interpreter:
         elif(symbol == '<='):
             return "1+"
         else:   # symbol == ">="
-            return "1-"
+            return "-1+"
 
     def Loops(self, i):
         self.code += self.tabs
@@ -122,7 +118,13 @@ class Interpreter:
             i += 1
 
             # INTEGER / value_type 1
-            self.code += self.tokens[i]['token']
+            tok = self.tokens[i]['token'].upper()
+            if(tok == "TRUE") or (tok == "FALSE"):
+                tok = self.tokens[i]['token'].capitalize()
+            else:
+                tok = self.tokens[i]['token']
+
+            self.code += tok
 
             i += 1
             if (self.tokens[i]['type'] == "MATH_OP"):
@@ -150,7 +152,11 @@ class Interpreter:
                 i = i + 1
         self.code += self.tabs + ":\n"
         self.tabs += "\t"
-        self.code += self.tabs + "global z\n"
+        self.code += self.tabs + "global z"
+
+        for v in self.globalStack:
+            self.code += "," + v 
+        self.code += "\n"
         return i
 
     # function for Function call: sampleTest(a,b,c)
@@ -165,8 +171,8 @@ class Interpreter:
         self.code += ")\n"
 
         # TESTING ONLY FOR RECURSION
-        if (funcName == self.funcStack[-1]):
-            self.code += self.tabs + "z += 1\n"
+        #if (funcName == self.funcStack[-1]):
+        self.code += self.tabs + "z += 1\n"
         return i
 
     def Fill(self, i):
@@ -177,57 +183,86 @@ class Interpreter:
         opacity = self.tokens[i + 13]['token']
         self.code += self.tabs
         self.code += "globals()[f{0}{1}{{z}}{2}]".format('"',var,'"') + ".color = (" + red + "," + green + "," + blue + ")\n"
-        self.code += self.tabs
-        self.code += "globals()[f{0}{1}{{z}}{2}]".format('"',var,'"') + ".opacity = " + opacity + "\n"
+        if opacity != "100":
+            self.code += self.tabs
+            self.code += "globals()[f{0}{1}{{z}}{2}]".format('"',var,'"') + ".opacity = " + opacity + "\n"
         return i + 14
                           
     def Outline(self, i): 
         shapeName = self.tokens[i]['token']
         thickness = self.tokens[i+4]['token']
         red = self.tokens[i+8]['token']
-        blue = self.tokens[i+10]['token']
-        green = self.tokens[i+12]['token']
+        green = self.tokens[i+10]['token']
+        blue = self.tokens[i+12]['token']
         opacity = self.tokens[i+15]['token']
         i += 16
-        if self.variableList[shapeName] == "Rectangle" or self.variableList[shapeName] == "Square":
+        if self.variableList[shapeName] == "Rectangle" or self.variableList[shapeName] == "Square" or self.variableList[shapeName] == "Straight":
             self.code += self.tabs
-            self.code += "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"') + ".border_color = (" + red + "," + green + "," + blue + ")\n"
-            self.code += self.tabs
-            self.code += "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"') + ".border = " + thickness + "\n"
-            self.code += self.tabs
-            self.code += "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"') + ".opacity = " + opacity + "\n"
+            if self.variableList[shapeName] == "Straight":
+                shp = "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"')
+                self.code += shp
+                self.code += "= shapes.Line" + "({0}.x,{1}.y,{2}.x2,{3}.y2,width={4}, batch=batch)\n".format(shp,shp,shp,shp,thickness)
+                self.code += self.tabs
+                self.code += "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"') + ".color = (" + red + "," + green + "," + blue + ")\n"
+            else:
+                shp = "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"')
+                self.code += "cols={0}.color\n".format(shp)
+                self.code += self.tabs
+                self.code += shp + "=shapes.BorderedRectangle({0}.x,{1}.y,{2}.width,{3}.height,border={4}, batch=batch)\n".format(shp, shp, shp, shp, thickness)
+                self.code += self.tabs + shp + ".color = cols\n"
+                self.code += self.tabs + "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"') + ".border_color = (" + red + "," + green + "," + blue + ")\n"
+            if opacity != "100":
+                self.code += self.tabs
+                self.code += "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"') + ".opacity = " + opacity + "\n"
         elif self.variableList[shapeName] == "Circle":
             self.code += self.tabs + "x = globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"') + ".x\n" 
             self.code += self.tabs + "y = globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"') + ".y\n" 
             self.code += self.tabs + "rad = globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"') + ".radius\n" 
+            self.code += self.tabs + "col = globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"') + ".color\n" 
             self.code += self.tabs + "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName+"b",'"') 
             self.code += "= shapes.Circle(x, y, rad+{}, batch=batch)\n".format(thickness)
             self.code += self.tabs + "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName+"b",'"') + ".color = (" + red + "," + green + "," + blue + ")\n"
-            self.code += self.tabs + "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName+"b",'"') + ".opacity = " + opacity + "\n" 
+            if opacity != "100":
+                self.code += self.tabs + "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName+"b",'"') + ".opacity = " + opacity + "\n" 
             self.code += self.tabs + "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"') 
             self.code += "= shapes.Circle(x, y, rad, batch=batch)\n"
+            self.code += self.tabs + "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"') + ".color=col\n"
         return i
 
     # function for shape declaration
-    def DeclareShape(self, i):
-        shapeType = self.tokens[i]['token']
+    def DeclareShape(self, i):          # Bool sample = True
+        shapeType = self.tokens[i]['token']         # Bool
         i = i + 1
-        shapeName = self.tokens[i]['token']
+        shapeName = self.tokens[i]['token']         # sample 
 
         if shapeName in self.variableList.keys(): # if the variable has been previously declared
             self.variableList.update({shapeName: shapeType})
         else:
             self.variableList[shapeName] = shapeType
+            '''
+            if(self.tokens[i+1]['type'] == "ASSIGN_OP"):   # = 
+                i += 1
+                self.code +=  self.tabs + shapeName + self.tokens[i]['token'] 
+                i += 1
+                if(shapeType == "Bool"):
+                    self.code += self.tokens[i]['token'].capitalize() + "\n"   # True
+                else:
+                    self.code += self.tokens[i]['token'] + "\n"   # True
+        i += 1
+            '''
             # NO NEED TO DECLARE VARIABLE IN PYTHON
             # self.code += self.tabs
             #self.code += "global " + shapeName + "\n"
         return i
 
     def Globals(self, i):
+        name = self.tokens[i+2]['token']
         self.code += self.tabs + self.tokens[i+2]['token']
         self.code += self.tabs + self.tokens[i+3]['token'] 
         self.code += self.tabs + self.tokens[i+4]['token'] + "\n"
         i += 4
+        
+        self.globalStack.append(name)
         return i
 
     #Function for iniitializing code : e.g import library
@@ -248,7 +283,7 @@ class Interpreter:
             while self.tokens[i]['type'] != "PAREN_END":
                 self.code += self.tokens[i]['token']
                 i = i + 1
-            self.code += ", color=(101,45,144), width=2, batch=batch)\n"
+            self.code += ", batch=batch)\n"  # color=(101,45,144), width=2,
         elif self.variableList[shapeName] == "Arc":
             self.code += self.tabs
             print("How to draw an arc?")
@@ -334,7 +369,7 @@ class Interpreter:
             if(self.tokens[i]['type'] == 'CANVAS'):
                 i = self.Canvas(i)
             
-            if(self.tokens[i]['type'] == 'GLOBAL'):
+            if(self.tokens[i]['type'] == 'GLOBAL') or (self.tokens[i]['type'] == 'CONSTANT'):
                 i = self.Globals(i)
 
             if(self.tokens[i]['type'] == 'IDENTIFIER' and self.tokens[i-1]['type'] != 'DEF'):
@@ -349,7 +384,7 @@ class Interpreter:
                 if (self.tokens[i]['type'] == "IDENTIFIER" and self.tokens[i + 1]['type'] == "DOT_NOTATION" and self.tokens[i + 2]['type'] == "FILL"):
                     i = self.Fill(i)
 
-            if (self.tokens[i]['type'] == "STRAIGHT" or self.tokens[i]['type'] == "SQUARE" or self.tokens[i]['type'] == "RECTANGLE" or self.tokens[i]['type'] == "CIRCLE" or self.tokens[i]['type'] == "DOT" or self.tokens[i]['type'] == "ARC" or self.tokens[i]['type'] == "PIXEL"):
+            if (self.tokens[i]['type'] in self.dataTypes):
                 i = self.DeclareShape(i)
             
             if (i < len(self.tokens) - 2):

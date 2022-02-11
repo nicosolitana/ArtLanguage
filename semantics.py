@@ -7,7 +7,8 @@ class SemanticAnalyzer:
         self.funcDecStack = []
         self.constStack = []
         self.globalStack = []
-        self.dataTypes = ['RECTANGLE', 'CIRCLE', 'SQUARE', 'DOT', 'STRAIGHT','ARC','PIXEL']
+        self.funcParamLst = []
+        self.dataTypes = ['RECTANGLE', 'CIRCLE', 'SQUARE', 'DOT', 'STRAIGHT','ARC','PIXEL', 'BOOL']
         self.funcTypes = ['OUTLINE', 'FILL', 'DRAW', 'SIZE']
         self.varDec = {}
         self.funcDec = {}
@@ -50,6 +51,19 @@ class SemanticAnalyzer:
             self.varDecStack.append(self.varDec)
         self.varDec = {}
         
+    def CheckVarTypeParam(self, i, varType):
+        if (self.tokens[i]['type'] == 'IDENTIFIER'):
+            info = self.CheckVarExistence(i, varType)
+            if len(info) > 0 and info[0]['DataType'] != "PIXEL":
+                str = 'line {}:{} Type of passed parameter is invalid. Should be Pixel type.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
+                self.errorLst.append(str)
+            
+            if(varType == "GLOBAL"):
+                print(info)
+
+    def CheckVarParam(self, i):
+        self.CheckVarTypeParam(i, 'VARIABLE')
+
     def ValidateFuncCall(self, i, varInfo):
         shapeType = ''
         lNum = self.tokens[i]['lineNumber'] 
@@ -61,10 +75,63 @@ class SemanticAnalyzer:
             while self.tokens[i]['type'] != 'PAREN_END':
                 if (self.tokens[i]['type'] == 'IDENTIFIER') or (self.tokens[i]['type'] == 'INTEGER'):
                     j += 1
+                    self.CheckVarParam(i)
                 i += 1
+            
             if(j != int(res[0]['paramcount'])):
                 str = 'line {}:{} Parameter count for function {} of identifier {} is not correct'.format(lNum, cNum, res[0]['function'], varInfo[0]['Identifier'])
                 self.errorLst.append(str)
+            
+        elif(self.tokens[i]['type'] == 'FILL') or (self.tokens[i]['type'] == 'OUTLINE'):
+            j = 0
+            oi = 0
+            type = self.tokens[i]['type']
+            while self.tokens[i]['type'] != 'PAREN_END':
+                if (self.tokens[i]['type'] == 'PAREN_START'):
+                    if(type == 'OUTLINE'):
+                        if (self.tokens[i+1]['type'] == 'IDENTIFIER') or (self.tokens[i+1]['type'] == 'INTEGER'):
+                            oi += 1
+                            i += 2
+                            self.CheckVarParam(i)
+                        else:
+                            str = 'line {}:{} Incorrect first parameter on function '"{}"'. Should be RGB'.format(lNum, cNum, type)
+                            self.errorLst.append(str)
+                    
+                    if(self.tokens[i+1]['type'] != 'RGB'):
+                        if(type == 'FILL'):
+                            str = 'line {}:{} Incorrect parameter on function '"{}"'. Should be RGB'.format(lNum, cNum, type)
+                            self.errorLst.append(str)
+                    else:
+                        IsRGBOK = True
+                        while self.tokens[i]['type'] != 'PAREN_END':
+                            if (self.tokens[i]['type'] == 'IDENTIFIER') or (self.tokens[i]['type'] == 'INTEGER'):
+                                j += 1
+                                if (self.tokens[i]['type'] == 'INTEGER') and(int(self.tokens[i]['token']) > 255):
+                                    str = 'line {}:{} Color RGB parameter should not exceed 255'.format(lNum, cNum)
+                                    self.errorLst.append(str)
+                                    IsRGBOK = False
+                                self.CheckVarParam(i)
+                                
+                            i += 1
+                        if(j != 3):     
+                            str = 'line {}:{} Incorrect RGB Parameter count'.format(lNum, cNum)
+                            self.errorLst.append(str)
+                        j = 1
+                if (self.tokens[i]['type'] == 'IDENTIFIER') or (self.tokens[i]['type'] == 'INTEGER'):
+                    j += 1
+                    self.CheckVarParam(i)
+                i += 1
+
+            j += oi
+            if (type == "FILL"):
+                if(j != 2):
+                    str = 'line {}:{} Parameter count for function '"{}"' is not correct'.format(lNum, cNum, type)
+                    self.errorLst.append(str)
+            if (type == "OUTLINE"):
+                if(j != 3):
+                    str = 'line {}:{} Parameter count for function '"{}"' is not correct'.format(lNum, cNum, type)
+                    self.errorLst.append(str)
+            pass
         return i
 
     def Functions(self, i):
@@ -73,12 +140,19 @@ class SemanticAnalyzer:
         count = 0
         while self.tokens[i]['type'] != 'PAREN_END':
             if(self.tokens[i]['type'] == 'IDENTIFIER'):
+                self.funcParamLst.append(self.tokens[i]['token'])
                 count += 1
             i += 1
         self.funcDec['paramcount'] = count
         self.funcDecStack.append(self.funcDec)
         self.funcDec = {}		
         return i
+
+    def IsFuncParam(self, param):
+        if param in self.funcParamLst:
+            return True
+        else:
+            return False
 
     def Identifiers(self, i):
         varInfo = self.CheckVarExistence(i, 'VARIABLE')
@@ -90,12 +164,13 @@ class SemanticAnalyzer:
                 str = 'line {}:{} Identifier ''{}'' is not declared'.format(self.tokens[i]['lineNumber'], self.tokens[i]['lineNumber'], self.tokens[i]['token'])
                 self.errorLst.append(str)
         
-        if(self.tokens[i+1]['type'] == 'ASSIGN_OP') or (self.tokens[i+1]['type'] == 'INCDEC_OP'):
+        if(self.tokens[i+1]['type'] == 'ASSIGN_OP') or (self.tokens[i+1]['type'] == 'INCDEC_OP') or (self.tokens[i+1]['type'] == 'MATH_OP'):
             constInfo = self.CheckVarExistence(i, 'CONSTANT')
             globInfo = self.CheckVarExistence(i, 'GLOBAL')
-            if((len(varInfo) == 0) and (len(constInfo) == 0) and (len(globInfo) == 0)):
+            if((len(varInfo) == 0) and (len(constInfo) == 0) and (len(globInfo) == 0) and (self.IsFuncParam(self.tokens[i]['token']) == False)):
                 str = 'line {}:{} Identifier ''{}'' is not declared'.format(self.tokens[i]['lineNumber'], self.tokens[i]['lineNumber'], self.tokens[i]['token'])
                 self.errorLst.append(str)
+            
         
         if(self.tokens[i+1]['type'] == 'PAREN_START'):
             funcInfo = list(filter(lambda item: item['Identifier'] == self.tokens[i]['token'], self.funcDecStack))
@@ -110,6 +185,7 @@ class SemanticAnalyzer:
                 while self.tokens[i]['type'] != 'PAREN_END':
                     if((self.tokens[i]['type'] == 'IDENTIFIER') or (self.tokens[i]['type'] == 'INTEGER')):
                         count += 1
+                        self.CheckVarParam(i)
                     i += 1
                 if(int(funcInfo[0]['paramcount']) != count):
                     str = 'line {}:{} Function parameter ''{}'' is not correct'.format(lNum, cNum, funcInfo[0]['Identifier'])
@@ -133,7 +209,30 @@ class SemanticAnalyzer:
         return list(filter(lambda item: item['Identifier'] == self.tokens[i]['token'], stackVal))
                 
     def Constants(self, i):
+
+        '''
+            i =  const
+            i+1 = varName
+            i+2 = ASSIGN_OP
+            i+3 = value
+        '''
         constDec = {}
+        i += 2
+        if(self.tokens[i]['type'] == 'IDENTIFIER'):
+            constInfo = self.CheckVarExistence(i, 'CONSTANT')
+            if(len(constInfo) > 0):
+                str = 'line {}:{} Constant ''{}'' is already defined.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'], self.tokens[i]['token'])
+                self.errorLst.append(str)   
+            constDec['Identifier'] = self.tokens[i]['token']
+        i += 2
+        constDec['value'] = self.tokens[i]['token']
+        self.constStack.append(constDec)
+        if(self.tokens[i]['token'].upper() == "TRUE") or (self.tokens[i]['token'].upper() == "FALSE"):
+            str = 'line {}:{} Constant value should be pixel only.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
+            self.errorLst.append(str)   
+        print(self.tokens[i]['token'])
+        i += 1
+        '''
         IsAssignOp = False
         while self.tokens[i]['type'] != 'INTEGER':
             if(self.tokens[i]['type'] == 'IDENTIFIER'):
@@ -149,11 +248,20 @@ class SemanticAnalyzer:
         if(self.tokens[i]['type'] == 'INTEGER') and IsAssignOp:
             constDec['value'] = self.tokens[i]['token']
             self.constStack.append(constDec)
+            if(self.tokens[i]['token'].upper() == "TRUE") or (self.tokens[i]['token'].upper() == "FALSE"):
+                str = 'line {}:{} Constant value should be pixel only.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
+                self.errorLst.append(str)   
+            print(self.tokens[i]['token'])
+        '''
         return i
         
     def Globals(self, i):
         globalDec = {}
         IsAssignOp = False
+        if(self.tokens[i+1]['type'] != 'PIXEL'):
+            str = 'line {}:{} Global variable is restricted to Pixel only'.format(self.tokens[i+1]['lineNumber'], self.tokens[i+1]['start'])
+            self.errorLst.append(str)  
+
         while self.tokens[i]['type'] != 'INTEGER':
             if(self.tokens[i]['type'] == 'IDENTIFIER'):
                 constInfo = self.CheckVarExistence(i, 'CONSTANT')
@@ -175,11 +283,25 @@ class SemanticAnalyzer:
             globalDec['value'] = self.tokens[i]['token']
             self.globalStack.append(globalDec)
         return i
-        
+    
+    def Canvas(self, i):
+        count = 0
+        while self.tokens[i]['type'] != 'PAREN_END':
+            if((self.tokens[i]['type'] == 'IDENTIFIER') or (self.tokens[i]['type'] == 'INTEGER')):
+                count += 1
+            i += 1
+        if(count != 2):
+            str = 'line {}:{} Function parameter count of CANVAS is incorrect.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
+            self.errorLst.append(str)
+        return i
+
     def SemanticAnalysis(self):
         isVarDec = False
         i = 0
         while i < len(self.tokens):
+            if(self.tokens[i]['type'] == 'CANVAS'):
+                i = self.Canvas(i)
+
             if(self.tokens[i]['type'] == 'CONSTANT'):
                 i = self.Constants(i)
             
@@ -187,17 +309,22 @@ class SemanticAnalyzer:
                 i = self.Globals(i)
 
             if(self.tokens[i]['type'] == 'DEF'):
+                self.funcParamLst = []
                 i = self.Functions(i)
+
             if(self.tokens[i]['type'] == 'CURLY_START'):
                 self.parenStack.append('CURLY_START')
+
             if(self.tokens[i]['type'] == 'CURLY_END'):
                 if(len(self.parenStack) == 1):
                     self.varDecStack = []
                 if(len(self.parenStack) > 0):
                     self.parenStack.pop()
+
             if(self.tokens[i]['type'] in self.dataTypes):
                 self.varDec['DataType'] = self.tokens[i]['type']
                 isVarDec = True
+
             if(self.tokens[i]['type'] == 'IDENTIFIER'):
                 if isVarDec:
                     self.CompleteVarDec(i)
