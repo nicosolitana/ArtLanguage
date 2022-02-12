@@ -8,7 +8,7 @@ tokenList = []   # contains tokens of the entire source code
 symbolTable = {} # contains symbol table
 
 # reads the symbols file
-symbolTableFile = open("tables\symbol_table.txt")
+symbolTableFile = open("resources\\tables\symbol_table.txt")
 # creates keyvalue pair to store regex pattern and
 # its equivalent token name
 for line in symbolTableFile:

@@ -1,9 +1,9 @@
 # Generated from ArtGrammar.g4 by ANTLR 4.9.3
 from antlr4 import *
 if __name__ is not None and "." in __name__:
-    from .ArtGrammarParser import ArtGrammarParser
+    from resources.lexiparse.ArtGrammarParser import ArtGrammarParser
 else:
-    from ArtGrammarParser import ArtGrammarParser
+    from resources.lexiparse.ArtGrammarParser import ArtGrammarParser
 
 # This class defines a complete listener for a parse tree produced by ArtGrammarParser.
 class ArtGrammarListener(ParseTreeListener):

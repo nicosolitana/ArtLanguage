@@ -1,7 +1,7 @@
 # import the tokenizer module
 # access interface functions using tk
-import tokenizer as tk   
-from parse import Parse
+import resources.tokenizer as tk   
+from resources.parse import Parse
 
 class ArtLangCompiler:
     def __init__(self, sourceFile):

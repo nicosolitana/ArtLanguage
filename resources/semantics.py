@@ -16,7 +16,7 @@ class SemanticAnalyzer:
     
     def ReadSemanticsTable(self):
         semanticsTable = [] # contains symbol table
-        semanticsTableFile = open("tables\semantics_table.txt") # reads the symbols file
+        semanticsTableFile = open("resources\\tables\semantics_table.txt") # reads the symbols file
 		
 		# creates keyvalue pair to store regex pattern and
 		# its equivalent token name

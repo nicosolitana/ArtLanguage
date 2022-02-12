@@ -3,11 +3,11 @@ from antlr4 import *
 from antlr4.tree.Trees import Trees
 from antlr4.tree.Tree import TerminalNodeImpl
 from sqlalchemy import null
-from lexiparse.ArtGrammarLexer import ArtGrammarLexer
-from lexiparse.ArtGrammarParser import ArtGrammarParser
-from lexiparse.ArtGrammarVisitor import ArtGrammarVisitor
+from resources.lexiparse.ArtGrammarLexer import ArtGrammarLexer
+from resources.lexiparse.ArtGrammarParser import ArtGrammarParser
+from resources.lexiparse.ArtGrammarVisitor import ArtGrammarVisitor
 from IPython.utils.capture import capture_output
-from semantics import SemanticAnalyzer
+from resources.semantics import SemanticAnalyzer
 
 class Parse:
     
