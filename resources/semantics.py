@@ -30,11 +30,25 @@ class SemanticAnalyzer:
             semanticsTable.append(semantics)  # stores kvp on the symbolTable list
         return semanticsTable
         
+    def CheckDeclaration(self, i, res, varType):
+        if(res != 0):
+            if (varType == 'CONSTANT'):
+                str = 'line {}:{} Variable ''{}'' is already declared as constant.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['lineNumber'], self.tokens[i]['token'])
+            if (varType == 'GLOBAL'):
+                str = 'line {}:{} Variable ''{}'' is already declared as global variable.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['lineNumber'], self.tokens[i]['token'])
+            if (varType == 'VARIABLE'):
+                str = 'line {}:{} Variable ''{}'' is already declared.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['lineNumber'], self.tokens[i]['token'])
+            self.errorLst.append(str)
+
     def CompleteVarDec(self, i):
         res = len(self.CheckVarExistence(i, 'VARIABLE'))
-        gRes = len(self.CheckVarExistence(i, 'GLOBAL'))
-        cRes = len(self.CheckVarExistence(i, 'CONSTANT'))
+        self.CheckDeclaration(i, res, 'VARIABLE')
+        res = len(self.CheckVarExistence(i, 'GLOBAL'))
+        self.CheckDeclaration(i, res, 'GLOBAL')
+        res = len(self.CheckVarExistence(i, 'CONSTANT'))
+        self.CheckDeclaration(i, res, 'CONSTANT')
         
+        '''
         if(cRes != 0):
             str = 'line {}:{} Variable ''{}'' is already declared as constant.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['lineNumber'], self.tokens[i]['token'])
             self.errorLst.append(str)
@@ -47,6 +61,8 @@ class SemanticAnalyzer:
             str = 'line {}:{} Variable ''{}'' is already declared.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['lineNumber'], self.tokens[i]['token'])
             self.errorLst.append(str)
         else:
+        '''
+        if(res == 0):
             self.varDec['Identifier'] = self.tokens[i]['token']
             self.varDecStack.append(self.varDec)
         self.varDec = {}
@@ -57,8 +73,7 @@ class SemanticAnalyzer:
             if len(info) > 0 and info[0]['DataType'] != "PIXEL":
                 str = 'line {}:{} Type of passed parameter is invalid. Should be Pixel type.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
                 self.errorLst.append(str)
-            
-
+       
     def CheckVarParam(self, i):
         self.CheckVarTypeParam(i, 'VARIABLE')
 
@@ -320,10 +335,12 @@ class SemanticAnalyzer:
         isVarDec = False
         i = 0
         while i < len(self.tokens):
-            if((self.tokens[i]['type'] == 'TRUE') or (self.tokens[i]['type'] == 'FALSE')):
+            if((self.tokens[i]['type'] == 'TRUE') 
+                or (self.tokens[i]['type'] == 'FALSE')):
                 self.CheckBools(i)
             
-            if(self.tokens[i]['type'] == 'INTEGER') and (self.tokens[i-1]['type'] == 'ASSIGN_OP'):
+            if((self.tokens[i]['type'] == 'INTEGER') 
+                and (self.tokens[i-1]['type'] == 'ASSIGN_OP')):
                 self.CheckInt(i)
 
             if(self.tokens[i]['type'] == 'CANVAS'):

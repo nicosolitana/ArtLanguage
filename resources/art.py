@@ -3,7 +3,7 @@ from resources.interpreter import Interpreter
 class Art:
     def __init__(self, sourceFile):
         self.sourceFile = sourceFile
-        self.code = ""
+        self.runnable = ""
     
     def Execute(self):
         comp = ArtLangCompiler(self.sourceFile)
@@ -13,8 +13,7 @@ class Art:
                 intptr = Interpreter(comp.tokenDf)
                 print('[INFO] Interpreting Source code...')
                 intptr.Interpret()
-                intptr.Build()
-                self.code = intptr.code
+                self.runnable = intptr.code
             else:
                 print('[ERROR] Please fix error(s) on the codes first.')
         except:
