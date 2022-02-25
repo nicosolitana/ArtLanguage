@@ -12,9 +12,17 @@ glob           : GLOBAL PIXEL init_int;
 func_params    : IDENTIFIER 
                | IDENTIFIER SEPARATOR func_params ;
 
-code           : init 
+code           : dec
+               | init 
                | init_int
                | init_bool
+               | init_str
+               | lst_access
+               | lst_add_val
+               | concat
+               | conv_tostr
+               | print_text
+               | init_lst
                | math_expr 
                | size_shape 
                | draw_shape
@@ -24,6 +32,8 @@ code           : init
                | func_call 
                | if_else
                | loop; 
+
+dec            : data_type (init_int|init_bool|init_str|init_lst);
 
 loop           : FOR PAREN_START loop_init loop_cond loop_incdec PAREN_END loop_body; // loop_init loop_cond loop_incdec
 loop_body      : CURLY_START (code)* CURLY_END;
@@ -38,10 +48,31 @@ init_int       : IDENTIFIER ASSIGN_OP (INTEGER|IDENTIFIER);
 
 init_bool      : IDENTIFIER ASSIGN_OP ((TRUE|FALSE)|IDENTIFIER); 
 
+init_str       : IDENTIFIER ASSIGN_OP STR_LITERAL;
+
+init_lst       : IDENTIFIER ASSIGN_OP lst_def;
+
+lst_def        : SQR_START SQR_END
+               | SQR_START lst_val SQR_END  ;
+
+lst_val        : (INTEGER SEPARATOR)* INTEGER
+               ; 
+
+lst_access     : (PIXEL)* IDENTIFIER ASSIGN_OP IDENTIFIER SQR_START (INTEGER|IDENTIFIER) SQR_END
+               ;
+
+lst_add_val    : IDENTIFIER DOT_NOTATION LST_ADD PAREN_START (INTEGER|IDENTIFIER) PAREN_END
+               ;  
+
+conv_tostr     : (STRING)* IDENTIFIER ASSIGN_OP TOSTR PAREN_START (IDENTIFIER|INTEGER) PAREN_END
+               ;
+
 func_call      : IDENTIFIER PAREN_START PAREN_END 
                | IDENTIFIER PAREN_START call_params PAREN_END;
 
 call_params    : value_type (SEPARATOR value_type)*;
+
+print_text     : PRINT PAREN_START (IDENTIFIER|STR_LITERAL) PAREN_END;
 
 if_else        : if_cond 
                | if_cond elif_cond else_cond 
@@ -56,10 +87,42 @@ condition      : condition_base
                | PAREN_START (condition_base LOGICAL_OP)* condition_base PAREN_END; 
 ifel_body      : CURLY_START (code)* CURLY_END;
 
-math_expr      : (IDENTIFIER ASSIGN_OP computation) 
+math_expr      : IDENTIFIER ASSIGN_OP computation       //(IDENTIFIER ASSIGN_OP computation) 
                | IDENTIFIER INCDEC_OP;
                
-computation    : value_type MATH_OP value_type;
+//computation    : value_type math_op value_type;
+
+computation    : compute
+               | mcomputes
+               | gcompute
+               | cgcompute
+               | ugcompute
+               ;
+
+cgcompute      : PAREN_START ((gcompute|value_type) math_op)+ (gcompute|value_type) PAREN_END;
+gcompute       : PAREN_START compute PAREN_END;
+ugcompute      : (value_type math_op)+ mcomputes
+               | (mcomputes) (math_op value_type)+
+               | (mcomputes)+ math_op value_type math_op (mcomputes)+
+               | (mcomputes)+ math_op (mcomputes)+ math_op (mcomputes)+
+               ;
+
+mcomputes      : gcompute
+               | cgcompute
+               | compute
+               ;
+
+compute        : value_type math_op value_type
+               ;
+
+math_op        : ADD
+               | SUB
+               | MUL
+               | DIV
+               ;
+
+concat         : (STRING)* IDENTIFIER ASSIGN_OP (IDENTIFIER|STR_LITERAL) AMPSAND (IDENTIFIER|STR_LITERAL)
+               ;
 
 canvas_def     : CANVAS PAREN_START two_params PAREN_END;
 
@@ -93,37 +156,50 @@ data_type      : CIRCLE
                | ARC
                | PIXEL
                | BOOL
+               | STRING
+               | LIST
                ;
 
 
-TRUE	       :   ('true');
-FALSE	       :   ('false');
-BOOL	       :   ('Bool');
+TOSTR          :   ('tostr');
+PRINT          :   ('print');
+LST_ADD	       :   ('add');
+TRUE	         :   ('true');
+FALSE	         :   ('false');
+BOOL	         :   ('Bool');
 RECTANGLE      :   ('Rectangle');
 SQUARE	       :   ('Square');
 CIRCLE	       :   ('Circle');
 DOT	           :   ('Dot');
-STRAIGHT	   :   ('Straight');
+STRAIGHT	     :   ('Straight');
 ARC	           :   ('Arc');
-PIXEL	       :   ('Pixel');
+PIXEL	         :   ('Pixel');
 IF	           :   ('if');
-ELSE	       :   ('else');
-ELIF	       :   ('elif');
+ELSE	         :   ('else');
+ELIF	         :   ('elif');
 OUTLINE	       :   ('outline');
-DRAW	       :   ('draw');
-SIZE	       :   ('size');
+DRAW	         :   ('draw');
+SIZE	         :   ('size');
 FOR	           :   ('for');
 DEF	           :   ('def');
-FILL	       :   ('fill');
+FILL	         :   ('fill');
 CANVAS	       :   ('canvas');
-RGB 	       :   ('rgb');
-CONSTANT 	   :   ('const');
-GLOBAL   	   :   ('global');
-BREAK   	   :   ('break');
+RGB 	         :   ('rgb');
+CONSTANT 	     :   ('const');
+GLOBAL   	     :   ('global');
+BREAK   	     :   ('break');
 CONTINUE   	   :   ('continue');
+LIST           :   ('List');
+STRING         :   ('String');
+SQR_START      :  '[';
+SQR_END        :  ']';
+STR_LITERAL    :   '"' ( '""' | ~["\r\n] )* '"';
 INTEGER	       :   [0-9]+;
 IDENTIFIER     :   [a-zA-Z][a-zA-Z0-9]* ;
-MATH_OP        :   ('-'|'+'|'*'|'/');
+ADD            :   ('+');
+SUB            :   ('-');
+MUL            :   ('*');
+DIV            :   ('/');
 INCDEC_OP      :   ('++'|'--');
 COND_OP    	   :   ('<='|'<'|'>'|'>='|'!='|'==');
 LOGICAL_OP     :   ('&&'|'||');
@@ -133,6 +209,7 @@ CURLY_START    :   '{';
 CURLY_END      :   '}';
 DOT_NOTATION   :   '.';
 ASSIGN_OP      :   '=';
+AMPSAND        :   '&';
 SEPARATOR	   :   (',');
 SEMICOL_SEP    :   (';');
-WS             :   [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
+WS             :   [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines 

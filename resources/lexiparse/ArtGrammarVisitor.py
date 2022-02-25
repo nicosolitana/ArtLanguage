@@ -39,6 +39,11 @@ class ArtGrammarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ArtGrammarParser#dec.
+    def visitDec(self, ctx:ArtGrammarParser.DecContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ArtGrammarParser#loop.
     def visitLoop(self, ctx:ArtGrammarParser.LoopContext):
         return self.visitChildren(ctx)
@@ -79,6 +84,41 @@ class ArtGrammarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ArtGrammarParser#init_str.
+    def visitInit_str(self, ctx:ArtGrammarParser.Init_strContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#init_lst.
+    def visitInit_lst(self, ctx:ArtGrammarParser.Init_lstContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#lst_def.
+    def visitLst_def(self, ctx:ArtGrammarParser.Lst_defContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#lst_val.
+    def visitLst_val(self, ctx:ArtGrammarParser.Lst_valContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#lst_access.
+    def visitLst_access(self, ctx:ArtGrammarParser.Lst_accessContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#lst_add_val.
+    def visitLst_add_val(self, ctx:ArtGrammarParser.Lst_add_valContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#conv_tostr.
+    def visitConv_tostr(self, ctx:ArtGrammarParser.Conv_tostrContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ArtGrammarParser#func_call.
     def visitFunc_call(self, ctx:ArtGrammarParser.Func_callContext):
         return self.visitChildren(ctx)
@@ -86,6 +126,11 @@ class ArtGrammarVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ArtGrammarParser#call_params.
     def visitCall_params(self, ctx:ArtGrammarParser.Call_paramsContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#print_text.
+    def visitPrint_text(self, ctx:ArtGrammarParser.Print_textContext):
         return self.visitChildren(ctx)
 
 
@@ -136,6 +181,41 @@ class ArtGrammarVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ArtGrammarParser#computation.
     def visitComputation(self, ctx:ArtGrammarParser.ComputationContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#cgcompute.
+    def visitCgcompute(self, ctx:ArtGrammarParser.CgcomputeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#gcompute.
+    def visitGcompute(self, ctx:ArtGrammarParser.GcomputeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#ugcompute.
+    def visitUgcompute(self, ctx:ArtGrammarParser.UgcomputeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#mcomputes.
+    def visitMcomputes(self, ctx:ArtGrammarParser.McomputesContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#compute.
+    def visitCompute(self, ctx:ArtGrammarParser.ComputeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#math_op.
+    def visitMath_op(self, ctx:ArtGrammarParser.Math_opContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArtGrammarParser#concat.
+    def visitConcat(self, ctx:ArtGrammarParser.ConcatContext):
         return self.visitChildren(ctx)
 
 

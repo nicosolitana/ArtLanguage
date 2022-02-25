@@ -1,0 +1,31 @@
+def main(){
+	canvas(400, 400)
+	String stext
+	List fibo = [1,1]
+	Pixel i
+	for(i = 0; i <= 5; 1++) {
+		Pixel old
+		Pixel oldold
+		Pixel y
+		Pixel x
+        y = i + 1
+		oldold = fibo[i]
+		old = fibo[y]
+        x = old + oldold
+        fibo.add(x)
+	}
+	
+	stext = "Fibonacci Sequence is: \n"
+	for(i = 0; i < 7; 1++) {
+		String space = "    "
+		stext = stext & space
+		Pixel num
+		num = fibo[i]
+		String conv
+		conv = tostr(num)
+		stext = stext & conv
+	}
+
+	stext = stext & "\n\n\nThis is made by Group 2 to demonstrate list, string, concatenation features"
+	print(stext)
+}

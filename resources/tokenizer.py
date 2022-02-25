@@ -75,9 +75,31 @@ def GetTokens(line, lineNumber):
     token = ""      # initialize token
     i = 0           # initialize iterator i which will be used to traverse codeline
     line += " "     # add an extra space at the end of the code line
+    IsStrLit = False
     while i < len(line):  # loop on each character of the code line
         # check if the current character matches a separator
-        if(IsValidToken(line[i], REGEX_SEPARATOR) == True):
+        if(line[i] == "\""):
+            i += 1
+            token += "\""
+            while line[i] != "\"":
+                token += line[i]
+                i += 1
+                if(i == len(line)):
+                    count = len(token)
+                    a = i - count
+                    token = line[a]
+                    i = a+1
+                
+            token += "\""
+            type = IdentifyToken(token)
+            if(type != None):
+                # Save token to token list
+                UpdateTokenLst(token, i-len(token), lineNumber, type)
+                token = ""
+            i += 1
+
+
+        if(IsValidToken(line[i], REGEX_SEPARATOR) == True) and IsStrLit == False:
             token = token.strip()   # trim the token to remove extra spaces
             x = i - len(token)      # store token's starting point
             oldItr = i              # store current iterator's value

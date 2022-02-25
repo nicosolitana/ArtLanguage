@@ -62,6 +62,15 @@ class ArtGrammarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ArtGrammarParser#dec.
+    def enterDec(self, ctx:ArtGrammarParser.DecContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#dec.
+    def exitDec(self, ctx:ArtGrammarParser.DecContext):
+        pass
+
+
     # Enter a parse tree produced by ArtGrammarParser#loop.
     def enterLoop(self, ctx:ArtGrammarParser.LoopContext):
         pass
@@ -134,6 +143,69 @@ class ArtGrammarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ArtGrammarParser#init_str.
+    def enterInit_str(self, ctx:ArtGrammarParser.Init_strContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#init_str.
+    def exitInit_str(self, ctx:ArtGrammarParser.Init_strContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#init_lst.
+    def enterInit_lst(self, ctx:ArtGrammarParser.Init_lstContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#init_lst.
+    def exitInit_lst(self, ctx:ArtGrammarParser.Init_lstContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#lst_def.
+    def enterLst_def(self, ctx:ArtGrammarParser.Lst_defContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#lst_def.
+    def exitLst_def(self, ctx:ArtGrammarParser.Lst_defContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#lst_val.
+    def enterLst_val(self, ctx:ArtGrammarParser.Lst_valContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#lst_val.
+    def exitLst_val(self, ctx:ArtGrammarParser.Lst_valContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#lst_access.
+    def enterLst_access(self, ctx:ArtGrammarParser.Lst_accessContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#lst_access.
+    def exitLst_access(self, ctx:ArtGrammarParser.Lst_accessContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#lst_add_val.
+    def enterLst_add_val(self, ctx:ArtGrammarParser.Lst_add_valContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#lst_add_val.
+    def exitLst_add_val(self, ctx:ArtGrammarParser.Lst_add_valContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#conv_tostr.
+    def enterConv_tostr(self, ctx:ArtGrammarParser.Conv_tostrContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#conv_tostr.
+    def exitConv_tostr(self, ctx:ArtGrammarParser.Conv_tostrContext):
+        pass
+
+
     # Enter a parse tree produced by ArtGrammarParser#func_call.
     def enterFunc_call(self, ctx:ArtGrammarParser.Func_callContext):
         pass
@@ -149,6 +221,15 @@ class ArtGrammarListener(ParseTreeListener):
 
     # Exit a parse tree produced by ArtGrammarParser#call_params.
     def exitCall_params(self, ctx:ArtGrammarParser.Call_paramsContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#print_text.
+    def enterPrint_text(self, ctx:ArtGrammarParser.Print_textContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#print_text.
+    def exitPrint_text(self, ctx:ArtGrammarParser.Print_textContext):
         pass
 
 
@@ -239,6 +320,69 @@ class ArtGrammarListener(ParseTreeListener):
 
     # Exit a parse tree produced by ArtGrammarParser#computation.
     def exitComputation(self, ctx:ArtGrammarParser.ComputationContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#cgcompute.
+    def enterCgcompute(self, ctx:ArtGrammarParser.CgcomputeContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#cgcompute.
+    def exitCgcompute(self, ctx:ArtGrammarParser.CgcomputeContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#gcompute.
+    def enterGcompute(self, ctx:ArtGrammarParser.GcomputeContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#gcompute.
+    def exitGcompute(self, ctx:ArtGrammarParser.GcomputeContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#ugcompute.
+    def enterUgcompute(self, ctx:ArtGrammarParser.UgcomputeContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#ugcompute.
+    def exitUgcompute(self, ctx:ArtGrammarParser.UgcomputeContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#mcomputes.
+    def enterMcomputes(self, ctx:ArtGrammarParser.McomputesContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#mcomputes.
+    def exitMcomputes(self, ctx:ArtGrammarParser.McomputesContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#compute.
+    def enterCompute(self, ctx:ArtGrammarParser.ComputeContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#compute.
+    def exitCompute(self, ctx:ArtGrammarParser.ComputeContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#math_op.
+    def enterMath_op(self, ctx:ArtGrammarParser.Math_opContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#math_op.
+    def exitMath_op(self, ctx:ArtGrammarParser.Math_opContext):
+        pass
+
+
+    # Enter a parse tree produced by ArtGrammarParser#concat.
+    def enterConcat(self, ctx:ArtGrammarParser.ConcatContext):
+        pass
+
+    # Exit a parse tree produced by ArtGrammarParser#concat.
+    def exitConcat(self, ctx:ArtGrammarParser.ConcatContext):
         pass
 
 

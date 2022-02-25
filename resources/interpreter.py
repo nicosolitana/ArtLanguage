@@ -16,8 +16,9 @@ class Interpreter:
         self.constStact = []
         self.funcStack = []
         self.variableList = {} # stores the variable name and its current type
-        self.dataTypes = ['RECTANGLE', 'CIRCLE', 'SQUARE', 'DOT', 'STRAIGHT','ARC','PIXEL', 'BOOL']
-        
+        self.dataTypes = ['RECTANGLE', 'CIRCLE', 'SQUARE', 'DOT', 'STRAIGHT','ARC','PIXEL', 'BOOL', 'STRING', 'LIST']
+        self.mathOps = ['ADD', 'SUB', 'MUL', 'DIV', 'AMPSAND']
+
     def GetLogicalSym(self, symbol):
         if(symbol == "||"):
             return "or"
@@ -106,6 +107,15 @@ class Interpreter:
         self.code += self.tabs + "z += 1\n"
         return i
 
+    def CompoundMathExpr(self, i, tok):
+        lNum = self.tokens[i]['lineNumber']
+        i += 1
+        while self.tokens[i]['lineNumber'] == lNum:
+            tok += self.tokens[i]['token']
+            i += 1
+        i -= 1
+        return i, tok
+
     # function for grammars: init_int, math_expr, "x++"
     def Assign(self, i):
         # IDENTIFIER
@@ -116,29 +126,74 @@ class Interpreter:
             # ASSIGN_OP
             self.code += self.tokens[i]['token']
             i += 1
-
-            # INTEGER / value_type 1
             tok = self.tokens[i]['token'].upper()
-            if(tok == "TRUE") or (tok == "FALSE"):
-                tok = self.tokens[i]['token'].capitalize()
-            else:
-                tok = self.tokens[i]['token']
-
-            self.code += tok
-
-            i += 1
-            if (self.tokens[i]['type'] == "MATH_OP"):
-                self.code += self.tokens[i]['token'] # MATH_OP
+            tokType = self.tokens[i]['type']
+            lNum = self.tokens[i]['lineNumber']
+            tokTypeNext = self.tokens[i+1]['type']
+            '''
+            if((tok == "[") or (tokType == "IDENTIFIER")) and (tokTypeNext not in self.mathOps):  # != "AMPSAND"
                 i += 1
-                self.code += self.tokens[i]['token'] # value_type 2
+                if (tokType == "IDENTIFIER"):
+                     tok = self.tokens[i]['token']
+                else:
+                    while self.tokens[i]['type'] != "SQR_END":
+                        tok += self.tokens[i]['token']
+                        i += 1
+                    tok += "]"
+                    i += 1
+                self.code += tok
+            '''
+            if(tokType ==  "IDENTIFIER" and tokTypeNext not in self.mathOps):
+                if tokType ==  "IDENTIFIER" and tokTypeNext ==  "SQR_START":
+                    tok = ""
+                    while self.tokens[i]['type'] != "SQR_END":
+                        tok += self.tokens[i]['token']
+                        i += 1
+                    tok += "]"
+                    #i += 1
+                    self.code += tok
+                else:
+                    self.code += self.tokens[i]['token']
+            elif(tokType == "TOSTR"):
+                tok = ""
+                while self.tokens[i]['type'] != "PAREN_END":
+                    if self.tokens[i]['type'] == "TOSTR":
+                        tok += "str"
+                    else:
+                        tok += self.tokens[i]['token']
+                    i += 1
+                tok += ")"
+                self.code += tok
+                #i += 1
             else:
-                i -= 1
+                # INTEGER / value_type 1
+                if(tok == "TRUE") or (tok == "FALSE"):
+                    tok = self.tokens[i]['token'].capitalize()
+                elif(tok == "("):
+                    i, tok = self.CompoundMathExpr(i, tok)
+                else:
+                    tok = self.tokens[i]['token']
+
+                self.code += tok
+                
+                i += 1
+                if (self.tokens[i]['type'] in self.mathOps):
+                    if (self.tokens[i]['type'] == 'AMPSAND'):
+                        self.code += "+"
+                    else:
+                        self.code += self.tokens[i]['token'] # MATH_OP
+                    i += 1
+                    self.code += self.tokens[i]['token'] # value_type 2
+                elif(tok == "("):
+                    i, tok = self.CompoundMathExpr(i, tok)
+                else:
+                    i -= 1
+            
         elif (self.tokens[i]['type'] == "INCDEC_OP"):
             if (self.tokens[i]['token'] == "++"):
                 self.code += "+=1"
             elif (self.tokens[i]['token'] == "--"):
                 self.code += "-=1"
-
         return i
 
     # function for Function declaration : def sampleTest(a,b,c)
@@ -229,30 +284,35 @@ class Interpreter:
             self.code += self.tabs + "globals()[f{0}{1}{{z}}{2}]".format('"',shapeName,'"') + ".color=col\n"
         return i
 
+    def CreateDeclare(self, i, shapeName):
+        if(self.tokens[i+1]['type'] == 'ASSIGN_OP'):
+            val = self.tokens[i+2]['token']
+            valThree = self.tokens[i+3]['token']
+            if(val.upper() == "TRUE"):
+                val = "True"
+            if(val.upper() == "FALSE"):
+                val = "False"
+            if((val.upper() == "[") or (valThree == '[')):
+                i += 3
+                while self.tokens[i]['type'] != "SQR_END":
+                    val +=  self.tokens[i]['token']
+                    i += 1
+                val += "]"
+                i -= 2
+            self.code +=  self.tabs + shapeName + "=" + val + "\n"
+            i += 2
+        return i
+
     # function for shape declaration
     def DeclareShape(self, i):          # Bool sample = True
         shapeType = self.tokens[i]['token']         # Bool
         i = i + 1
         shapeName = self.tokens[i]['token']         # sample 
-
         if shapeName in self.variableList.keys(): # if the variable has been previously declared
             self.variableList.update({shapeName: shapeType})
         else:
             self.variableList[shapeName] = shapeType
-            '''
-            if(self.tokens[i+1]['type'] == "ASSIGN_OP"):   # = 
-                i += 1
-                self.code +=  self.tabs + shapeName + self.tokens[i]['token'] 
-                i += 1
-                if(shapeType == "Bool"):
-                    self.code += self.tokens[i]['token'].capitalize() + "\n"   # True
-                else:
-                    self.code += self.tokens[i]['token'] + "\n"   # True
-        i += 1
-            '''
-            # NO NEED TO DECLARE VARIABLE IN PYTHON
-            # self.code += self.tabs
-            #self.code += "global " + shapeName + "\n"
+        i = self.CreateDeclare(i, shapeName)
         return i
 
     def Globals(self, i):
@@ -272,6 +332,16 @@ class Interpreter:
         self.code += "window = pyglet.window.Window(0, 0)\n" # Note: Set "window" for canvas!
         self.code += "glClearColor(255, 255, 255, 1.0)\n" 
         self.code += "z = 0\n" 
+        self.code += "def printText(value):\n"
+        self.code += "\ttext = str(value)\n"
+        self.code += "\tdocument = pyglet.text.document.FormattedDocument(text)\n"
+        self.code += "\tdocument.set_style(0, len(document.text), dict(\n"
+        self.code += "\t\t\tfont_name ='Arial', font_size = 16,\n"
+        self.code += "\t\t\tcolor =(0, 0, 0, 255)))\n"
+        self.code += "\tlayout = pyglet.text.layout.IncrementalTextLayout(\n"
+        self.code += "\t\t\tdocument, 400, 350, batch = batch)\n"
+        self.code += "\tlayout.multiline = True\n"
+        self.code += "\tdocument.text = text\n"
         return self.code
 
     def Draw(self, i): # for line and arc
@@ -288,6 +358,18 @@ class Interpreter:
             self.code += self.tabs
             print("How to draw an arc?")
 
+        return i
+
+    def LstValueAdd(self, i):
+        value = ''
+        while(self.tokens[i]['type'] != 'PAREN_END'):
+            if(self.tokens[i]['type'] == 'LST_ADD'):
+                value += 'append'
+            else:
+                value += self.tokens[i]['token']
+            i+=1
+        value += self.tokens[i]['token']
+        self.code += self.tabs + value + "\n"
         return i
 
     #Function for printing the displaying pyglet after main()
@@ -342,14 +424,26 @@ class Interpreter:
         i += 5
         return i
 
+    def PrintText(self, i):
+        value = ""
+        while self.tokens[i]['type'] != "PAREN_END":
+            if(self.tokens[i]['type'] == 'STR_LITERAL') or (self.tokens[i]['type'] == 'IDENTIFIER'):
+                value = self.tokens[i]['token']
+            i += 1
+        i += 1
+        self.code += self.tabs + "printText({})\n".format(value)
+        return i
+
     def Interpret(self):
         self.InitializeCode() # importing/initializing pyglet
-        
         i = 0
         while i < len(self.tokens):
             lNum = self.tokens[i]['lineNumber']
             if(self.tokens[i]['type'] == 'FOR'):
                 i = self.Loops(i)
+
+            if(self.tokens[i]['type'] == 'PRINT'):
+                i = self.PrintText(i)
 
             if((self.tokens[i]['type'] == 'IF') or (self.tokens[i]['type'] == 'ELIF') or (self.tokens[i]['type'] == 'ELSE')):
                 i = self.Conditions(i)
@@ -398,7 +492,10 @@ class Interpreter:
             if (i < len(self.tokens) - 2):
                 if (self.tokens[i]['type'] == "IDENTIFIER" and self.tokens[i + 1]['type'] == "DOT_NOTATION" and self.tokens[i + 2]['type'] == "OUTLINE"):
                     i = self.Outline(i)
-
+            
+            if (i < len(self.tokens) - 2):
+                if (self.tokens[i]['type'] == "IDENTIFIER" and self.tokens[i + 1]['type'] == "DOT_NOTATION" and self.tokens[i + 2]['type'] == "LST_ADD"):
+                    i = self.LstValueAdd(i)
             i += 1
         self.PrintMain() # prints main() and on window event
         

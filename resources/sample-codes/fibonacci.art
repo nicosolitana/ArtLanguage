@@ -15,31 +15,23 @@ def fibonacci(n){
 }
 
 def TraverseBack(n){
-	Pixel x
-	Pixel y
-	Pixel state
-	Pixel oldold
+	Pixel x = 0
+	Pixel y = 0
+	Pixel state = 0
+	Pixel oldold = 0
 	Pixel old
-	Bool isStart
-	Bool IsBackToZero
+	Bool isStart = false
+	Bool IsBackToZero = false
 	Pixel ss
-	Pixel xx
-	Pixel yy
+	Pixel xx = 0
+	Pixel yy = 0
 	Pixel temp
-    x = 0
-    y = 0
-	xx = 0
-	yy = 0
-    isStart = false
-    state = 0
-    oldold = 0
     ss = curr * 20
 	Rectangle ra
 	ra.size(xx, yy, ss, ss)
 	ra.fill(rgb(142, 193, 64), 100)
 	ra.outline(5, rgb(4, 4, 4), 100)
 	oldold = curr
-	IsBackToZero = false
 	state = state + 1
 	Pixel j
 	n = n-1

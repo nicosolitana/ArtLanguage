@@ -8,8 +8,9 @@ class SemanticAnalyzer:
         self.constStack = []
         self.globalStack = []
         self.funcParamLst = []
-        self.dataTypes = ['RECTANGLE', 'CIRCLE', 'SQUARE', 'DOT', 'STRAIGHT','ARC','PIXEL', 'BOOL']
-        self.funcTypes = ['OUTLINE', 'FILL', 'DRAW', 'SIZE']
+        self.dataTypes = ['RECTANGLE', 'CIRCLE', 'SQUARE', 'DOT', 'STRAIGHT','ARC','PIXEL', 'BOOL', 'STRING', 'LIST']
+        self.funcTypes = ['OUTLINE', 'FILL', 'DRAW', 'SIZE', 'LST_ADD']
+        self.mathOps = ['ADD', 'SUB', 'MUL', 'DIV']
         self.varDec = {}
         self.funcDec = {}
         self.semanticsTable = self.ReadSemanticsTable()
@@ -94,7 +95,16 @@ class SemanticAnalyzer:
             if(j != int(res[0]['paramcount'])):
                 str = 'line {}:{} Parameter count for function {} of identifier {} is not correct'.format(lNum, cNum, res[0]['function'], varInfo[0]['Identifier'])
                 self.errorLst.append(str)
-            
+        elif(self.tokens[i]['type'] == 'LST_ADD'):
+            j = 0
+            while self.tokens[i]['type'] != 'PAREN_END':
+                if (self.tokens[i]['type'] == 'IDENTIFIER') or (self.tokens[i]['type'] == 'INTEGER'):
+                    j += 1
+                    self.CheckVarParam(i)
+                i += 1
+            if(j != 1):
+                str = 'line {}:{} Parameter count for function '"{}"' is not correct'.format(lNum, cNum, 'LST_ADD')
+                self.errorLst.append(str)
         elif(self.tokens[i]['type'] == 'FILL') or (self.tokens[i]['type'] == 'OUTLINE'):
             j = 0
             oi = 0
@@ -144,7 +154,6 @@ class SemanticAnalyzer:
                 if(j != 3):
                     str = 'line {}:{} Parameter count for function '"{}"' is not correct'.format(lNum, cNum, type)
                     self.errorLst.append(str)
-            pass
         return i
 
     def Functions(self, i):
@@ -180,9 +189,15 @@ class SemanticAnalyzer:
         if (self.tokens[i+1]['type'] == 'ASSIGN_OP') and ((self.tokens[i+2]['type'] == 'FALSE') or (self.tokens[i+2]['type'] == 'TRUE')):
             if(len(varInfo) > 0):
                 if(varInfo[0]['DataType'] != "BOOL"):
-                    str = 'line {}:{} Cannot assign bool to a Pixel type.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
+                    str = 'line {}:{} Cannot assign bool to another data type.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
                     self.errorLst.append(str)
         
+        if (self.tokens[i+1]['type'] == 'ASSIGN_OP') and (self.tokens[i+2]['type'] == 'STR_LITERAL'):
+            if(len(varInfo) > 0):
+                if(varInfo[0]['DataType'] != "STRING"):
+                    str = 'line {}:{} Cannot assign string to another data type.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
+                    self.errorLst.append(str)
+
         if (self.tokens[i+1]['type'] == 'ASSIGN_OP') and (self.tokens[i+2]['type'] == 'IDENTIFIER'):
             v2Info = self.CheckVarExistence(i+2, 'VARIABLE')
             if(len(varInfo) > 0):
@@ -196,11 +211,14 @@ class SemanticAnalyzer:
             else:
                 v2Type = "PIXEL"
             
+            if(v2Type == 'LIST'):
+                v2Type = "PIXEL"
+                
             if(vType != v2Type):
                 str = 'line {}:{} Variable assignment with different data types is prohibited.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
                 self.errorLst.append(str)
 
-        if(self.tokens[i+1]['type'] == 'ASSIGN_OP') or (self.tokens[i+1]['type'] == 'INCDEC_OP') or (self.tokens[i+1]['type'] == 'MATH_OP'):
+        if(self.tokens[i+1]['type'] == 'ASSIGN_OP') or (self.tokens[i+1]['type'] == 'INCDEC_OP') or (self.tokens[i+1]['type'] in self.mathOps):
             constInfo = self.CheckVarExistence(i, 'CONSTANT')
             globInfo = self.CheckVarExistence(i, 'GLOBAL')
             if((len(varInfo) == 0) and (len(constInfo) == 0) and (len(globInfo) == 0) and (self.IsFuncParam(self.tokens[i]['token']) == False)):
@@ -210,7 +228,7 @@ class SemanticAnalyzer:
                 str = 'line {}:{} Modifying constant value is prohibited.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
                 self.errorLst.append(str)
             
-            if(self.tokens[i+1]['type'] == 'MATH_OP'):
+            if(self.tokens[i+1]['type'] in self.mathOps):
                 v2Info = self.CheckVarExistence(i+2, 'VARIABLE')
                 if (len(varInfo) > 0):
                     vType = varInfo[0]['DataType']
@@ -221,9 +239,15 @@ class SemanticAnalyzer:
                 else:
                     v2Type = "PIXEL"
                 
-                if(vType != v2Type):
+                if((vType != v2Type) and ((vType != "PIXEL") or (v2Type != "PIXEL"))):
                     str = 'line {}:{} Invalid variable type for arithmetic operation.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
                     self.errorLst.append(str)
+                
+                if(((vType == "PIXEL") or (v2Type == "PIXEL")) and self.tokens[i+1]['type'] == "AMPSAND"):
+                    print(v2Info, varInfo, self.tokens[i+1])
+                    str = 'line {}:{} Cannot concatenate two strings of not string data type.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
+                    self.errorLst.append(str)
+                
         if(self.tokens[i+1]['type'] == 'PAREN_START'):
             funcInfo = list(filter(lambda item: item['Identifier'] == self.tokens[i]['token'], self.funcDecStack))
             count = 0
@@ -319,7 +343,7 @@ class SemanticAnalyzer:
         return i
 
     def CheckBools(self, i):
-        if(self.tokens[i+1]['type'] == 'MATH_OP') or (self.tokens[i-1]['type'] == 'MATH_OP'):
+        if(self.tokens[i+1]['type'] in self.mathOps) or (self.tokens[i-1]['type'] in self.mathOps):
             str = 'line {}:{} Bools cannot be used in arithmetic operation..'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
             self.errorLst.append(str)
 
@@ -328,7 +352,7 @@ class SemanticAnalyzer:
             varInfo = self.CheckVarExistence(i-2, 'VARIABLE')
             if(len(varInfo) > 0):
                 if(varInfo[0]['DataType'] != "PIXEL"):
-                    str = 'line {}:{} Cannot assign pixel values on booleans.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
+                    str = 'line {}:{} Cannot assign pixel values on other data types.'.format(self.tokens[i]['lineNumber'], self.tokens[i]['start'])
                     self.errorLst.append(str)
 
     def SemanticAnalysis(self):
